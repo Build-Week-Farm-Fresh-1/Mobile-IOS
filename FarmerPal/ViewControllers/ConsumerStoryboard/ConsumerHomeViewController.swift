@@ -20,6 +20,10 @@ class ConsumerHomeViewController: UIViewController {
         updateViews()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        navigationController?.setNavigationBarHidden(true, animated: true)
+    }
+    
     func updateViews() {
         navigationController?.setNavigationBarHidden(true, animated: true)
     }

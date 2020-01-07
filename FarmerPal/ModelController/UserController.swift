@@ -73,7 +73,7 @@ class UserController {
         // Mutable copy of the dictionary above
         
         // Users that could need to be created OR updated
-        var UsersToCreate = representationsByID
+        var usersToCreate = representationsByID
         
         let context = CoreDataStack.shared.container.newBackgroundContext()
         
@@ -107,13 +107,13 @@ class UserController {
 //TODO:                    user.userType = representation.userType
                     
                     // We just updated a user, we don't need to create a new User for this id
-                    UsersToCreate.removeValue(forKey: id)
+                    usersToCreate.removeValue(forKey: id)
                 }
                 
                 // Figure out which ones we don't have
                 
                 // Users that don't exist in Core Data already
-                for representation in UsersToCreate.values {
+                for representation in usersToCreate.values {
                     User(userRepresentation: representation, context: context)
                 }
                 

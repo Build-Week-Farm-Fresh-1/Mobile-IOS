@@ -84,7 +84,7 @@
                                         <color key="tintColor" red="0.1193658933" green="0.1612198651" blue="0.3023059964" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="Log In"/>
                                         <connections>
-                                            <action selector="LoginButtonTapped:" destination="6yG-BM-p46" eventType="touchUpInside" id="cmh-k6-pbN"/>
+                                            <action selector="loginButtonTapped:" destination="6yG-BM-p46" eventType="touchUpInside" id="brd-1V-uAu"/>
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e0u-5c-Iso">
@@ -329,7 +329,7 @@
         <image name="FarmerPalLogo" width="436" height="304"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="khq-I8-Sax"/>
-        <segue reference="mGF-zK-3Kg"/>
+        <segue reference="esm-An-Yeq"/>
+        <segue reference="Hr7-Mc-LhD"/>
     </inferredMetricsTieBreakers>
 </document>

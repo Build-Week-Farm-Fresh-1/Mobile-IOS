@@ -25,6 +25,10 @@ class FarmerHomeViewController: UIViewController {
         updateViews()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        navigationController?.setNavigationBarHidden(true, animated: true)
+    }
+    
     @IBAction func myProfileButtomTapped(_ sender: UIButton) {
     }
     

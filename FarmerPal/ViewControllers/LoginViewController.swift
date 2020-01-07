@@ -20,7 +20,7 @@ class LoginViewController: UIViewController {
 
     }
     
-    @IBAction func LoginButtonTapped(_ sender: UIButton) {
+    @IBAction func loginButtonTapped(_ sender: UIButton) {
         
         // Validate the textFileds
         let error = validateFields()
