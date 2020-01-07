@@ -16,7 +16,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MkP-xe-PAp" userLabel="Top Bar View 1">
-                                <rect key="frame" x="0.0" y="44" width="414" height="50"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="50"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="FarmerPalLogo" translatesAutoresizingMaskIntoConstraints="NO" id="0wm-0B-IF8">
                                         <rect key="frame" x="15" y="0.0" width="73" height="50"/>
@@ -35,7 +35,7 @@
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="47" translatesAutoresizingMaskIntoConstraints="NO" id="S2s-mi-UWL">
-                                <rect key="frame" x="20" y="114" width="374" height="648"/>
+                                <rect key="frame" x="20" y="158" width="374" height="604"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="esV-pM-aG5">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="31"/>
@@ -88,11 +88,11 @@
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e0u-5c-Iso">
-                                        <rect key="frame" x="0.0" y="311" width="374" height="225.5"/>
+                                        <rect key="frame" x="0.0" y="311" width="374" height="181.5"/>
                                         <color key="backgroundColor" red="0.84524440769999998" green="0.90572053190000001" blue="0.93089330199999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Y6g-nJ-PTt">
-                                        <rect key="frame" x="0.0" y="583.5" width="374" height="64.5"/>
+                                        <rect key="frame" x="0.0" y="539.5" width="374" height="64.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Not a Member?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VTF-tw-etw">
                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="20.5"/>
@@ -152,7 +152,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Lc-KB-0zo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1101" y="111"/>
+            <point key="canvasLocation" x="1238" y="15"/>
         </scene>
         <!--Consumer-->
         <scene sceneID="B9a-pE-qy3">
@@ -162,7 +162,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7rl-7i-ANg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1138" y="248"/>
+            <point key="canvasLocation" x="1172" y="619"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="KGh-He-YEJ">
@@ -172,11 +172,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Njo-QP-tue">
-                                <rect key="frame" x="32" y="36" width="38" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Login"/>
-                            </button>
                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="45" translatesAutoresizingMaskIntoConstraints="NO" id="ZAS-DV-fkH">
                                 <rect key="frame" x="20" y="145" width="374" height="666"/>
                                 <subviews>
@@ -309,14 +304,15 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V07-5O-6eu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1962" y="321"/>
+            <point key="canvasLocation" x="2006" y="298"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="W1K-oS-b1P">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="p6V-Q4-ufj" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="p6V-Q4-ufj" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="oMi-fJ-3Fu">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

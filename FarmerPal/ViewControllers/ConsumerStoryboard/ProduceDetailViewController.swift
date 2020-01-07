@@ -34,6 +34,8 @@ class ProduceDetailViewController: UIViewController {
     
     func updateViews() {
         
+        navigationController?.setNavigationBarHidden(false, animated: true)
+        
         guard let produce = produce,
             let name = produce.name,
             let farmerName = produce.farmerName,

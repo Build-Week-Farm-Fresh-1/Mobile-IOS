@@ -24,6 +24,8 @@ class ConsumerProfileViewController: UIViewController {
     
     func updateViews() {
         
+        navigationController?.setNavigationBarHidden(false, animated: true)
+        
         guard let user = user,
             let firstName = user.firstName,
             let lastName = user.lastName,

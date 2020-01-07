@@ -14,7 +14,10 @@ class FarmerProducesTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        navigationController?.setNavigationBarHidden(false, animated: true)
+        
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 

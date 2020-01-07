@@ -21,7 +21,7 @@ class AddProduceViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        descriptionTextView.text = ""
+        updateViews()
     }
     
     func changeProduceSaleStatus() {
@@ -31,6 +31,11 @@ class AddProduceViewController: UIViewController {
         } else {
             
         }
+    }
+    
+    func updateViews() {
+        navigationController?.setNavigationBarHidden(false, animated: true)
+        descriptionTextView.text = ""
     }
 
     /*

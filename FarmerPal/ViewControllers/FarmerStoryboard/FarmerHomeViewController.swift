@@ -39,6 +39,8 @@ class FarmerHomeViewController: UIViewController {
     
     func updateViews() {
         
+        navigationController?.setNavigationBarHidden(true, animated: true)
+        
         guard let user = user else { return }
         
         welcomeUserLabel.text = "Welcome \(user.firstName)"
