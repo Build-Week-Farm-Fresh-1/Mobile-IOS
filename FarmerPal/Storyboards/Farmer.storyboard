@@ -204,6 +204,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qgv-LN-Y4i" userLabel="Top Bar View 1">
+                                <rect key="frame" x="20" y="0.0" width="394" height="50"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="FarmerPalLogo" translatesAutoresizingMaskIntoConstraints="NO" id="tbl-md-q3n">
+                                        <rect key="frame" x="15" y="0.0" width="73" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="73" id="g64-lb-XaV"/>
+                                            <constraint firstAttribute="height" constant="50" id="qzX-bo-6J4"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.1176470588" green="0.1612198651" blue="0.3023059964" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="tbl-md-q3n" firstAttribute="leading" secondItem="Qgv-LN-Y4i" secondAttribute="leading" constant="15" id="4jy-j8-BKi"/>
+                                    <constraint firstAttribute="bottom" secondItem="tbl-md-q3n" secondAttribute="bottom" constant="20" symbolic="YES" id="97L-R8-xtS"/>
+                                    <constraint firstAttribute="height" constant="50" id="HaC-1f-hRM"/>
+                                    <constraint firstItem="tbl-md-q3n" firstAttribute="top" secondItem="Qgv-LN-Y4i" secondAttribute="top" id="bj4-s0-R3q"/>
+                                </constraints>
+                            </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Dfl-Tc-ZmK">
                                 <rect key="frame" x="20" y="89" width="374" height="679"/>
                                 <subviews>
@@ -333,8 +352,11 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="Dfl-Tc-ZmK" firstAttribute="leading" secondItem="5mq-S8-ioR" secondAttribute="leading" constant="20" id="Y3w-tC-B23"/>
+                            <constraint firstItem="5mq-S8-ioR" firstAttribute="trailing" secondItem="Qgv-LN-Y4i" secondAttribute="trailing" id="Z1r-ZP-cG1"/>
                             <constraint firstItem="5mq-S8-ioR" firstAttribute="bottom" secondItem="Dfl-Tc-ZmK" secondAttribute="bottom" constant="40" id="aeG-8n-mU4"/>
                             <constraint firstItem="5mq-S8-ioR" firstAttribute="trailing" secondItem="Dfl-Tc-ZmK" secondAttribute="trailing" constant="20" id="cOX-Be-ZTQ"/>
+                            <constraint firstItem="Qgv-LN-Y4i" firstAttribute="leading" secondItem="N0O-E0-IaW" secondAttribute="leading" constant="20" symbolic="YES" id="fTt-i6-csU"/>
+                            <constraint firstItem="Qgv-LN-Y4i" firstAttribute="top" secondItem="5mq-S8-ioR" secondAttribute="top" id="hg4-qu-Ufv"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="5mq-S8-ioR"/>
                     </view>
@@ -549,4 +571,7 @@
             <point key="canvasLocation" x="1742" y="761"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="FarmerPalLogo" width="436" height="304"/>
+    </resources>
 </document>

@@ -13,11 +13,19 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var userTypeSegmentedControl: UISegmentedControl!
+    @IBOutlet weak var loginBlueView: UIView!
+    @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var signUpButton: UIButton!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        updateViews()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
     @IBAction func loginButtonTapped(_ sender: UIButton) {
@@ -87,4 +95,11 @@ class LoginViewController: UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
+    func updateViews() {
+        
+        navigationController?.setNavigationBarHidden(true, animated: true)
+        loginBlueView.layer.cornerRadius = 10
+        loginButton.layer.cornerRadius = 26
+        signUpButton.layer.cornerRadius = 18
+    }
 }

@@ -146,6 +146,7 @@ class SignUpViewController: UIViewController {
     
     // MARK: Update Views
     func updateViews() {
+        navigationController?.setNavigationBarHidden(false, animated: true)
         hideTextFields()
         farmerButton.layer.cornerRadius = 10
         clientButton.layer.cornerRadius = 10
