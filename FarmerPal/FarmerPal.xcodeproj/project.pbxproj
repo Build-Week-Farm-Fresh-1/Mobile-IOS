@@ -17,7 +17,7 @@
 		FA65FE1023C3E282001E7C93 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA65FE0F23C3E282001E7C93 /* Main.storyboard */; };
 		FA65FE1223C3E3B2001E7C93 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA65FE1123C3E3B1001E7C93 /* LoginViewController.swift */; };
 		FA65FE1423C3E3BA001E7C93 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA65FE1323C3E3BA001E7C93 /* SignUpViewController.swift */; };
-		FA65FE1A23C3E418001E7C93 /* Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA65FE1923C3E418001E7C93 /* Controller.swift */; };
+		FA65FE1A23C3E418001E7C93 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA65FE1923C3E418001E7C93 /* UserController.swift */; };
 		FA65FE1C23C3E41F001E7C93 /* OrderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA65FE1B23C3E41F001E7C93 /* OrderController.swift */; };
 		FA65FE1E23C3E425001E7C93 /* ProduceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA65FE1D23C3E425001E7C93 /* ProduceController.swift */; };
 		FA65FE2123C3E43E001E7C93 /* Order.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FA65FE1F23C3E43D001E7C93 /* Order.xcdatamodeld */; };
@@ -45,6 +45,7 @@
 		FA65FE5323C3EAFA001E7C93 /* FarmerProducesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA65FE4D23C3EAFA001E7C93 /* FarmerProducesTableViewController.swift */; };
 		FA65FE5423C3EAFA001E7C93 /* FarmerOrderDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA65FE4E23C3EAFA001E7C93 /* FarmerOrderDetailViewController.swift */; };
 		FA65FE5523C3EAFA001E7C93 /* FarmerProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA65FE4F23C3EAFA001E7C93 /* FarmerProfileViewController.swift */; };
+		FA65FE5723C509F7001E7C93 /* StringConstantKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA65FE5623C509F7001E7C93 /* StringConstantKeys.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,7 +63,7 @@
 		FA65FE0F23C3E282001E7C93 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		FA65FE1123C3E3B1001E7C93 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		FA65FE1323C3E3BA001E7C93 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
-		FA65FE1923C3E418001E7C93 /* Controller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Controller.swift; path = ModelController/Controller.swift; sourceTree = SOURCE_ROOT; };
+		FA65FE1923C3E418001E7C93 /* UserController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserController.swift; path = ModelController/UserController.swift; sourceTree = SOURCE_ROOT; };
 		FA65FE1B23C3E41F001E7C93 /* OrderController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OrderController.swift; path = ModelController/OrderController.swift; sourceTree = SOURCE_ROOT; };
 		FA65FE1D23C3E425001E7C93 /* ProduceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProduceController.swift; path = ModelController/ProduceController.swift; sourceTree = SOURCE_ROOT; };
 		FA65FE2023C3E43D001E7C93 /* Order.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Order.xcdatamodel; sourceTree = "<group>"; };
@@ -90,6 +91,7 @@
 		FA65FE4D23C3EAFA001E7C93 /* FarmerProducesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FarmerProducesTableViewController.swift; sourceTree = "<group>"; };
 		FA65FE4E23C3EAFA001E7C93 /* FarmerOrderDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FarmerOrderDetailViewController.swift; sourceTree = "<group>"; };
 		FA65FE4F23C3EAFA001E7C93 /* FarmerProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FarmerProfileViewController.swift; sourceTree = "<group>"; };
+		FA65FE5623C509F7001E7C93 /* StringConstantKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringConstantKeys.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -188,7 +190,7 @@
 			children = (
 				FA65FE1D23C3E425001E7C93 /* ProduceController.swift */,
 				FA65FE1B23C3E41F001E7C93 /* OrderController.swift */,
-				FA65FE1923C3E418001E7C93 /* Controller.swift */,
+				FA65FE1923C3E418001E7C93 /* UserController.swift */,
 			);
 			path = ModelControllers;
 			sourceTree = "<group>";
@@ -217,6 +219,7 @@
 				FA65FE3823C3E4B6001E7C93 /* UserType.swift */,
 				FA65FE3623C3E4AE001E7C93 /* HTTPMethod.swift */,
 				FA65FE3423C3E4A7001E7C93 /* CoreDataStack.swift */,
+				FA65FE5623C509F7001E7C93 /* StringConstantKeys.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -224,8 +227,8 @@
 		FA65FE3A23C3EA1A001E7C93 /* FarmerStoryboard */ = {
 			isa = PBXGroup;
 			children = (
-				FA65FE4A23C3EAFA001E7C93 /* AddProduceViewController.swift */,
 				FA65FE4B23C3EAFA001E7C93 /* FarmerHomeViewController.swift */,
+				FA65FE4A23C3EAFA001E7C93 /* AddProduceViewController.swift */,
 				FA65FE4E23C3EAFA001E7C93 /* FarmerOrderDetailViewController.swift */,
 				FA65FE4C23C3EAFA001E7C93 /* FarmerOrdersTableViewController.swift */,
 				FA65FE4D23C3EAFA001E7C93 /* FarmerProducesTableViewController.swift */,
@@ -237,9 +240,9 @@
 		FA65FE3B23C3EA33001E7C93 /* ConsumerStoryboard */ = {
 			isa = PBXGroup;
 			children = (
+				FA65FE4223C3EA58001E7C93 /* ConsumerHomeViewController.swift */,
 				FA65FE3E23C3EA58001E7C93 /* ConsumerCartViewController.swift */,
 				FA65FE3D23C3EA58001E7C93 /* ConsumerFarmersOptionsTableViewController.swift */,
-				FA65FE4223C3EA58001E7C93 /* ConsumerHomeViewController.swift */,
 				FA65FE3F23C3EA58001E7C93 /* ConsumerOrderHistoryTableViewController.swift */,
 				FA65FE3C23C3EA57001E7C93 /* ConsumerProduceOptionsTableViewController.swift */,
 				FA65FE4023C3EA58001E7C93 /* ConsumerProfileViewController.swift */,
@@ -347,11 +350,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA65FE5723C509F7001E7C93 /* StringConstantKeys.swift in Sources */,
 				FA65FE4423C3EA58001E7C93 /* ConsumerFarmersOptionsTableViewController.swift in Sources */,
 				FA65FE5323C3EAFA001E7C93 /* FarmerProducesTableViewController.swift in Sources */,
 				FA65FE2323C3E44E001E7C93 /* Order+Convenience.swift in Sources */,
 				FA65FE1C23C3E41F001E7C93 /* OrderController.swift in Sources */,
-				FA65FE1A23C3E418001E7C93 /* Controller.swift in Sources */,
+				FA65FE1A23C3E418001E7C93 /* UserController.swift in Sources */,
 				FA65FE4823C3EA58001E7C93 /* ProduceDetailViewController.swift in Sources */,
 				FA65FE1223C3E3B2001E7C93 /* LoginViewController.swift in Sources */,
 				FA65FE2F23C3E490001E7C93 /* User.xcdatamodeld in Sources */,

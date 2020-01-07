@@ -136,8 +136,8 @@
                         <outlet property="passwordTextField" destination="mI8-vT-0zL" id="s3b-2X-icP"/>
                         <outlet property="userTypeSegmentedControl" destination="KPo-C2-Ahh" id="kAP-DE-r7B"/>
                         <outlet property="usernameTextField" destination="As4-TG-jRd" id="r8z-8d-AZ8"/>
-                        <segue destination="6nE-zH-Dvp" kind="show" identifier="FarmerHomePageSegue" id="Hr7-Mc-LhD"/>
-                        <segue destination="vpu-Po-ILu" kind="show" identifier="ConsumerHomePageSegue" id="esm-An-Yeq"/>
+                        <segue destination="6nE-zH-Dvp" kind="show" identifier="LoginToFarmerHomeSegue" id="Hr7-Mc-LhD"/>
+                        <segue destination="vpu-Po-ILu" kind="show" identifier="LoginToConsumerHomeSegue" id="esm-An-Yeq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h8u-ly-WMm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -178,7 +178,7 @@
                                 <state key="normal" title="Login"/>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="45" translatesAutoresizingMaskIntoConstraints="NO" id="ZAS-DV-fkH">
-                                <rect key="frame" x="20" y="145" width="374" height="617"/>
+                                <rect key="frame" x="20" y="145" width="374" height="666"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tell us what type of Account:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zi1-FN-t3a">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="30"/>
@@ -210,7 +210,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="7Aq-vt-5jB">
-                                        <rect key="frame" x="0.0" y="156" width="374" height="279"/>
+                                        <rect key="frame" x="0.0" y="156" width="374" height="328"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PnA-Ad-OUX">
                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="34"/>
@@ -227,32 +227,37 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IaW-RT-CEC">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PF7-t5-dao">
                                                 <rect key="frame" x="0.0" y="147" width="374" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9vf-dT-INf">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jmm-ob-MNE">
                                                 <rect key="frame" x="0.0" y="196" width="374" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                                <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PF7-t5-dao">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IaW-RT-CEC">
                                                 <rect key="frame" x="0.0" y="245" width="374" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9vf-dT-INf">
+                                                <rect key="frame" x="0.0" y="294" width="374" height="34"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                            </textField>
                                         </subviews>
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZmF-4Q-ihV">
-                                        <rect key="frame" x="0.0" y="480" width="374" height="50"/>
+                                        <rect key="frame" x="0.0" y="529" width="374" height="50"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="rpC-TK-aka"/>
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6U4-If-8Ai">
-                                        <rect key="frame" x="0.0" y="575" width="374" height="42"/>
+                                        <rect key="frame" x="0.0" y="624" width="374" height="42"/>
                                         <color key="backgroundColor" red="0.49121677879999998" green="0.68057274820000002" blue="0.80572980640000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
                                         <color key="tintColor" red="0.1193658933" green="0.1612198651" blue="0.3023059964" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -290,16 +295,21 @@
                     <navigationItem key="navigationItem" id="RQE-oL-pOa"/>
                     <connections>
                         <outlet property="addressTextField" destination="PF7-t5-dao" id="yk3-aM-nG2"/>
+                        <outlet property="clientButton" destination="Tjr-kr-uEo" id="tVm-TD-iP4"/>
+                        <outlet property="emailTextField" destination="jmm-ob-MNE" id="DWR-ay-CT5"/>
+                        <outlet property="farmerButton" destination="yRX-Sx-rJP" id="eLu-DR-LxB"/>
                         <outlet property="firstNameTextField" destination="PnA-Ad-OUX" id="sda-Dm-nQA"/>
                         <outlet property="lastNameTextField" destination="B03-fi-WUX" id="XSs-PN-x44"/>
                         <outlet property="passwordTextField" destination="9vf-dT-INf" id="dGh-iX-xlC"/>
                         <outlet property="phoneNumTextField" destination="G4y-7h-BXj" id="dc7-Ci-7CP"/>
                         <outlet property="usernameTextField" destination="IaW-RT-CEC" id="sDJ-7f-tz9"/>
+                        <segue destination="6nE-zH-Dvp" kind="show" identifier="SingInToFarmerHomeSegue" id="mGF-zK-3Kg"/>
+                        <segue destination="vpu-Po-ILu" kind="show" identifier="SingInToConsumerHomeSegue" id="khq-I8-Sax"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V07-5O-6eu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="354" y="1019"/>
+            <point key="canvasLocation" x="1962" y="321"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="W1K-oS-b1P">
@@ -322,4 +332,8 @@
     <resources>
         <image name="FarmerPalLogo" width="436" height="304"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="khq-I8-Sax"/>
+        <segue reference="mGF-zK-3Kg"/>
+    </inferredMetricsTieBreakers>
 </document>

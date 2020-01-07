@@ -10,7 +10,7 @@
         <!--Farmer Home View Controller-->
         <scene sceneID="wps-Kd-Ij4">
             <objects>
-                <viewController id="eZh-aM-dis" customClass="FarmerHomeViewController" customModule="FarmFreshDemo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FarmerHomePage" id="eZh-aM-dis" customClass="FarmerHomeViewController" customModule="FarmerPal" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2Mk-bs-rWt">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -110,7 +110,7 @@
         <!--Farmer Orders Table View Controller-->
         <scene sceneID="77Z-OF-sdH">
             <objects>
-                <tableViewController id="oXP-jm-TTD" customClass="FarmerOrdersTableViewController" customModule="FarmFreshDemo" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="oXP-jm-TTD" customClass="FarmerOrdersTableViewController" customModule="FarmerPal" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="bf8-lw-MbW">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -199,7 +199,7 @@
         <!--Farmer Order Detail View Controller-->
         <scene sceneID="bmg-dA-WOf">
             <objects>
-                <viewController id="duU-y5-7IR" customClass="FarmerOrderDetailViewController" customModule="FarmFreshDemo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="duU-y5-7IR" customClass="FarmerOrderDetailViewController" customModule="FarmerPal" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="N0O-E0-IaW">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -347,7 +347,7 @@
         <!--Farmer Produces Table View Controller-->
         <scene sceneID="ysn-mp-vaa">
             <objects>
-                <tableViewController id="9Xa-gL-qhZ" customClass="FarmerProducesTableViewController" customModule="FarmFreshDemo" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="9Xa-gL-qhZ" customClass="FarmerProducesTableViewController" customModule="FarmerPal" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="eJm-P4-VK0">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -391,7 +391,7 @@
         <!--Add Produce View Controller-->
         <scene sceneID="ZnQ-SL-DUa">
             <objects>
-                <viewController id="BiJ-mw-2Kf" customClass="AddProduceViewController" customModule="FarmFreshDemo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BiJ-mw-2Kf" customClass="AddProduceViewController" customModule="FarmerPal" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZF0-oW-Vt7">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -494,7 +494,7 @@
         <!--Farmer Profile View Controller-->
         <scene sceneID="fpX-ok-fNI">
             <objects>
-                <viewController id="VKm-eW-i8r" customClass="FarmerProfileViewController" customModule="FarmFreshDemo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="VKm-eW-i8r" customClass="FarmerProfileViewController" customModule="FarmerPal" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zEY-JY-5uc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

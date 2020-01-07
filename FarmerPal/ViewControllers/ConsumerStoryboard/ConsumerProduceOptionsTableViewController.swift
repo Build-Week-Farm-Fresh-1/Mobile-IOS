@@ -11,7 +11,7 @@ import UIKit
 class ConsumerProduceOptionsTableViewController: UITableViewController {
     
     var user: User?
-    var controller: Controller?
+    var controller: UserController?
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -9,6 +9,9 @@
 import UIKit
 
 class SignUpViewController: UIViewController {
+    
+    // TODO: Comment this back in when ready to Network
+//    let userController = UserController()
 
     @IBOutlet weak var firstNameTextField: UITextField!
     @IBOutlet weak var lastNameTextField: UITextField!
@@ -16,28 +19,72 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var addressTextField: UITextField!
+    @IBOutlet weak var emailTextField: UITextField!
+    
+    @IBOutlet weak var farmerButton: UIButton!
+    @IBOutlet weak var clientButton: UIButton!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        phoneNumTextField.delegate = self
         updateViews()
     }
     
     @IBAction func farmerButtonTapped(_ sender: UIButton) {
+        showTextFields()
+        clientButton.alpha = 0
     }
     
     @IBAction func clientButtonTapped(_ sender: UIButton) {
+        showTextFields()
+        farmerButton.alpha = 0
     }
     
     
     @IBAction func signUpButtonTapped(_ sender: UIButton) {
         
         // Validate the fields
+        let error = validateFields()
         
-        // Create the user
-        
-        // Transition tot he home screen
+        if error != nil {
+            
+            // There's something wrong with the fields, show error message
+            showErrorAlert(errorMessage: error!)
+        } else {
+            
+            // MARK: Create New User
+            var userType: UserType = .farmer
+            
+            if farmerButton.alpha == 0 {
+                userType = .consumer
+            } else if clientButton.alpha == 0 {
+                userType = .farmer
+            } else {
+                // TODO: Take this else statement out when everything works properly
+                print("Did not assign type of user before creating user")
+            }
+            
+            // Create clean version of data
+            guard let username = usernameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines),
+                let password = passwordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines),
+                let firstName = firstNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines),
+                let lastName = lastNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines),
+                let phoneNum = phoneNumTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines),
+                let email = emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) else { return }
+            
+            
+            /*
+             TODO: Comment this back in when ready to network
+             
+             // Create the user & PUT it in Server
+             userController.createUser(username: username, password: password, isLoggedIn: true, firstName: firstName, lastName: lastName, phoneNum: Int16(phoneNum)!, email: email, userType: userType.rawValue, context: CoreDataStack.shared.mainContext)
+             */
+            
+            // MARK: Transition to HomePage
+            transitionToHomePage()
+        }
     }
     
     // Validate that the data is correct.
@@ -55,15 +102,12 @@ class SignUpViewController: UIViewController {
             return "Please fill in all fields."
         }
         
-        // Check if the password is secure
+        // Check if the password is secure enough
         let cleanedPassword = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         if isPasswordValid(cleanedPassword) == false {
             
-            // Password isn't secure enough
-            return "Please make "
-            
+            return "Please make sure your password is at least 8 characters, contains a special character and a number."
         }
-        
         return nil
     }
     
@@ -75,8 +119,56 @@ class SignUpViewController: UIViewController {
         return passwordTest.evaluate(with: password)
     }
     
-    func updateViews() {
+    func showErrorAlert(errorMessage: String) {
+        let alert = UIAlertController(title: "Oops!", message: errorMessage, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func transitionToHomePage() {
+        
+        // TODO: Wilma -> min 1:10 change rootViewController
+        if clientButton.alpha == 0 {
+            
+            navigationController?.setNavigationBarHidden(false, animated: true)
+            performSegue(withIdentifier: .singInToFarmerHomeSegue, sender: self)
+            
+        } else if farmerButton.alpha == 0 {
+            
+            navigationController?.setNavigationBarHidden(false, animated: true)
+            performSegue(withIdentifier: .singInToConsumerHomeSegue, sender: self)
+            
+        } else {
+            print("Couldn't transition to correct HomePageVC")
+        }
+    }
+    
+    // MARK: Update Views
+    func updateViews() {
+        hideTextFields()
+        farmerButton.layer.cornerRadius = 10
+        clientButton.layer.cornerRadius = 10
+    }
+    
+    func hideTextFields() {
+        firstNameTextField.alpha = 0
+        lastNameTextField.alpha = 0
+        phoneNumTextField.alpha = 0
+        usernameTextField.alpha = 0
+        passwordTextField.alpha = 0
+        addressTextField.alpha = 0
+        emailTextField.alpha = 0
+    }
+    
+    func showTextFields() {
+        firstNameTextField.alpha = 1
+        lastNameTextField.alpha = 1
+        phoneNumTextField.alpha = 1
+        usernameTextField.alpha = 1
+        passwordTextField.alpha = 1
+        addressTextField.alpha = 1
+        emailTextField.alpha = 1
     }
     
     /*
@@ -89,4 +181,17 @@ class SignUpViewController: UIViewController {
     }
     */
 
+}
+
+extension SignUpViewController: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        // Mobile validation
+        if textField == phoneNumTextField {
+            let allowedCharacters = CharacterSet(charactersIn:"0123456789")//Here change this characters based on your requirement
+            let characterSet = CharacterSet(charactersIn: string)
+            return allowedCharacters.isSuperset(of: characterSet)
+        }
+        return true
+    }
 }

@@ -24,10 +24,10 @@ class LoginViewController: UIViewController {
     @IBAction func LoginButtonTapped(_ sender: UIButton) {
         
         if userTypeSegmentedControl.selectedSegmentIndex == 0 {
-            performSegue(withIdentifier: "FarmerHomePageSegue", sender: self)
+            performSegue(withIdentifier: .loginToFarmerHomeSegue, sender: self)
             
         } else if userTypeSegmentedControl.selectedSegmentIndex == 1 {
-            performSegue(withIdentifier: "ConsumerHomePageSegue", sender: self)
+            performSegue(withIdentifier: .loginToConsumerHomeSegue, sender: self)
         }
     }
     

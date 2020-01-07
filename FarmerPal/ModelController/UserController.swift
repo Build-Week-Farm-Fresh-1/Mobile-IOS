@@ -1,5 +1,5 @@
 //
-//  Controller.swift
+//  UserController.swift
 //  FarmFreshDemo
 //
 //  Created by macbook on 1/2/20.
@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-class Controller {
+class UserController {
     
     let baseURL = URL(string: "")!  // TODO: Need to set up Back-end Server!
         
@@ -195,7 +195,7 @@ class Controller {
     //MARK:  CoreData CRUD
     
     // Create
-    func createUser(with username: String, password: String, isLoggedIn: Bool, firstName: String, lastName: String, phoneNum: Int16, email: String, userType: String, context: NSManagedObjectContext) {
+    func createUser(username: String, password: String, isLoggedIn: Bool, firstName: String, lastName: String, phoneNum: Int16, email: String, userType: String, context: NSManagedObjectContext) {
         
         let user = User(username: username, password: password, isLoggedIn: isLoggedIn, firstName: firstName, lastName: lastName, phoneNum: phoneNum, email: email, userType: userType, context: context)
         CoreDataStack.shared.save(context: context)
@@ -211,6 +211,7 @@ class Controller {
         user.email = email
         CoreDataStack.shared.save(context: context)
         put(user: user)
+        // TODO: Wilma, min 57 Chris
     }
     
     func updateUserType(user: User, isLoggedIn: Bool, context: NSManagedObjectContext) {
