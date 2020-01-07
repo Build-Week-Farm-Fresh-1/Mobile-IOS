@@ -23,6 +23,8 @@ class SignUpViewController: UIViewController {
     
     @IBOutlet weak var farmerButton: UIButton!
     @IBOutlet weak var clientButton: UIButton!
+    @IBOutlet weak var signUpButton: UIButton!
+    @IBOutlet weak var signUpBlueView: UIView!
     
     
     override func viewDidLoad() {
@@ -33,13 +35,21 @@ class SignUpViewController: UIViewController {
     }
     
     @IBAction func farmerButtonTapped(_ sender: UIButton) {
+        signUpBlueView.layer.cornerRadius = 10
         showTextFields()
         clientButton.alpha = 0
+        farmerButton.backgroundColor = UIColor(displayP3Red: 125/255, green: 174/255, blue: 205/255, alpha: 1)
+        farmerButton.titleLabel?.tintColor = .white
+        signUpBlueView.alpha = 1
     }
     
     @IBAction func clientButtonTapped(_ sender: UIButton) {
+        signUpBlueView.layer.cornerRadius = 10
         showTextFields()
         farmerButton.alpha = 0
+        clientButton.backgroundColor = UIColor(displayP3Red: 125/255, green: 174/255, blue: 205/255, alpha: 1)
+        clientButton.titleLabel?.tintColor = .white
+        signUpBlueView.alpha = 1
     }
     
     
@@ -148,8 +158,10 @@ class SignUpViewController: UIViewController {
     func updateViews() {
         navigationController?.setNavigationBarHidden(false, animated: true)
         hideTextFields()
-        farmerButton.layer.cornerRadius = 10
-        clientButton.layer.cornerRadius = 10
+        farmerButton.layer.cornerRadius = 15
+        clientButton.layer.cornerRadius = 15
+        signUpButton.layer.cornerRadius = 20
+        signUpBlueView.alpha = 0
     }
     
     func hideTextFields() {

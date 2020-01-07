@@ -203,12 +203,35 @@ straight out of the fields.  </string>
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="45" translatesAutoresizingMaskIntoConstraints="NO" id="ZAS-DV-fkH">
-                                <rect key="frame" x="20" y="145" width="374" height="666"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FhD-An-Omk" userLabel="BlueView">
+                                <rect key="frame" x="10" y="223" width="394" height="449"/>
+                                <color key="backgroundColor" red="0.84524440769999998" green="0.90572053190000001" blue="0.93089330199999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <accessibility key="accessibilityConfiguration" identifier="LoginBlueLayer" label="LoginBlueLayer"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Z5-cg-SB2" userLabel="Top Bar View 2">
+                                <rect key="frame" x="0.0" y="88" width="414" height="60"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tell us what type of Account:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zi1-FN-t3a">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="FarmerPalLogo" translatesAutoresizingMaskIntoConstraints="NO" id="QCH-ur-fqk">
+                                        <rect key="frame" x="20" y="5" width="73" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="73" id="Qsm-Ca-y53"/>
+                                            <constraint firstAttribute="height" constant="50" id="fLz-IT-3zW"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.1176470588" green="0.1612198651" blue="0.3023059964" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="QCH-ur-fqk" firstAttribute="top" secondItem="4Z5-cg-SB2" secondAttribute="top" constant="5" id="CIP-cP-z23"/>
+                                    <constraint firstAttribute="height" constant="60" id="oNH-8F-tle"/>
+                                    <constraint firstItem="QCH-ur-fqk" firstAttribute="leading" secondItem="4Z5-cg-SB2" secondAttribute="leading" constant="20" id="vnl-Ah-htY"/>
+                                </constraints>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="45" translatesAutoresizingMaskIntoConstraints="NO" id="ZAS-DV-fkH">
+                                <rect key="frame" x="20" y="168" width="374" height="666"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Account Selection" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zi1-FN-t3a">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="25"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -294,25 +317,17 @@ straight out of the fields.  </string>
                                     </button>
                                 </subviews>
                             </stackView>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4Z5-cg-SB2" userLabel="Top Bar View 2">
-                                <rect key="frame" x="0.0" y="78" width="414" height="50"/>
-                                <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="FarmerPalLogo" translatesAutoresizingMaskIntoConstraints="NO" id="QCH-ur-fqk">
-                                        <rect key="frame" x="15" y="0.0" width="73" height="50"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="73" id="Qsm-Ca-y53"/>
-                                            <constraint firstAttribute="height" constant="50" id="fLz-IT-3zW"/>
-                                        </constraints>
-                                    </imageView>
-                                </subviews>
-                                <color key="backgroundColor" red="0.1176470588" green="0.1612198651" blue="0.3023059964" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="ZAS-DV-fkH" firstAttribute="top" secondItem="4Z5-cg-SB2" secondAttribute="bottom" constant="20" id="0WX-ek-IiC"/>
                             <constraint firstItem="ZAS-DV-fkH" firstAttribute="leading" secondItem="68W-Az-r0J" secondAttribute="leading" constant="20" id="GNn-qM-IJZ"/>
-                            <constraint firstItem="ZAS-DV-fkH" firstAttribute="top" secondItem="4Z5-cg-SB2" secondAttribute="bottom" constant="20" id="Mji-hT-All"/>
+                            <constraint firstItem="68W-Az-r0J" firstAttribute="trailing" secondItem="FhD-An-Omk" secondAttribute="trailing" constant="10" id="MXZ-Zm-Ay1"/>
+                            <constraint firstItem="FhD-An-Omk" firstAttribute="top" secondItem="4Z5-cg-SB2" secondAttribute="bottom" constant="75" id="TLS-yA-V6T"/>
+                            <constraint firstItem="68W-Az-r0J" firstAttribute="bottom" secondItem="FhD-An-Omk" secondAttribute="bottom" constant="190" id="enc-4B-P1X"/>
                             <constraint firstItem="4Z5-cg-SB2" firstAttribute="leading" secondItem="68W-Az-r0J" secondAttribute="leading" id="fW7-lW-OXE"/>
+                            <constraint firstItem="4Z5-cg-SB2" firstAttribute="top" secondItem="68W-Az-r0J" secondAttribute="top" id="gen-jO-axw"/>
+                            <constraint firstItem="FhD-An-Omk" firstAttribute="leading" secondItem="68W-Az-r0J" secondAttribute="leading" constant="10" id="nXY-Np-tdC"/>
                             <constraint firstItem="68W-Az-r0J" firstAttribute="trailing" secondItem="ZAS-DV-fkH" secondAttribute="trailing" constant="20" id="pk0-3o-rOV"/>
                             <constraint firstItem="68W-Az-r0J" firstAttribute="trailing" secondItem="4Z5-cg-SB2" secondAttribute="trailing" id="zA8-OP-kQr"/>
                         </constraints>
@@ -328,6 +343,8 @@ straight out of the fields.  </string>
                         <outlet property="lastNameTextField" destination="B03-fi-WUX" id="XSs-PN-x44"/>
                         <outlet property="passwordTextField" destination="9vf-dT-INf" id="dGh-iX-xlC"/>
                         <outlet property="phoneNumTextField" destination="G4y-7h-BXj" id="dc7-Ci-7CP"/>
+                        <outlet property="signUpBlueView" destination="FhD-An-Omk" id="FqR-m2-uBM"/>
+                        <outlet property="signUpButton" destination="6U4-If-8Ai" id="gjK-M7-wi0"/>
                         <outlet property="usernameTextField" destination="IaW-RT-CEC" id="sDJ-7f-tz9"/>
                         <segue destination="6nE-zH-Dvp" kind="show" identifier="SingInToFarmerHomeSegue" id="mGF-zK-3Kg"/>
                         <segue destination="vpu-Po-ILu" kind="show" identifier="SingInToConsumerHomeSegue" id="khq-I8-Sax"/>
@@ -335,7 +352,7 @@ straight out of the fields.  </string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V07-5O-6eu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2006" y="298"/>
+            <point key="canvasLocation" x="2005.7971014492755" y="297.99107142857139"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="W1K-oS-b1P">
@@ -361,7 +378,7 @@ straight out of the fields.  </string>
         <image name="LogginPage" width="5080" height="3193"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="esm-An-Yeq"/>
-        <segue reference="Hr7-Mc-LhD"/>
+        <segue reference="khq-I8-Sax"/>
+        <segue reference="mGF-zK-3Kg"/>
     </inferredMetricsTieBreakers>
 </document>
