@@ -35,6 +35,8 @@ class ProduceDetailViewController: UIViewController {
     func updateViews() {
         
         navigationController?.setNavigationBarHidden(false, animated: true)
+        addToCartButton.layer.cornerRadius = 15
+        produceNameLabel.layer.cornerRadius = 10
         
         guard let produce = produce,
             let name = produce.name,
