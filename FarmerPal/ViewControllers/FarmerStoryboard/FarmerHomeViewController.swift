@@ -23,7 +23,6 @@ class FarmerHomeViewController: UIViewController {
     @IBOutlet weak var produceOnSale: UIButton!
     @IBOutlet weak var pendingOrders: UIButton!
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
         

@@ -98,6 +98,8 @@ class LoginViewController: UIViewController {
     func updateViews() {
         
         navigationController?.setNavigationBarHidden(true, animated: true)
+        navigationController?.navigationBar.barTintColor = UIColor(displayP3Red: 30/255, green: 41/255, blue: 77/255, alpha: 1)
+        
         loginBlueView.layer.cornerRadius = 10
         loginButton.layer.cornerRadius = 26
         signUpButton.layer.cornerRadius = 18

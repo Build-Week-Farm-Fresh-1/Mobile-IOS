@@ -157,6 +157,8 @@ class SignUpViewController: UIViewController {
     // MARK: Update Views
     func updateViews() {
         navigationController?.setNavigationBarHidden(false, animated: true)
+        navigationController?.navigationBar.barTintColor = UIColor(displayP3Red: 30/255, green: 41/255, blue: 77/255, alpha: 1)
+        
         hideTextFields()
         farmerButton.layer.cornerRadius = 15
         clientButton.layer.cornerRadius = 15
