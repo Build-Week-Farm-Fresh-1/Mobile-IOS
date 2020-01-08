@@ -18,6 +18,11 @@ class FarmerHomeViewController: UIViewController {
     @IBOutlet weak var itemsInInventoryLabel: UILabel!
     @IBOutlet weak var itemsOnSaleLabel: UILabel!
     
+    @IBOutlet weak var myProfileButton: UIButton!
+    @IBOutlet weak var addNewProduceButton: UIButton!
+    @IBOutlet weak var produceOnSale: UIButton!
+    @IBOutlet weak var pendingOrders: UIButton!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,6 +49,10 @@ class FarmerHomeViewController: UIViewController {
     func updateViews() {
         
         navigationController?.setNavigationBarHidden(true, animated: true)
+        myProfileButton.layer.cornerRadius = 15
+        addNewProduceButton.layer.cornerRadius = 15
+        produceOnSale.layer.cornerRadius = 15
+        pendingOrders.layer.cornerRadius = 15
         
         guard let user = user else { return }
         

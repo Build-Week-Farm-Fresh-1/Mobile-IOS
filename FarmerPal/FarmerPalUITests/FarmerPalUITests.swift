@@ -19,17 +19,30 @@ class FarmerPalUITests: XCTestCase {
         // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
     }
 
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() {
-        // UI tests must launch the application that they test.
+    func testConsumerLogin() {
+    
+        app.buttons["Log In"].tap()
+        app.staticTexts["ConsumerGreetingLabel"].tap()
+        
+        
         let app = XCUIApplication()
         app.launch()
 
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        app.buttons["Client"].tap()
+
+        let usernameTextField = app.textFields["Username"]
+        usernameTextField.tap()
+        usernameTextField.typeText("consumer1")
+
+        let passwordTextField = app.secureTextFields["Password"]
+        passwordTextField.tap()
+        passwordTextField.typeText("t12345678@")
+
+        let loginButton = app.buttons["Log In"]
+        loginButton.tap()
+
+        app.staticTexts["Welcome User"].tap()
+        XCTAssertEqual(accessibilityIden, <#T##expression2: Equatable##Equatable#>)
     }
 
     func testLaunchPerformance() {
