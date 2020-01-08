@@ -363,23 +363,27 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VuD-pk-ZjX">
-                                <rect key="frame" x="20" y="615" width="374" height="30"/>
+                                <rect key="frame" x="20" y="681" width="330" height="30"/>
                                 <state key="normal" title="Add to Cart"/>
                                 <connections>
                                     <action selector="addToCartButtonPressed:" destination="UgW-5m-fRb" eventType="touchUpInside" id="cHd-qr-iUj"/>
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="cU9-6y-G2h">
-                                <rect key="frame" x="20" y="30" width="374" height="550"/>
+                                <rect key="frame" x="20" y="30" width="330" height="616"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="35" translatesAutoresizingMaskIntoConstraints="NO" id="Tnh-Fs-JO2">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="299"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="330" height="365"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="U4W-FE-fgE">
-                                                <rect key="frame" x="0.0" y="0.0" width="374" height="234"/>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Rasberries" translatesAutoresizingMaskIntoConstraints="NO" id="U4W-FE-fgE">
+                                                <rect key="frame" x="0.0" y="0.0" width="330" height="330"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="300" id="SvD-fs-nS1"/>
+                                                    <constraint firstAttribute="width" secondItem="U4W-FE-fgE" secondAttribute="height" multiplier="1:1" id="d0X-KE-5dI"/>
+                                                </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Produce Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cxN-Kc-RVY">
-                                                <rect key="frame" x="0.0" y="269" width="374" height="30"/>
+                                                <rect key="frame" x="0.0" y="365" width="330" height="0.0"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -387,16 +391,16 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="K7l-IQ-Gzy">
-                                        <rect key="frame" x="0.0" y="349" width="374" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="415" width="330" height="20.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sold By : " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="19Y-NE-O5F">
-                                                <rect key="frame" x="0.0" y="0.0" width="182" height="20.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="160" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Farmer Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Ye-ip-mtv">
-                                                <rect key="frame" x="192" y="0.0" width="182" height="20.5"/>
+                                                <rect key="frame" x="170" y="0.0" width="160" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -404,16 +408,16 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="7Dg-93-0DP">
-                                        <rect key="frame" x="0.0" y="419.5" width="374" height="130.5"/>
+                                        <rect key="frame" x="0.0" y="485.5" width="330" height="130.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KWJ-9k-vUy">
-                                                <rect key="frame" x="0.0" y="0.0" width="374" height="20.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="330" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="vq2-4Q-dtx">
-                                                <rect key="frame" x="0.0" y="30.5" width="374" height="100"/>
+                                                <rect key="frame" x="0.0" y="30.5" width="330" height="100"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                 <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -592,6 +596,7 @@
     </scenes>
     <resources>
         <image name="FarmerPalLogo" width="436" height="304"/>
+        <image name="Rasberries" width="3456" height="4608"/>
         <image name="field" width="6000" height="4000"/>
     </resources>
 </document>
