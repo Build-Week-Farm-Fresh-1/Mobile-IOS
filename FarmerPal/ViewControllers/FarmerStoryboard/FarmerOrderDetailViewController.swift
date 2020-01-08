@@ -9,11 +9,23 @@
 import UIKit
 
 class FarmerOrderDetailViewController: UIViewController {
-
+    
+    
+    @IBOutlet weak var clientNameLabel: UILabel!
+    @IBOutlet weak var pickupDateLabel: UILabel!
+    @IBOutlet weak var clientPhoneNumLabel: UILabel!
+    @IBOutlet weak var producesListTextView: UITextView!
+    @IBOutlet weak var priceTotalLabel: UILabel!
+    
+    @IBOutlet weak var readyForPickupSwitch: UISwitch!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         updateViews()
+    }
+    
+    @IBAction func processPaymentButtonPressed(_ sender: UIButton) {
     }
     
     func updateViews() {
