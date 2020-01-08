@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseAuth
 
 class SignUpViewController: UIViewController {
     
@@ -25,7 +27,6 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var clientButton: UIButton!
     @IBOutlet weak var signUpButton: UIButton!
     @IBOutlet weak var signUpBlueView: UIView!
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,7 +52,6 @@ class SignUpViewController: UIViewController {
         clientButton.titleLabel?.tintColor = .white
         signUpBlueView.alpha = 1
     }
-    
     
     @IBAction func signUpButtonTapped(_ sender: UIButton) {
         
@@ -84,16 +84,45 @@ class SignUpViewController: UIViewController {
                 let phoneNum = phoneNumTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines),
                 let email = emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) else { return }
             
-            
-            /*
-             TODO: Comment this back in when ready to network
-             
-             // Create the user & PUT it in Server
-             userController.createUser(username: username, password: password, isLoggedIn: true, firstName: firstName, lastName: lastName, phoneNum: Int16(phoneNum)!, email: email, userType: userType.rawValue, context: CoreDataStack.shared.mainContext)
-             */
-            
-            // MARK: Transition to HomePage
-            transitionToHomePage()
+            // MARK: Creating User in Firebase
+            Auth.auth().createUser(withEmail: email, password: password) { (result, error) in //TODO: Probably need completion
+                
+                if error != nil {
+                    self.showErrorAlert(errorMessage: "Error creating User")
+                    //completion
+                }
+                else {
+                    // User created successfuly, now store the properties
+                    let db = Firestore.firestore()
+                    
+                    db.collection("users").addDocument(data: ["firstName": firstName,
+                                                              "lastName": lastName,
+                                                              "id": result!.user.uid,
+                                                              "username": username,
+                                                              "password": password,
+                                                              "phoneNum": phoneNum,
+                                                              "email": email,
+                                                              "userType": userType.rawValue]) { (error) in
+                        
+                        if let error = error {
+                            print("Error adding document's data: \(error)")
+                        } else {
+                            print("User with ID: \(result!.user.uid) saved with data succefully")
+                        }
+                    }
+                    self.transitionToHomePage()
+                }
+            }
+//
+//            /*
+//             TODO: Comment this back in when ready to network
+//
+//             // Create the user & PUT it in Server
+//             userController.createUser(username: username, password: password, isLoggedIn: true, firstName: firstName, lastName: lastName, phoneNum: Int16(phoneNum)!, email: email, userType: userType.rawValue, context: CoreDataStack.shared.mainContext)
+//             */
+//
+//            // MARK: Transition to HomePage
+//            transitionToHomePage()
         }
     }
     
@@ -203,7 +232,7 @@ extension SignUpViewController: UITextFieldDelegate {
         
         // Mobile validation
         if textField == phoneNumTextField {
-            let allowedCharacters = CharacterSet(charactersIn:"0123456789")//Here change this characters based on your requirement
+            let allowedCharacters = CharacterSet(charactersIn: "0123456789")//Here change this characters based on your requirement
             let characterSet = CharacterSet(charactersIn: string)
             return allowedCharacters.isSuperset(of: characterSet)
         }

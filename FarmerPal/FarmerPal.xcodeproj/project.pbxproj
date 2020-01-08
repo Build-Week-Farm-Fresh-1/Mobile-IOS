@@ -50,6 +50,18 @@
 		FA65FE6E23C5327B001E7C93 /* FarmerPalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA65FE6D23C5327B001E7C93 /* FarmerPalTests.swift */; };
 		FAD17E5623C588AF002E103C /* FarmerProduceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD17E5523C588AF002E103C /* FarmerProduceTableViewCell.swift */; };
 		FAD5EB9B23C64BAC00E308A5 /* ConsumerFarmerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD5EB9A23C64BAC00E308A5 /* ConsumerFarmerTableViewCell.swift */; };
+		FAD5EB9D23C66C9300E308A5 /* LoginSignupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD5EB9C23C66C9300E308A5 /* LoginSignupController.swift */; };
+		FAD5EB9F23C66D2B00E308A5 /* NetworkingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD5EB9E23C66D2B00E308A5 /* NetworkingError.swift */; };
+		FAD5EBA123C66DB000E308A5 /* Bearer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD5EBA023C66DB000E308A5 /* Bearer.swift */; };
+		FAD5EBA423C6729500E308A5 /* APIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD5EBA323C6729500E308A5 /* APIController.swift */; };
+		FAD5EBA623C672CC00E308A5 /* HeaderNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD5EBA523C672CC00E308A5 /* HeaderNames.swift */; };
+		FAD5EBA923C67C8E00E308A5 /* Farmer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FAD5EBA723C67C8E00E308A5 /* Farmer.xcdatamodeld */; };
+		FAD5EBAC23C67D5B00E308A5 /* FarmerRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD5EBAB23C67D5B00E308A5 /* FarmerRepresentation.swift */; };
+		FAD5EBAE23C67D9800E308A5 /* Farmer+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD5EBAD23C67D9800E308A5 /* Farmer+Convenience.swift */; };
+		FAD5EBB223C680A800E308A5 /* Consumer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FAD5EBB023C680A800E308A5 /* Consumer.xcdatamodeld */; };
+		FAD5EBB423C68D1C00E308A5 /* Consumer+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD5EBB323C68D1C00E308A5 /* Consumer+Convenience.swift */; };
+		FAD5EBB623C68D2B00E308A5 /* ConsumerRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD5EBB523C68D2B00E308A5 /* ConsumerRepresentation.swift */; };
+		FAD5EBBC23C6912D00E308A5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FAD5EBBB23C6912C00E308A5 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -121,6 +133,18 @@
 		FA65FE6F23C5327B001E7C93 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FAD17E5523C588AF002E103C /* FarmerProduceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FarmerProduceTableViewCell.swift; sourceTree = "<group>"; };
 		FAD5EB9A23C64BAC00E308A5 /* ConsumerFarmerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumerFarmerTableViewCell.swift; sourceTree = "<group>"; };
+		FAD5EB9C23C66C9300E308A5 /* LoginSignupController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSignupController.swift; sourceTree = "<group>"; };
+		FAD5EB9E23C66D2B00E308A5 /* NetworkingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingError.swift; sourceTree = "<group>"; };
+		FAD5EBA023C66DB000E308A5 /* Bearer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bearer.swift; sourceTree = "<group>"; };
+		FAD5EBA323C6729500E308A5 /* APIController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIController.swift; sourceTree = "<group>"; };
+		FAD5EBA523C672CC00E308A5 /* HeaderNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderNames.swift; sourceTree = "<group>"; };
+		FAD5EBA823C67C8E00E308A5 /* Farmer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Farmer.xcdatamodel; sourceTree = "<group>"; };
+		FAD5EBAB23C67D5B00E308A5 /* FarmerRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FarmerRepresentation.swift; sourceTree = "<group>"; };
+		FAD5EBAD23C67D9800E308A5 /* Farmer+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Farmer+Convenience.swift"; sourceTree = "<group>"; };
+		FAD5EBB123C680A800E308A5 /* Consumer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Consumer.xcdatamodel; sourceTree = "<group>"; };
+		FAD5EBB323C68D1C00E308A5 /* Consumer+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Consumer+Convenience.swift"; sourceTree = "<group>"; };
+		FAD5EBB523C68D2B00E308A5 /* ConsumerRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumerRepresentation.swift; sourceTree = "<group>"; };
+		FAD5EBBB23C6912C00E308A5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -172,6 +196,7 @@
 				FA65FDFE23C3B7D5001E7C93 /* Storyboards */,
 				FA65FE0223C3B805001E7C93 /* ViewControllers */,
 				FA65FE0123C3B800001E7C93 /* Views */,
+				FAD5EBA223C66DC700E308A5 /* Controllers */,
 				FA65FE0023C3B7F5001E7C93 /* ModelControllers */,
 				FA65FDFF23C3B7EE001E7C93 /* Models */,
 				FA65FE0323C3B80D001E7C93 /* Helpers */,
@@ -200,6 +225,7 @@
 				FA65FDEA23C3B7BA001E7C93 /* AppDelegate.swift */,
 				FA65FDEC23C3B7BA001E7C93 /* SceneDelegate.swift */,
 				FA65FDF323C3B7BE001E7C93 /* Assets.xcassets */,
+				FAD5EBBB23C6912C00E308A5 /* GoogleService-Info.plist */,
 				FA65FDF823C3B7BE001E7C93 /* Info.plist */,
 			);
 			path = FarmerPal;
@@ -219,6 +245,8 @@
 		FA65FDFF23C3B7EE001E7C93 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				FAD5EBAF23C6809100E308A5 /* Consumer Models */,
+				FAD5EBAA23C67D2A00E308A5 /* Farmer Models */,
 				FA65FE2D23C3E490001E7C93 /* User.xcdatamodeld */,
 				FA65FE2623C3E45C001E7C93 /* Produce.xcdatamodeld */,
 				FA65FE1F23C3E43D001E7C93 /* Order.xcdatamodeld */,
@@ -228,6 +256,7 @@
 				FA65FE2923C3E468001E7C93 /* Produce+Convenience.swift */,
 				FA65FE2423C3E455001E7C93 /* OrderRepresentation.swift */,
 				FA65FE2223C3E44D001E7C93 /* Order+Convenience.swift */,
+				FAD5EBA023C66DB000E308A5 /* Bearer.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -269,6 +298,8 @@
 				FA65FE3623C3E4AE001E7C93 /* HTTPMethod.swift */,
 				FA65FE3423C3E4A7001E7C93 /* CoreDataStack.swift */,
 				FA65FE5623C509F7001E7C93 /* StringConstantKeys.swift */,
+				FAD5EB9E23C66D2B00E308A5 /* NetworkingError.swift */,
+				FAD5EBA523C672CC00E308A5 /* HeaderNames.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -318,6 +349,35 @@
 			path = FarmerPalTests;
 			sourceTree = "<group>";
 		};
+		FAD5EBA223C66DC700E308A5 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				FAD5EB9C23C66C9300E308A5 /* LoginSignupController.swift */,
+				FAD5EBA323C6729500E308A5 /* APIController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		FAD5EBAA23C67D2A00E308A5 /* Farmer Models */ = {
+			isa = PBXGroup;
+			children = (
+				FAD5EBA723C67C8E00E308A5 /* Farmer.xcdatamodeld */,
+				FAD5EBAB23C67D5B00E308A5 /* FarmerRepresentation.swift */,
+				FAD5EBAD23C67D9800E308A5 /* Farmer+Convenience.swift */,
+			);
+			path = "Farmer Models";
+			sourceTree = "<group>";
+		};
+		FAD5EBAF23C6809100E308A5 /* Consumer Models */ = {
+			isa = PBXGroup;
+			children = (
+				FAD5EBB023C680A800E308A5 /* Consumer.xcdatamodeld */,
+				FAD5EBB323C68D1C00E308A5 /* Consumer+Convenience.swift */,
+				FAD5EBB523C68D2B00E308A5 /* ConsumerRepresentation.swift */,
+			);
+			path = "Consumer Models";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -330,6 +390,7 @@
 				FA65FDE423C3B7BA001E7C93 /* Frameworks */,
 				FA65FDE523C3B7BA001E7C93 /* Resources */,
 				FA65FE5823C52ACC001E7C93 /* ShellScript */,
+				140AA6BF45F43FBFB0A06CF8 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -429,6 +490,7 @@
 				FA65FDF423C3B7BE001E7C93 /* Assets.xcassets in Resources */,
 				FA65FE0E23C3E262001E7C93 /* Farmer.storyboard in Resources */,
 				FA65FE0C23C3E23D001E7C93 /* Consumer.storyboard in Resources */,
+				FAD5EBBC23C6912D00E308A5 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -449,6 +511,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		140AA6BF45F43FBFB0A06CF8 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FarmerPal/Pods-FarmerPal-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FarmerPal/Pods-FarmerPal-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FarmerPal/Pods-FarmerPal-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		E4A5639B2EB56740A4809B88 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -497,6 +576,7 @@
 			files = (
 				FA65FE5723C509F7001E7C93 /* StringConstantKeys.swift in Sources */,
 				FA65FE4423C3EA58001E7C93 /* ConsumerFarmersOptionsTableViewController.swift in Sources */,
+				FAD5EB9F23C66D2B00E308A5 /* NetworkingError.swift in Sources */,
 				FA65FE5323C3EAFA001E7C93 /* FarmerProducesTableViewController.swift in Sources */,
 				FA65FE2323C3E44E001E7C93 /* Order+Convenience.swift in Sources */,
 				FA65FE1C23C3E41F001E7C93 /* OrderController.swift in Sources */,
@@ -504,6 +584,8 @@
 				FA65FE4823C3EA58001E7C93 /* ProduceDetailViewController.swift in Sources */,
 				FA65FE1223C3E3B2001E7C93 /* LoginViewController.swift in Sources */,
 				FA65FE2F23C3E490001E7C93 /* User.xcdatamodeld in Sources */,
+				FAD5EBB423C68D1C00E308A5 /* Consumer+Convenience.swift in Sources */,
+				FAD5EB9D23C66C9300E308A5 /* LoginSignupController.swift in Sources */,
 				FA65FE3323C3E49D001E7C93 /* UserRepresentation.swift in Sources */,
 				FAD5EB9B23C64BAC00E308A5 /* ConsumerFarmerTableViewCell.swift in Sources */,
 				FA65FDEB23C3B7BA001E7C93 /* AppDelegate.swift in Sources */,
@@ -517,19 +599,27 @@
 				FA65FE3523C3E4A7001E7C93 /* CoreDataStack.swift in Sources */,
 				FA65FE2823C3E45C001E7C93 /* Produce.xcdatamodeld in Sources */,
 				FAD17E5623C588AF002E103C /* FarmerProduceTableViewCell.swift in Sources */,
+				FAD5EBAE23C67D9800E308A5 /* Farmer+Convenience.swift in Sources */,
 				FA65FE5223C3EAFA001E7C93 /* FarmerOrdersTableViewController.swift in Sources */,
+				FAD5EBA623C672CC00E308A5 /* HeaderNames.swift in Sources */,
 				FA65FE4923C3EA58001E7C93 /* ConsumerHomeViewController.swift in Sources */,
 				FA65FE5023C3EAFA001E7C93 /* AddProduceViewController.swift in Sources */,
+				FAD5EBB223C680A800E308A5 /* Consumer.xcdatamodeld in Sources */,
 				FA65FE3923C3E4B6001E7C93 /* UserType.swift in Sources */,
+				FAD5EBA923C67C8E00E308A5 /* Farmer.xcdatamodeld in Sources */,
 				FA65FE4523C3EA58001E7C93 /* ConsumerCartViewController.swift in Sources */,
+				FAD5EBA423C6729500E308A5 /* APIController.swift in Sources */,
 				FA65FE4623C3EA58001E7C93 /* ConsumerOrderHistoryTableViewController.swift in Sources */,
 				FA65FE4723C3EA58001E7C93 /* ConsumerProfileViewController.swift in Sources */,
 				FA65FE3723C3E4AE001E7C93 /* HTTPMethod.swift in Sources */,
+				FAD5EBB623C68D2B00E308A5 /* ConsumerRepresentation.swift in Sources */,
 				FA65FE5523C3EAFA001E7C93 /* FarmerProfileViewController.swift in Sources */,
 				FA65FE1E23C3E425001E7C93 /* ProduceController.swift in Sources */,
+				FAD5EBA123C66DB000E308A5 /* Bearer.swift in Sources */,
 				FA65FE2C23C3E47D001E7C93 /* ProduceRepresentation.swift in Sources */,
 				FA65FE3123C3E497001E7C93 /* User+Convenience.swift in Sources */,
 				FA65FE4323C3EA58001E7C93 /* ConsumerProduceOptionsTableViewController.swift in Sources */,
+				FAD5EBAC23C67D5B00E308A5 /* FarmerRepresentation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -875,6 +965,26 @@
 			);
 			currentVersion = FA65FE2E23C3E490001E7C93 /* User.xcdatamodel */;
 			path = User.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+		FAD5EBA723C67C8E00E308A5 /* Farmer.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				FAD5EBA823C67C8E00E308A5 /* Farmer.xcdatamodel */,
+			);
+			currentVersion = FAD5EBA823C67C8E00E308A5 /* Farmer.xcdatamodel */;
+			path = Farmer.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+		FAD5EBB023C680A800E308A5 /* Consumer.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				FAD5EBB123C680A800E308A5 /* Consumer.xcdatamodel */,
+			);
+			currentVersion = FAD5EBB123C680A800E308A5 /* Consumer.xcdatamodel */;
+			path = Consumer.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
