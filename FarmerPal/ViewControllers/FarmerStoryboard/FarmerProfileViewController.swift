@@ -15,6 +15,9 @@ class FarmerProfileViewController: UIViewController {
     @IBOutlet weak var fullNameLabel: UILabel!
     @IBOutlet weak var phoneNumberLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
+    @IBOutlet weak var photoImageView: UIImageView!
+    
+    @IBOutlet weak var blueView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +28,7 @@ class FarmerProfileViewController: UIViewController {
     func updateViews() {
         
         navigationController?.setNavigationBarHidden(false, animated: true)
+        blueView.layer.cornerRadius = 10
         
         guard let user = user,
             let firstName = user.firstName,
