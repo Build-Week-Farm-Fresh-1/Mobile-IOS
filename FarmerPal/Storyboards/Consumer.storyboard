@@ -544,41 +544,87 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="qTG-zh-Obs">
-                                <rect key="frame" x="30" y="60" width="354" height="177"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k5g-0D-YIA" userLabel="Top Bar View 2">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="140"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Full Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="muX-7a-JNG">
-                                        <rect key="frame" x="0.0" y="0.0" width="354" height="36"/>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3QA-OV-1xT">
-                                        <rect key="frame" x="0.0" y="51" width="354" height="36"/>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone Number" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3AJ-Nt-PmD">
-                                        <rect key="frame" x="0.0" y="102" width="354" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FC5-qi-xZo">
-                                        <rect key="frame" x="0.0" y="147" width="354" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="FarmerPalLogo" translatesAutoresizingMaskIntoConstraints="NO" id="WRV-mz-djd">
+                                        <rect key="frame" x="20" y="87" width="73" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="73" id="AK8-8u-vtk"/>
+                                            <constraint firstAttribute="height" constant="50" id="DoD-6q-XGW"/>
+                                        </constraints>
+                                    </imageView>
                                 </subviews>
-                            </stackView>
+                                <color key="backgroundColor" red="0.1176470588" green="0.1612198651" blue="0.3023059964" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="WRV-mz-djd" secondAttribute="bottom" constant="3" id="0II-tt-evs"/>
+                                    <constraint firstItem="WRV-mz-djd" firstAttribute="leading" secondItem="k5g-0D-YIA" secondAttribute="leading" constant="20" id="8Td-IB-qUH"/>
+                                    <constraint firstAttribute="height" constant="140" id="zsF-xY-Dk9"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Wd-np-0pl" userLabel="BlueView">
+                                <rect key="frame" x="20" y="340" width="374" height="248"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="qTG-zh-Obs">
+                                        <rect key="frame" x="10" y="25" width="354" height="224"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Full Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="muX-7a-JNG">
+                                                <rect key="frame" x="0.0" y="0.0" width="354" height="38"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
+                                                <color key="textColor" red="0.1193658933" green="0.1612198651" blue="0.3023059964" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                                <color key="shadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <size key="shadowOffset" width="1" height="2"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3QA-OV-1xT">
+                                                <rect key="frame" x="0.0" y="68" width="354" height="36"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone Number" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3AJ-Nt-PmD">
+                                                <rect key="frame" x="0.0" y="134" width="354" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                                <color key="textColor" red="0.1193658933" green="0.1612198651" blue="0.3023059964" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FC5-qi-xZo">
+                                                <rect key="frame" x="0.0" y="194" width="354" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                                <color key="textColor" red="0.1193658933" green="0.1612198651" blue="0.3023059964" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.84524440769999998" green="0.90572053190000001" blue="0.93089330199999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <accessibility key="accessibilityConfiguration" identifier="LoginBlueLayer" label="LoginBlueLayer"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="qTG-zh-Obs" secondAttribute="trailing" constant="10" id="4sB-f4-p0F"/>
+                                    <constraint firstItem="qTG-zh-Obs" firstAttribute="top" secondItem="9Wd-np-0pl" secondAttribute="top" constant="25" id="553-Af-lHL"/>
+                                    <constraint firstItem="qTG-zh-Obs" firstAttribute="leading" secondItem="9Wd-np-0pl" secondAttribute="leading" constant="10" id="9yW-y3-6AT"/>
+                                </constraints>
+                            </view>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="farmer" translatesAutoresizingMaskIntoConstraints="NO" id="8oJ-Rc-LR2">
+                                <rect key="frame" x="30" y="170" width="120" height="120"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="8oJ-Rc-LR2" secondAttribute="height" multiplier="1:1" id="0VT-QJ-PQO"/>
+                                    <constraint firstAttribute="height" constant="120" id="wQC-x6-DZc"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="qTG-zh-Obs" firstAttribute="leading" secondItem="apr-1H-pJD" secondAttribute="leading" constant="30" id="4vC-GL-6lQ"/>
-                            <constraint firstItem="apr-1H-pJD" firstAttribute="trailing" secondItem="qTG-zh-Obs" secondAttribute="trailing" constant="30" id="RnQ-Ic-ekQ"/>
-                            <constraint firstItem="qTG-zh-Obs" firstAttribute="top" secondItem="apr-1H-pJD" secondAttribute="top" constant="60" id="air-1q-Pam"/>
+                            <constraint firstItem="8oJ-Rc-LR2" firstAttribute="width" secondItem="8oJ-Rc-LR2" secondAttribute="height" multiplier="1:1" id="67w-5Y-STb"/>
+                            <constraint firstItem="8oJ-Rc-LR2" firstAttribute="top" secondItem="k5g-0D-YIA" secondAttribute="bottom" constant="30" id="7Da-x0-b7s"/>
+                            <constraint firstItem="9Wd-np-0pl" firstAttribute="leading" secondItem="apr-1H-pJD" secondAttribute="leading" constant="20" id="AxS-4D-RRR"/>
+                            <constraint firstItem="k5g-0D-YIA" firstAttribute="top" secondItem="caY-Et-T3B" secondAttribute="top" id="OLE-Br-FFo"/>
+                            <constraint firstItem="8oJ-Rc-LR2" firstAttribute="leading" secondItem="apr-1H-pJD" secondAttribute="leading" constant="30" id="ape-SM-Nix"/>
+                            <constraint firstItem="apr-1H-pJD" firstAttribute="trailing" secondItem="9Wd-np-0pl" secondAttribute="trailing" constant="20" id="h2K-f4-bXD"/>
+                            <constraint firstItem="k5g-0D-YIA" firstAttribute="leading" secondItem="caY-Et-T3B" secondAttribute="leading" id="mka-YP-Jk9"/>
+                            <constraint firstItem="apr-1H-pJD" firstAttribute="bottom" secondItem="9Wd-np-0pl" secondAttribute="bottom" constant="220" id="q3s-Xk-D0B"/>
+                            <constraint firstAttribute="trailing" secondItem="k5g-0D-YIA" secondAttribute="trailing" id="wBL-fD-YTN"/>
+                            <constraint firstItem="9Wd-np-0pl" firstAttribute="top" secondItem="k5g-0D-YIA" secondAttribute="bottom" constant="200" id="xJe-yM-Z84"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="apr-1H-pJD"/>
                     </view>
@@ -597,6 +643,7 @@
     <resources>
         <image name="FarmerPalLogo" width="436" height="304"/>
         <image name="Rasberries" width="3456" height="4608"/>
+        <image name="farmer" width="2448" height="1620"/>
         <image name="field" width="6000" height="4000"/>
     </resources>
 </document>

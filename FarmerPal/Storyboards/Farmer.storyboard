@@ -730,7 +730,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="farmer" translatesAutoresizingMaskIntoConstraints="NO" id="B6D-rK-AFf">
-                                <rect key="frame" x="20" y="190" width="120" height="120"/>
+                                <rect key="frame" x="30" y="190" width="120" height="120"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="120" id="MTr-hr-fd9"/>
                                     <constraint firstAttribute="width" secondItem="B6D-rK-AFf" secondAttribute="height" multiplier="1:1" id="wwe-7s-wch"/>
@@ -804,7 +804,7 @@
                             <constraint firstItem="Mxd-zd-n18" firstAttribute="leading" secondItem="DOq-98-PbD" secondAttribute="leading" constant="20" id="Cm9-FB-T6r"/>
                             <constraint firstAttribute="trailing" secondItem="B5m-Rd-Aud" secondAttribute="trailing" id="DtR-Qp-GBJ"/>
                             <constraint firstItem="DOq-98-PbD" firstAttribute="trailing" secondItem="Mxd-zd-n18" secondAttribute="trailing" constant="20" id="HQu-cQ-zen"/>
-                            <constraint firstItem="B6D-rK-AFf" firstAttribute="leading" secondItem="DOq-98-PbD" secondAttribute="leading" constant="20" id="Ist-Xm-VSa"/>
+                            <constraint firstItem="B6D-rK-AFf" firstAttribute="leading" secondItem="DOq-98-PbD" secondAttribute="leading" constant="30" id="Ist-Xm-VSa"/>
                             <constraint firstItem="B5m-Rd-Aud" firstAttribute="leading" secondItem="zEY-JY-5uc" secondAttribute="leading" id="SYP-kV-dkW"/>
                             <constraint firstItem="B5m-Rd-Aud" firstAttribute="top" secondItem="zEY-JY-5uc" secondAttribute="top" id="VZH-sF-nzc"/>
                             <constraint firstItem="Mxd-zd-n18" firstAttribute="top" secondItem="B5m-Rd-Aud" secondAttribute="bottom" constant="200" id="ZxX-aS-eAx"/>
