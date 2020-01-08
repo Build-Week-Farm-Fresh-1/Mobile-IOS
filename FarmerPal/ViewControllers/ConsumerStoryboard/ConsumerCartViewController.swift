@@ -11,7 +11,16 @@ import UIKit
 class ConsumerCartViewController: UIViewController {
     
     var user: User?
-
+    
+    @IBOutlet weak var orderSummaryLabel: UILabel!
+    @IBOutlet weak var blueView: UIView!
+    
+    @IBOutlet weak var orderSummaryTextView: UITextView!
+    @IBOutlet weak var itemsTotalLabel: UILabel!
+    @IBOutlet weak var priceTotalLabel: UILabel!
+    
+    @IBOutlet weak var processPaymentButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -20,6 +29,9 @@ class ConsumerCartViewController: UIViewController {
     
     func updateViews() {
         navigationController?.setNavigationBarHidden(false, animated: true)
+        orderSummaryLabel.layer.cornerRadius = 25
+        blueView.layer.cornerRadius = 15
+        processPaymentButton.layer.cornerRadius = 20
     }
     
 
