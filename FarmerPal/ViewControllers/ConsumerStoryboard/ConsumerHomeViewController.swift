@@ -12,9 +12,10 @@ import UIKit
 class ConsumerHomeViewController: UIViewController {
     
     @IBOutlet weak var welcomeUserLabel: UILabel!
+    @IBOutlet weak var zipcodeTextField: UITextField!
     
+    @IBOutlet weak var shopByZipcodeButton: UIButton!
     @IBOutlet weak var myProfileButton: UIButton!
-    @IBOutlet weak var produceNearMeButton: UIButton!
     @IBOutlet weak var numOfItemsInCartButton: UIButton!
     @IBOutlet weak var orderHistoryButton: UIButton!
     
@@ -35,13 +36,12 @@ class ConsumerHomeViewController: UIViewController {
     
     func updateViews() {
         navigationController?.setNavigationBarHidden(true, animated: true)
+        shopByZipcodeButton.layer.cornerRadius = 10
         myProfileButton.layer.cornerRadius = 20
-        produceNearMeButton.layer.cornerRadius = 20
         numOfItemsInCartButton.layer.cornerRadius = 20
         orderHistoryButton.layer.cornerRadius = 20
     }
     
-
     /*
     // MARK: - Navigation
 
