@@ -49,6 +49,7 @@
 		FA65FE6023C53270001E7C93 /* FarmerPalUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA65FE5F23C53270001E7C93 /* FarmerPalUITests.swift */; };
 		FA65FE6E23C5327B001E7C93 /* FarmerPalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA65FE6D23C5327B001E7C93 /* FarmerPalTests.swift */; };
 		FAD17E5623C588AF002E103C /* FarmerProduceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD17E5523C588AF002E103C /* FarmerProduceTableViewCell.swift */; };
+		FAD5EB9B23C64BAC00E308A5 /* ConsumerFarmerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD5EB9A23C64BAC00E308A5 /* ConsumerFarmerTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -119,6 +120,7 @@
 		FA65FE6D23C5327B001E7C93 /* FarmerPalTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FarmerPalTests.swift; sourceTree = "<group>"; };
 		FA65FE6F23C5327B001E7C93 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FAD17E5523C588AF002E103C /* FarmerProduceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FarmerProduceTableViewCell.swift; sourceTree = "<group>"; };
+		FAD5EB9A23C64BAC00E308A5 /* ConsumerFarmerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumerFarmerTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -244,6 +246,7 @@
 			isa = PBXGroup;
 			children = (
 				FAD17E5523C588AF002E103C /* FarmerProduceTableViewCell.swift */,
+				FAD5EB9A23C64BAC00E308A5 /* ConsumerFarmerTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -502,6 +505,7 @@
 				FA65FE1223C3E3B2001E7C93 /* LoginViewController.swift in Sources */,
 				FA65FE2F23C3E490001E7C93 /* User.xcdatamodeld in Sources */,
 				FA65FE3323C3E49D001E7C93 /* UserRepresentation.swift in Sources */,
+				FAD5EB9B23C64BAC00E308A5 /* ConsumerFarmerTableViewCell.swift in Sources */,
 				FA65FDEB23C3B7BA001E7C93 /* AppDelegate.swift in Sources */,
 				FA65FE1423C3E3BA001E7C93 /* SignUpViewController.swift in Sources */,
 				FA65FE2A23C3E468001E7C93 /* Produce+Convenience.swift in Sources */,
