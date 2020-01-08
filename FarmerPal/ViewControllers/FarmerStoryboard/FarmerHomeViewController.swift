@@ -49,10 +49,10 @@ class FarmerHomeViewController: UIViewController {
     func updateViews() {
         
         navigationController?.setNavigationBarHidden(true, animated: true)
-        myProfileButton.layer.cornerRadius = 15
-        addNewProduceButton.layer.cornerRadius = 15
-        produceOnSale.layer.cornerRadius = 15
-        pendingOrders.layer.cornerRadius = 15
+        myProfileButton.layer.cornerRadius = 20
+        addNewProduceButton.layer.cornerRadius = 20
+        produceOnSale.layer.cornerRadius = 20
+        pendingOrders.layer.cornerRadius = 20
         
         guard let user = user else { return }
         

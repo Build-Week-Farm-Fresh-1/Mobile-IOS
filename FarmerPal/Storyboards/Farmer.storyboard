@@ -78,12 +78,12 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="Npf-BG-2fP">
-                                <rect key="frame" x="20" y="569" width="374" height="210"/>
+                                <rect key="frame" x="20" y="542" width="374" height="258"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5RN-mo-92e">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="30"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="42"/>
                                         <color key="backgroundColor" red="0.49019607840000001" green="0.68235294120000001" blue="0.80392156859999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="25"/>
                                         <color key="tintColor" red="0.1193658933" green="0.1612198651" blue="0.3023059964" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="My Profile"/>
                                         <connections>
@@ -92,9 +92,9 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I2o-91-Gd4">
-                                        <rect key="frame" x="0.0" y="60" width="374" height="30"/>
+                                        <rect key="frame" x="0.0" y="72" width="374" height="42"/>
                                         <color key="backgroundColor" red="0.49019607840000001" green="0.68235294120000001" blue="0.80392156859999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="25"/>
                                         <color key="tintColor" red="0.1193658933" green="0.1612198651" blue="0.3023059964" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="Add New Produce"/>
                                         <connections>
@@ -103,9 +103,9 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N7X-gd-Mmn">
-                                        <rect key="frame" x="0.0" y="120" width="374" height="30"/>
+                                        <rect key="frame" x="0.0" y="144" width="374" height="42"/>
                                         <color key="backgroundColor" red="0.49019607840000001" green="0.68235294120000001" blue="0.80392156859999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="25"/>
                                         <color key="tintColor" red="0.1193658933" green="0.1612198651" blue="0.3023059964" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="Produce on Sale"/>
                                         <connections>
@@ -114,9 +114,9 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qfq-ju-Gdx">
-                                        <rect key="frame" x="0.0" y="180" width="374" height="30"/>
+                                        <rect key="frame" x="0.0" y="216" width="374" height="42"/>
                                         <color key="backgroundColor" red="0.49019607840000001" green="0.68235294120000001" blue="0.80392156859999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="25"/>
                                         <color key="tintColor" red="0.1193658933" green="0.1612198651" blue="0.3023059964" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="Pending Orders"/>
                                         <connections>
@@ -141,7 +141,7 @@
                             <constraint firstItem="Npf-BG-2fP" firstAttribute="leading" secondItem="hIS-ID-Wl2" secondAttribute="leading" constant="20" id="gnW-kD-0s2"/>
                             <constraint firstItem="hIS-ID-Wl2" firstAttribute="trailing" secondItem="Npf-BG-2fP" secondAttribute="trailing" constant="20" id="jyP-dT-joI"/>
                             <constraint firstItem="tpN-2z-8xD" firstAttribute="leading" secondItem="Yxq-OD-Dsg" secondAttribute="leading" id="rgB-zp-iEi"/>
-                            <constraint firstItem="Npf-BG-2fP" firstAttribute="top" secondItem="8Gp-tc-Bf6" secondAttribute="bottom" constant="137" id="shJ-hw-E3r"/>
+                            <constraint firstItem="Npf-BG-2fP" firstAttribute="top" secondItem="8Gp-tc-Bf6" secondAttribute="bottom" constant="110" id="shJ-hw-E3r"/>
                             <constraint firstAttribute="trailing" secondItem="Yxq-OD-Dsg" secondAttribute="trailing" id="uCm-XV-MyA"/>
                             <constraint firstItem="tpN-2z-8xD" firstAttribute="trailing" secondItem="Yxq-OD-Dsg" secondAttribute="trailing" id="uvB-NA-ozx"/>
                             <constraint firstItem="tpN-2z-8xD" firstAttribute="top" secondItem="Yxq-OD-Dsg" secondAttribute="top" id="xQ2-KV-q1R"/>

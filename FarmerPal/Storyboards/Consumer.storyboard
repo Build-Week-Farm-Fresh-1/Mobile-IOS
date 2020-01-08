@@ -15,44 +15,84 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Iig-VL-Vv4" userLabel="Top Bar View 2">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="FarmerPalLogo" translatesAutoresizingMaskIntoConstraints="NO" id="5Lw-uP-SGz">
+                                        <rect key="frame" x="20" y="27" width="73" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="aI0-cj-RJ5"/>
+                                            <constraint firstAttribute="width" constant="73" id="bz5-Uv-vDk"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.1176470588" green="0.1612198651" blue="0.3023059964" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="5Lw-uP-SGz" secondAttribute="bottom" constant="3" id="5Ge-4g-4JY"/>
+                                    <constraint firstItem="5Lw-uP-SGz" firstAttribute="leading" secondItem="Iig-VL-Vv4" secondAttribute="leading" constant="20" id="RLl-fC-yTg"/>
+                                    <constraint firstAttribute="height" constant="80" id="XCE-3v-mpA"/>
+                                </constraints>
+                            </view>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="field" translatesAutoresizingMaskIntoConstraints="NO" id="y1Q-Hx-Yue">
+                                <rect key="frame" x="0.0" y="80" width="414" height="414"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="y1Q-Hx-Yue" secondAttribute="height" multiplier="1:1" id="42U-Ge-UeU"/>
+                                </constraints>
+                            </imageView>
+                            <view alpha="0.25" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dhd-vl-shX">
+                                <rect key="frame" x="0.0" y="80" width="414" height="414"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome User" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R3R-dZ-l3R">
-                                <rect key="frame" x="20" y="99" width="374" height="30"/>
+                                <rect key="frame" x="20" y="210" width="374" height="30"/>
                                 <accessibility key="accessibilityConfiguration" identifier="ConsumerGreetingLabel" label="ConsumerGreetingLabel"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="dh8-yT-YKq">
-                                <rect key="frame" x="20" y="209" width="374" height="165"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="dh8-yT-YKq">
+                                <rect key="frame" x="20" y="549" width="374" height="258"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M7z-qv-EZb">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
-                                        <state key="normal" title="My Profile"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="42"/>
+                                        <color key="backgroundColor" red="0.49019607840000001" green="0.68235294120000001" blue="0.80392156859999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="25"/>
+                                        <state key="normal" title="My Profile">
+                                            <color key="titleColor" red="0.1193658933" green="0.1612198651" blue="0.3023059964" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
                                         <connections>
                                             <segue destination="rAx-BA-Jtd" kind="show" identifier="ConsumerProfileSegue" id="waY-ao-8Br"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SAs-Za-mF8">
-                                        <rect key="frame" x="0.0" y="45" width="374" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
-                                        <state key="normal" title="Produce near Me"/>
+                                        <rect key="frame" x="0.0" y="72" width="374" height="42"/>
+                                        <color key="backgroundColor" red="0.49019607840000001" green="0.68235294120000001" blue="0.80392156859999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="25"/>
+                                        <state key="normal" title="Produce near Me">
+                                            <color key="titleColor" red="0.1193658933" green="0.1612198651" blue="0.3023059964" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
                                         <connections>
                                             <segue destination="t1p-QJ-eQw" kind="show" identifier="ProducesOptionsSegue" id="oxy-aY-s8p"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Pb-pL-itB">
-                                        <rect key="frame" x="0.0" y="90" width="374" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
-                                        <state key="normal" title="00 Items in Cart"/>
+                                        <rect key="frame" x="0.0" y="144" width="374" height="42"/>
+                                        <color key="backgroundColor" red="0.49019607840000001" green="0.68235294120000001" blue="0.80392156859999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="25"/>
+                                        <state key="normal" title="00 Items in Cart">
+                                            <color key="titleColor" red="0.1193658933" green="0.1612198651" blue="0.3023059964" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
                                         <connections>
                                             <segue destination="CHg-pR-KE8" kind="show" identifier="ConsumerCartSegue" id="Zs2-kQ-7aO"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ym6-Vh-h9G">
-                                        <rect key="frame" x="0.0" y="135" width="374" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
-                                        <state key="normal" title="Orders History"/>
+                                        <rect key="frame" x="0.0" y="216" width="374" height="42"/>
+                                        <color key="backgroundColor" red="0.49019607840000001" green="0.68235294120000001" blue="0.80392156859999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="25"/>
+                                        <state key="normal" title="Orders History">
+                                            <color key="titleColor" red="0.1193658933" green="0.1612198651" blue="0.3023059964" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
                                         <connections>
                                             <segue destination="2Sd-eq-0fJ" kind="show" identifier="ConsumerOrderHistorySegue" id="H8v-zF-Lsw"/>
                                         </connections>
@@ -62,16 +102,34 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="R3R-dZ-l3R" firstAttribute="leading" secondItem="7zh-u6-EUU" secondAttribute="leading" constant="20" id="38T-vk-VE0"/>
-                            <constraint firstItem="7zh-u6-EUU" firstAttribute="trailing" secondItem="R3R-dZ-l3R" secondAttribute="trailing" constant="20" id="55F-ci-ezD"/>
+                            <constraint firstItem="dh8-yT-YKq" firstAttribute="top" secondItem="y1Q-Hx-Yue" secondAttribute="bottom" constant="55" id="3id-KW-b5q"/>
+                            <constraint firstItem="y1Q-Hx-Yue" firstAttribute="leading" secondItem="eBO-pd-dgZ" secondAttribute="leading" id="598-Kb-N0u"/>
                             <constraint firstItem="dh8-yT-YKq" firstAttribute="leading" secondItem="7zh-u6-EUU" secondAttribute="leading" constant="20" id="6uM-nG-b9c"/>
+                            <constraint firstItem="dhd-vl-shX" firstAttribute="leading" secondItem="y1Q-Hx-Yue" secondAttribute="leading" id="BpG-yh-Zy5"/>
                             <constraint firstItem="7zh-u6-EUU" firstAttribute="trailing" secondItem="dh8-yT-YKq" secondAttribute="trailing" constant="20" id="E2v-4X-RNs"/>
-                            <constraint firstItem="dh8-yT-YKq" firstAttribute="top" secondItem="R3R-dZ-l3R" secondAttribute="bottom" constant="80" id="ZmR-D7-SOc"/>
-                            <constraint firstItem="R3R-dZ-l3R" firstAttribute="top" secondItem="7zh-u6-EUU" secondAttribute="top" constant="55" id="tLn-aa-jJs"/>
+                            <constraint firstItem="R3R-dZ-l3R" firstAttribute="leading" secondItem="7zh-u6-EUU" secondAttribute="leading" constant="20" id="IWt-Fm-Mtm"/>
+                            <constraint firstAttribute="trailing" secondItem="y1Q-Hx-Yue" secondAttribute="trailing" id="P2W-GV-4iX"/>
+                            <constraint firstItem="dhd-vl-shX" firstAttribute="trailing" secondItem="y1Q-Hx-Yue" secondAttribute="trailing" id="PHK-n7-YZC"/>
+                            <constraint firstItem="7zh-u6-EUU" firstAttribute="trailing" secondItem="R3R-dZ-l3R" secondAttribute="trailing" constant="20" id="RAY-Xt-OWT"/>
+                            <constraint firstItem="Iig-VL-Vv4" firstAttribute="leading" secondItem="eBO-pd-dgZ" secondAttribute="leading" id="SZA-NI-q6W"/>
+                            <constraint firstItem="y1Q-Hx-Yue" firstAttribute="top" secondItem="Iig-VL-Vv4" secondAttribute="bottom" id="SkF-Qi-OmM"/>
+                            <constraint firstItem="R3R-dZ-l3R" firstAttribute="top" secondItem="Iig-VL-Vv4" secondAttribute="bottom" constant="130" id="Sy6-0R-M33"/>
+                            <constraint firstAttribute="trailing" secondItem="Iig-VL-Vv4" secondAttribute="trailing" id="Vdc-ql-Qxq"/>
+                            <constraint firstItem="y1Q-Hx-Yue" firstAttribute="width" secondItem="y1Q-Hx-Yue" secondAttribute="height" multiplier="1:1" id="Wbj-Vv-ILO"/>
+                            <constraint firstItem="dhd-vl-shX" firstAttribute="bottom" secondItem="y1Q-Hx-Yue" secondAttribute="bottom" id="ou3-qQ-2An"/>
+                            <constraint firstItem="Iig-VL-Vv4" firstAttribute="top" secondItem="eBO-pd-dgZ" secondAttribute="top" id="pOV-6F-NEF"/>
+                            <constraint firstItem="dhd-vl-shX" firstAttribute="top" secondItem="y1Q-Hx-Yue" secondAttribute="top" id="wgE-M3-fng"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="7zh-u6-EUU"/>
                     </view>
                     <navigationItem key="navigationItem" id="je3-qp-nY7"/>
+                    <connections>
+                        <outlet property="myProfileButton" destination="M7z-qv-EZb" id="Ed1-he-2jh"/>
+                        <outlet property="numOfItemsInCartButton" destination="3Pb-pL-itB" id="N2K-r0-Tf5"/>
+                        <outlet property="orderHistoryButton" destination="Ym6-Vh-h9G" id="C93-Ro-2uT"/>
+                        <outlet property="produceNearMeButton" destination="SAs-Za-mF8" id="P6h-Gl-mBt"/>
+                        <outlet property="welcomeUserLabel" destination="R3R-dZ-l3R" id="N57-bl-qMO"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lMk-FB-QPU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -532,4 +590,8 @@
             <point key="canvasLocation" x="936" y="790"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="FarmerPalLogo" width="436" height="304"/>
+        <image name="field" width="6000" height="4000"/>
+    </resources>
 </document>

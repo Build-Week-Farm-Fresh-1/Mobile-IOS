@@ -11,6 +11,15 @@ import UIKit
 //Intern == Follows orders -> You have to conform to a delegate(to recieve info)
 class ConsumerHomeViewController: UIViewController {
     
+    @IBOutlet weak var welcomeUserLabel: UILabel!
+    
+    @IBOutlet weak var myProfileButton: UIButton!
+    @IBOutlet weak var produceNearMeButton: UIButton!
+    @IBOutlet weak var numOfItemsInCartButton: UIButton!
+    @IBOutlet weak var orderHistoryButton: UIButton!
+    
+    
+    
     var user: User?
 //    let controller = Controller()
 
@@ -26,6 +35,10 @@ class ConsumerHomeViewController: UIViewController {
     
     func updateViews() {
         navigationController?.setNavigationBarHidden(true, animated: true)
+        myProfileButton.layer.cornerRadius = 20
+        produceNearMeButton.layer.cornerRadius = 20
+        numOfItemsInCartButton.layer.cornerRadius = 20
+        orderHistoryButton.layer.cornerRadius = 20
     }
     
 
