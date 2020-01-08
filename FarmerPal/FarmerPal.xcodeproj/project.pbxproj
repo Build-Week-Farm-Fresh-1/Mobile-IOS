@@ -48,6 +48,7 @@
 		FA65FE5723C509F7001E7C93 /* StringConstantKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA65FE5623C509F7001E7C93 /* StringConstantKeys.swift */; };
 		FA65FE6023C53270001E7C93 /* FarmerPalUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA65FE5F23C53270001E7C93 /* FarmerPalUITests.swift */; };
 		FA65FE6E23C5327B001E7C93 /* FarmerPalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA65FE6D23C5327B001E7C93 /* FarmerPalTests.swift */; };
+		FAD17E5623C588AF002E103C /* FarmerProduceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD17E5523C588AF002E103C /* FarmerProduceTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -117,6 +118,7 @@
 		FA65FE6B23C5327B001E7C93 /* FarmerPalTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FarmerPalTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA65FE6D23C5327B001E7C93 /* FarmerPalTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FarmerPalTests.swift; sourceTree = "<group>"; };
 		FA65FE6F23C5327B001E7C93 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FAD17E5523C588AF002E103C /* FarmerProduceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FarmerProduceTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -241,6 +243,7 @@
 		FA65FE0123C3B800001E7C93 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				FAD17E5523C588AF002E103C /* FarmerProduceTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -250,8 +253,8 @@
 			children = (
 				FA65FE1123C3E3B1001E7C93 /* LoginViewController.swift */,
 				FA65FE1323C3E3BA001E7C93 /* SignUpViewController.swift */,
-				FA65FE3B23C3EA33001E7C93 /* ConsumerStoryboard */,
 				FA65FE3A23C3EA1A001E7C93 /* FarmerStoryboard */,
+				FA65FE3B23C3EA33001E7C93 /* ConsumerStoryboard */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -509,6 +512,7 @@
 				FA65FE5423C3EAFA001E7C93 /* FarmerOrderDetailViewController.swift in Sources */,
 				FA65FE3523C3E4A7001E7C93 /* CoreDataStack.swift in Sources */,
 				FA65FE2823C3E45C001E7C93 /* Produce.xcdatamodeld in Sources */,
+				FAD17E5623C588AF002E103C /* FarmerProduceTableViewCell.swift in Sources */,
 				FA65FE5223C3EAFA001E7C93 /* FarmerOrdersTableViewController.swift in Sources */,
 				FA65FE4923C3EA58001E7C93 /* ConsumerHomeViewController.swift in Sources */,
 				FA65FE5023C3EAFA001E7C93 /* AddProduceViewController.swift in Sources */,
