@@ -7,11 +7,15 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseAuth
 
 class LoginViewController: UIViewController {
         
     @IBOutlet weak var usernameTextField: UITextField!
+    @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    
     @IBOutlet weak var userTypeSegmentedControl: UISegmentedControl!
     @IBOutlet weak var loginBlueView: UIView!
     @IBOutlet weak var loginButton: UIButton!
@@ -40,21 +44,28 @@ class LoginViewController: UIViewController {
             
             // Clean version of the data
             let username = usernameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             
             // MARK: Log In the User
-            // TODO: Add some NETWORKING to Log in the user
-            // TODO: Create Alert for if the LogIn was unsuccessfull
-            
-            // MARK: Transition to HomePage
-            
-            if userTypeSegmentedControl.selectedSegmentIndex == 0 {
-                navigationController?.setNavigationBarHidden(true, animated: true)
-                performSegue(withIdentifier: .loginToFarmerHomeSegue, sender: self)
+            Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
                 
-            } else if userTypeSegmentedControl.selectedSegmentIndex == 1 {
-                navigationController?.setNavigationBarHidden(true, animated: true)
-                performSegue(withIdentifier: .loginToConsumerHomeSegue, sender: self)
+                if error != nil {
+                    self.showErrorAlert(errorMessage: "User cedentials not found. Please check entry and try again.")
+                } else {
+    
+                    // MARK: Transition to HomePage
+                    // TODO: Create Alert for if the LogIn was unsuccessfull
+                    
+                    if self.userTypeSegmentedControl.selectedSegmentIndex == 0 {
+                        self.navigationController?.setNavigationBarHidden(true, animated: true)
+                        self.performSegue(withIdentifier: .loginToFarmerHomeSegue, sender: self)
+                        
+                    } else if self.userTypeSegmentedControl.selectedSegmentIndex == 1 {
+                        self.navigationController?.setNavigationBarHidden(true, animated: true)
+                        self.performSegue(withIdentifier: .loginToConsumerHomeSegue, sender: self)
+                    }
+                }
             }
         }
     }
@@ -66,7 +77,8 @@ class LoginViewController: UIViewController {
         
         // Check that all fields are filled in
         if usernameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
-            passwordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
+        emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
+        passwordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
             
             return "Please fill in all fields."
         }
@@ -96,7 +108,6 @@ class LoginViewController: UIViewController {
     }
     
     func updateViews() {
-        
         navigationController?.setNavigationBarHidden(true, animated: true)
         navigationController?.navigationBar.barTintColor = UIColor(displayP3Red: 30/255, green: 41/255, blue: 77/255, alpha: 1)
         

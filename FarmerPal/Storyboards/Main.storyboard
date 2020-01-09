@@ -63,8 +63,8 @@ straight out of the fields.  </string>
                                 <color key="backgroundColor" red="0.84524440769999998" green="0.90572053190000001" blue="0.93089330199999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <accessibility key="accessibilityConfiguration" identifier="LoginBlueLayer" label="LoginBlueLayer"/>
                             </view>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="47" translatesAutoresizingMaskIntoConstraints="NO" id="S2s-mi-UWL">
-                                <rect key="frame" x="30" y="436.5" width="354" height="375.5"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="35" translatesAutoresizingMaskIntoConstraints="NO" id="S2s-mi-UWL">
+                                <rect key="frame" x="30" y="439.5" width="354" height="372.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="esV-pM-aG5">
                                         <rect key="frame" x="0.0" y="0.0" width="354" height="31"/>
@@ -82,8 +82,8 @@ straight out of the fields.  </string>
                                             </segmentedControl>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="21" translatesAutoresizingMaskIntoConstraints="NO" id="FFj-gq-pWg">
-                                        <rect key="frame" x="0.0" y="78" width="354" height="89"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="FFj-gq-pWg">
+                                        <rect key="frame" x="0.0" y="66" width="354" height="122"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="As4-TG-jRd">
                                                 <rect key="frame" x="0.0" y="0.0" width="354" height="34"/>
@@ -93,8 +93,16 @@ straight out of the fields.  </string>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1aY-rg-f64">
+                                                <rect key="frame" x="0.0" y="44" width="354" height="34"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="34" id="BQm-eB-3Js"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mI8-vT-0zL">
-                                                <rect key="frame" x="0.0" y="55" width="354" height="34"/>
+                                                <rect key="frame" x="0.0" y="88" width="354" height="34"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="34" id="Ugb-zt-ZCL"/>
                                                 </constraints>
@@ -104,7 +112,7 @@ straight out of the fields.  </string>
                                         </subviews>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5wq-sr-KV9">
-                                        <rect key="frame" x="0.0" y="214" width="354" height="50"/>
+                                        <rect key="frame" x="0.0" y="223" width="354" height="50"/>
                                         <color key="backgroundColor" red="0.49121677879999998" green="0.68057274820000002" blue="0.80572980640000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="vlg-2T-OJA"/>
@@ -117,7 +125,7 @@ straight out of the fields.  </string>
                                         </connections>
                                     </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Y6g-nJ-PTt">
-                                        <rect key="frame" x="0.0" y="311" width="354" height="64.5"/>
+                                        <rect key="frame" x="0.0" y="308" width="354" height="64.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Not a Member?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VTF-tw-etw">
                                                 <rect key="frame" x="0.0" y="0.0" width="354" height="20.5"/>
@@ -161,6 +169,7 @@ straight out of the fields.  </string>
                     </view>
                     <navigationItem key="navigationItem" id="rj1-QD-x4n"/>
                     <connections>
+                        <outlet property="emailTextField" destination="1aY-rg-f64" id="ze7-a8-M3B"/>
                         <outlet property="loginBlueView" destination="rTi-4p-UaT" id="Ogc-ru-hcs"/>
                         <outlet property="loginButton" destination="5wq-sr-KV9" id="8zF-Um-ohv"/>
                         <outlet property="passwordTextField" destination="mI8-vT-0zL" id="s3b-2X-icP"/>
