@@ -8,9 +8,9 @@ target 'FarmerPal' do
   # Pods for FarmerPal
   pod 'SwiftLint'
   
-  pod 'Firebase/Analytics'
-  pod 'Firebase/Firestore'
-  pod 'Firebase/Auth'
-  pod 'Firebase/Core'
+  #pod 'Firebase/Analytics'
+  #pod 'Firebase/Firestore'
+  #pod 'Firebase/Auth'
+  #pod 'Firebase/Core'
 
 end

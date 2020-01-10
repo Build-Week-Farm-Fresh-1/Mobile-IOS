@@ -213,7 +213,7 @@ straight out of the fields.  </string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FhD-An-Omk" userLabel="BlueView">
-                                <rect key="frame" x="10" y="223" width="394" height="449"/>
+                                <rect key="frame" x="10" y="223" width="394" height="504"/>
                                 <color key="backgroundColor" red="0.84524440769999998" green="0.90572053190000001" blue="0.93089330199999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <accessibility key="accessibilityConfiguration" identifier="LoginBlueLayer" label="LoginBlueLayer"/>
                             </view>
@@ -235,8 +235,8 @@ straight out of the fields.  </string>
                                     <constraint firstItem="QCH-ur-fqk" firstAttribute="leading" secondItem="4Z5-cg-SB2" secondAttribute="leading" constant="20" id="vnl-Ah-htY"/>
                                 </constraints>
                             </view>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="45" translatesAutoresizingMaskIntoConstraints="NO" id="ZAS-DV-fkH">
-                                <rect key="frame" x="20" y="168" width="374" height="666"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="ZAS-DV-fkH">
+                                <rect key="frame" x="20" y="168" width="374" height="664"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Account Selection" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zi1-FN-t3a">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="30"/>
@@ -245,10 +245,11 @@ straight out of the fields.  </string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="7Hl-dk-qax">
-                                        <rect key="frame" x="0.0" y="75" width="374" height="36"/>
+                                        <rect key="frame" x="0.0" y="70" width="374" height="36"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yRX-Sx-rJP">
                                                 <rect key="frame" x="0.0" y="0.0" width="177" height="36"/>
+                                                <color key="backgroundColor" red="0.84524440769999998" green="0.90572053190000001" blue="0.93089330199999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                 <color key="tintColor" red="0.1193658933" green="0.1612198651" blue="0.3023059964" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <state key="normal" title="Farmer"/>
@@ -258,6 +259,7 @@ straight out of the fields.  </string>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tjr-kr-uEo">
                                                 <rect key="frame" x="197" y="0.0" width="177" height="36"/>
+                                                <color key="backgroundColor" red="0.84524440769999998" green="0.90572053190000001" blue="0.93089330199999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                 <color key="tintColor" red="0.1193658933" green="0.1612198651" blue="0.3023059964" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <state key="normal" title="Client"/>
@@ -267,55 +269,65 @@ straight out of the fields.  </string>
                                             </button>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="7Aq-vt-5jB">
-                                        <rect key="frame" x="0.0" y="156" width="374" height="328"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="7Aq-vt-5jB">
+                                        <rect key="frame" x="0.0" y="146" width="374" height="386"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PnA-Ad-OUX">
                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="34"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="B03-fi-WUX">
-                                                <rect key="frame" x="0.0" y="49" width="374" height="34"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                <rect key="frame" x="0.0" y="44" width="374" height="34"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="G4y-7h-BXj">
-                                                <rect key="frame" x="0.0" y="98" width="374" height="34"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                <rect key="frame" x="0.0" y="88" width="374" height="34"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PF7-t5-dao">
-                                                <rect key="frame" x="0.0" y="147" width="374" height="34"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="City" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PF7-t5-dao">
+                                                <rect key="frame" x="0.0" y="132" width="374" height="34"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="State" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cQZ-ky-RUM">
+                                                <rect key="frame" x="0.0" y="176" width="374" height="34"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Zipcode" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="43C-4u-ERN">
+                                                <rect key="frame" x="0.0" y="220" width="374" height="34"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jmm-ob-MNE">
-                                                <rect key="frame" x="0.0" y="196" width="374" height="34"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                <rect key="frame" x="0.0" y="264" width="374" height="34"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IaW-RT-CEC">
-                                                <rect key="frame" x="0.0" y="245" width="374" height="34"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                <rect key="frame" x="0.0" y="308" width="374" height="34"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9vf-dT-INf">
-                                                <rect key="frame" x="0.0" y="294" width="374" height="34"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                <rect key="frame" x="0.0" y="352" width="374" height="34"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                             </textField>
                                         </subviews>
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZmF-4Q-ihV">
-                                        <rect key="frame" x="0.0" y="529" width="374" height="50"/>
+                                        <rect key="frame" x="0.0" y="572" width="374" height="10"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="rpC-TK-aka"/>
+                                            <constraint firstAttribute="height" constant="10" id="rpC-TK-aka"/>
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6U4-If-8Ai">
-                                        <rect key="frame" x="0.0" y="624" width="374" height="42"/>
+                                        <rect key="frame" x="0.0" y="622" width="374" height="42"/>
                                         <color key="backgroundColor" red="0.49121677879999998" green="0.68057274820000002" blue="0.80572980640000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
                                         <color key="tintColor" red="0.1193658933" green="0.1612198651" blue="0.3023059964" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -333,7 +345,7 @@ straight out of the fields.  </string>
                             <constraint firstItem="ZAS-DV-fkH" firstAttribute="leading" secondItem="68W-Az-r0J" secondAttribute="leading" constant="20" id="GNn-qM-IJZ"/>
                             <constraint firstItem="68W-Az-r0J" firstAttribute="trailing" secondItem="FhD-An-Omk" secondAttribute="trailing" constant="10" id="MXZ-Zm-Ay1"/>
                             <constraint firstItem="FhD-An-Omk" firstAttribute="top" secondItem="4Z5-cg-SB2" secondAttribute="bottom" constant="75" id="TLS-yA-V6T"/>
-                            <constraint firstItem="68W-Az-r0J" firstAttribute="bottom" secondItem="FhD-An-Omk" secondAttribute="bottom" constant="190" id="enc-4B-P1X"/>
+                            <constraint firstItem="68W-Az-r0J" firstAttribute="bottom" secondItem="FhD-An-Omk" secondAttribute="bottom" constant="135" id="enc-4B-P1X"/>
                             <constraint firstItem="4Z5-cg-SB2" firstAttribute="leading" secondItem="68W-Az-r0J" secondAttribute="leading" id="fW7-lW-OXE"/>
                             <constraint firstItem="4Z5-cg-SB2" firstAttribute="top" secondItem="68W-Az-r0J" secondAttribute="top" id="gen-jO-axw"/>
                             <constraint firstItem="FhD-An-Omk" firstAttribute="leading" secondItem="68W-Az-r0J" secondAttribute="leading" constant="10" id="nXY-Np-tdC"/>
@@ -344,7 +356,7 @@ straight out of the fields.  </string>
                     </view>
                     <navigationItem key="navigationItem" id="RQE-oL-pOa"/>
                     <connections>
-                        <outlet property="addressTextField" destination="PF7-t5-dao" id="yk3-aM-nG2"/>
+                        <outlet property="cityTextField" destination="PF7-t5-dao" id="5pi-s4-WDi"/>
                         <outlet property="clientButton" destination="Tjr-kr-uEo" id="tVm-TD-iP4"/>
                         <outlet property="emailTextField" destination="jmm-ob-MNE" id="DWR-ay-CT5"/>
                         <outlet property="farmerButton" destination="yRX-Sx-rJP" id="eLu-DR-LxB"/>
@@ -354,7 +366,9 @@ straight out of the fields.  </string>
                         <outlet property="phoneNumTextField" destination="G4y-7h-BXj" id="dc7-Ci-7CP"/>
                         <outlet property="signUpBlueView" destination="FhD-An-Omk" id="FqR-m2-uBM"/>
                         <outlet property="signUpButton" destination="6U4-If-8Ai" id="gjK-M7-wi0"/>
+                        <outlet property="stateTextField" destination="cQZ-ky-RUM" id="hTp-V6-Whn"/>
                         <outlet property="usernameTextField" destination="IaW-RT-CEC" id="sDJ-7f-tz9"/>
+                        <outlet property="zipCodeTextField" destination="43C-4u-ERN" id="bcM-cI-ACh"/>
                         <segue destination="6nE-zH-Dvp" kind="show" identifier="SingInToFarmerHomeSegue" id="mGF-zK-3Kg"/>
                         <segue destination="vpu-Po-ILu" kind="show" identifier="SingInToConsumerHomeSegue" id="khq-I8-Sax"/>
                     </connections>
@@ -366,7 +380,7 @@ straight out of the fields.  </string>
         <!--Navigation Controller-->
         <scene sceneID="W1K-oS-b1P">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="p6V-Q4-ufj" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" interfaceStyle="light" id="p6V-Q4-ufj" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="oMi-fJ-3Fu">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>

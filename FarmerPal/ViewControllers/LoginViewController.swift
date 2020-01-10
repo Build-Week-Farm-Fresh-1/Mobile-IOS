@@ -7,10 +7,10 @@
 //
 
 import UIKit
-import Firebase
-import FirebaseAuth
 
 class LoginViewController: UIViewController {
+    
+    let userController = UserController()
         
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
@@ -20,7 +20,6 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var loginBlueView: UIView!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var signUpButton: UIButton!
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,26 +46,26 @@ class LoginViewController: UIViewController {
             let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             
-            // MARK: Log In the User
-            Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
-                
-                if error != nil {
-                    self.showErrorAlert(errorMessage: "User cedentials not found. Please check entry and try again.")
-                } else {
-    
-                    // MARK: Transition to HomePage
-                    // TODO: Create Alert for if the LogIn was unsuccessfull
-                    
-                    if self.userTypeSegmentedControl.selectedSegmentIndex == 0 {
-                        self.navigationController?.setNavigationBarHidden(true, animated: true)
-                        self.performSegue(withIdentifier: .loginToFarmerHomeSegue, sender: self)
-                        
-                    } else if self.userTypeSegmentedControl.selectedSegmentIndex == 1 {
-                        self.navigationController?.setNavigationBarHidden(true, animated: true)
-                        self.performSegue(withIdentifier: .loginToConsumerHomeSegue, sender: self)
-                    }
-                }
-            }
+//            // MARK: Log In the User
+//            Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
+//                
+//                if error != nil {
+//                    self.showErrorAlert(errorMessage: "User cedentials not found. Please check entry and try again.")
+//                } else {
+//    
+//                    // MARK: Transition to HomePage
+//                    // TODO: Create Alert for if the LogIn was unsuccessfull
+//                    
+//                    if self.userTypeSegmentedControl.selectedSegmentIndex == 0 {
+//                        self.navigationController?.setNavigationBarHidden(true, animated: true)
+//                        self.performSegue(withIdentifier: .loginToFarmerHomeSegue, sender: self)
+//                        
+//                    } else if self.userTypeSegmentedControl.selectedSegmentIndex == 1 {
+//                        self.navigationController?.setNavigationBarHidden(true, animated: true)
+//                        self.performSegue(withIdentifier: .loginToConsumerHomeSegue, sender: self)
+//                    }
+//                }
+//            }
         }
     }
     
@@ -114,5 +113,22 @@ class LoginViewController: UIViewController {
         loginBlueView.layer.cornerRadius = 10
         loginButton.layer.cornerRadius = 26
         signUpButton.layer.cornerRadius = 18
+    }
+    
+    // MARK: - Navigation
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "LoginToFarmerHomeSegue" {
+            
+            if let farmerHomeVC = segue.destination as? FarmerHomeViewController {
+                farmerHomeVC.farmer = userController.farmer
+            }
+        } else if segue.identifier == "LoginToConsumerHomeSegue" {
+            
+            if let consumerHomeVC = segue.destination as? ConsumerHomeViewController {
+                consumerHomeVC.consumer = userController.consumer
+            }
+        }
     }
 }

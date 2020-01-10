@@ -7,12 +7,14 @@
 //
 
 import Foundation
+import CoreData
 
 class APIController {
     
     private let baseUrl = URL(string: "https://farmers-fresh-api.herokuapp.com/api")!
     
     var bearer: Bearer?
+    var farmer: Farmer?
     
 //    // MARK: Function for fetching all
 //
@@ -145,49 +147,201 @@ class APIController {
 //
 //        }.resume()
 //    }
-//    
-//    // MARK: Sign up Function
-//    
+    
+    // MARK: Register Function
+    
 //    func registerFarmer(farmer: Farmer, completion: @escaping (Error?) -> Void) {
-//        
-//        // Build URL
-//        let requestURL = baseUrl
-//            .appendingPathComponent("farmers")
-//            .appendingPathComponent("register")
-//        
+    func registerFarmer(username: String, password: String, city: String, state: String, zipCode: String, email: String, firstName: String, lastName: String, phoneNum: String, completion: @escaping (Error?) -> ()) {
+        
+        let requestURL = baseUrl
+            .appendingPathComponent("farmers")
+            .appendingPathComponent("register")
+
+        let json = """
+        {
+        "username": "\(username)",
+        "password": "\(password)",
+        "city": "\(city)",
+        "state": "\(state)",
+        "zipCode": "\(zipCode)"
+        }
+        """
+        
+        let jsonData = json.data(using: .utf8)
+        
+        guard let unwrapped = jsonData else {
+            print("No data!")
+            return
+        }
+        
+        var request = URLRequest(url: requestURL)
+        request.httpMethod = HTTPMethod.post.rawValue
+        
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpBody = unwrapped
+        print(request)
+        
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+            
+            if let error = error {
+                completion(error)
+                return
+            }
+            
+            if let response = response as? HTTPURLResponse,
+                response.statusCode != 200 {
+                DispatchQueue.main.async {
+                    let statusCodeError = NSError(domain: "com.FarmPal", code: response.statusCode, userInfo: nil)
+                    completion(statusCodeError)
+                    
+                }
+            }
+            
+            guard let data = data else {
+                NSLog("No data returned from data task")
+                completion(NSError())
+                return
+            }
+            
+            do {
+                
+//                var farmerRepresentation = try JSONDecoder().decode(FarmerRepresentation.self, from: data)
+//
+//                farmerRepresentation.id =
+//                farmerRepresentation.username = username
+//                farmerRepresentation.password = password
+//                farmerRepresentation.city = city
+//                farmerRepresentation.state = state
+//                farmerRepresentation.zipCode = zipCode
+//                farmerRepresentation.email = email
+//                farmerRepresentation.phoneNum = phoneNum
+//                farmerRepresentation.state = state
+//                farmerRepresentation.state = state
+//                farmerRepresentation.state = state
+//                farmerRepresentation.state = state
+            
+//                self.farmer = Farmer(farmerRepresentation: farmerRepresentation, context: CoreDataStack.shared.mainContext)
+//                try? CoreDataStack.shared.mainContext.save()
+                
+                let bearer = try JSONDecoder().decode(Bearer.self, from: data)
+                self.bearer = bearer
+            } catch {
+                NSLog("Error decoding farmer bearer: \(error)")
+//                NSLog("Error decoding farmer object, or bearer: \(error)")
+                completion(error)
+                return
+            }
+            completion(nil)
+        }.resume()
+        
+        
+        
+        
 //        // Build the request
 //        var request = URLRequest(url: requestURL)
 //        request.httpMethod = HTTPMethod.post.rawValue
-//        
+//
 //        request.setValue("application/json", forHTTPHeaderField: HeaderNames.contentType.rawValue)
-//        
-//        let encoder = JSONEncoder()
-//        
-//        do {
-//            let userJSON = try encoder.encode(user)
-//            request.httpBody = userJSON
-//        } catch {
-//            NSLog("Error encoding user object: \(error)")
+        
+        //        let encoder = JSONEncoder()
+        //
+        //        do {
+        //            let farmerJSON = try encoder.encode(farmer)
+        //            request.httpBody = farmerJSON
+        //        } catch {
+        //            NSLog("Error encoding farmer object: \(error)")
+        //        }
+        //
+        //
+//        guard let farmerRepresentation = farmer.farmerRepresentation else {
+//            NSLog("Farmer's Representation is nil")
+//            return
 //        }
-//        
+//
+//        do {
+//            request.httpBody = try JSONEncoder().encode(farmerRepresentation)
+//        } catch {
+//            NSLog("Error encoding farmer representation: \(error)")
+//            return
+//        }
+//
 //        URLSession.shared.dataTask(with: request) { (data, response, error) in
-//            
+//
 //            if let error = error {
-//                NSLog("Error signing up user: \(error)")
+//                NSLog("Error signing up farmer: \(error)")
 //                completion(error)
 //            }
-//            
+//
 //            if let response = response as? HTTPURLResponse,
 //                response.statusCode != 200 {
-//                
-//                let statusCodeError = NSError(domain: "com.SpencerCurtis.AnimalSpotter", code: response.statusCode, userInfo: nil)
+//
+//                let statusCodeError = NSError(domain: "com.herokuapp.farmers-fresh-api", code: response.statusCode, userInfo: nil)
 //                completion(statusCodeError)
 //            }
+//
+//            completion(nil)
+//        }.resume()
+    }
+    
+    
+//    func registerUser(with username: String, password: String, email: String, completion: @escaping (Error?) -> ()) {
+//        
+//        let loginUrl = baseUrl.appendingPathComponent("auth/register/")
+//        let json = """
+//        {
+//        "username": "\(username)",
+//        "password": "\(password)",
+//        "email": "\(email)"
+//        }
+//        """
+//        
+//        let jsonData = json.data(using: .utf8)
+//        
+//        guard let unwrapped = jsonData else {
+//            print("No data!")
+//            return
+//        }
+//        
+//        var request = URLRequest(url: loginUrl)
+//        request.httpMethod = HTTPMethod.post.rawValue
+//        
+//        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+//        request.httpBody = unwrapped
+//        print(request)
+//        
+//        URLSession.shared.dataTask(with: request) { (data, _, error) in
 //            
+//            if let error = error {
+//                completion(error)
+//                return
+//            }
+//            
+//            guard let data = data else {
+//                completion(NSError())
+//                return
+//            }
+//            
+//            do {
+//                
+//                var userRepresentation = try JSONDecoder().decode(UserRepresentation.self, from: data)
+//                
+//                userRepresentation.email = email
+//                userRepresentation.password = password
+//                userRepresentation.isAdmin = false
+//                
+//                self.user = User(userRepresentation: userRepresentation, context: CoreDataStack.shared.mainContext)
+//                try? CoreDataStack.shared.mainContext.save()
+//            } catch {
+//                print("Error decoding user object: \(error)")
+//                completion(error)
+//                return
+//            }
 //            completion(nil)
 //        }.resume()
 //    }
-//    
+    
+    
+    
 //    // MARK: Sign in Function
 //    
 //    func signIn(with user: User, completion: @escaping (Error?) -> Void) {
@@ -240,4 +394,19 @@ class APIController {
 //            completion(nil)
 //        }.resume()
 //    }
+    
+    
+    
+        //MARK:  CoreData CRUD
+        
+        // Create
+        func createFarmer(username: String, password: String, id: String, city: String, state: String, zipCode: String, profileImgURL: String?, farmImgURL: String?, context: NSManagedObjectContext) {
+            
+            
+//            DispatchQueue.main.async {
+                self.farmer = Farmer(username: username, password: password, id: id, city: city, state: state, zipCode: zipCode, profileImgURL: profileImgURL, farmImgURL: farmImgURL, context: context)
+                CoreDataStack.shared.save(context: context)
+//            }
+    //        put(user: user)
+        }
 }

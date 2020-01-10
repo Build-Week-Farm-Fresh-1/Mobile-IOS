@@ -10,7 +10,8 @@ import UIKit
 
 class AddProduceViewController: UIViewController {
     
-    var user: User?
+    var farmer: Farmer?
+    var consumer: Consumer?
 
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var priceTextField: UITextField!

@@ -10,8 +10,8 @@ import UIKit
 
 class ConsumerCartViewController: UIViewController {
     
-    var user: User?
-    
+    var farmer: Farmer?
+    var consumer: Consumer?
     @IBOutlet weak var orderSummaryLabel: UILabel!
     @IBOutlet weak var blueView: UIView!
     

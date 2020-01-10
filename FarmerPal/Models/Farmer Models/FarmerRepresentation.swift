@@ -9,19 +9,18 @@
 import Foundation
 
 struct FarmerRepresentation: Codable {
-    let username: String
-    let password: String
-    let id: UUID
+    var username: String
+    var password: String
+    var id: String
     
-    let city: String
-    let state: String
-    let zipcode: String
-    let profileImgURL: String
-    let farmImgURL: String
+    var city: String
+    var state: String
+    var zipCode: String
+    var profileImgURL: String?
+    var farmImgURL: String?
     
-    let firstName: String
-    let lastName: String
-    let phoneNum: Int16
-    let email: String
-    let userType: UserType
+    var email: String?
+    var phoneNum: String?
+    var firstName: String?
+    var lastName: String?
 }

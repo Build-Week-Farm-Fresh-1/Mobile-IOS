@@ -10,7 +10,8 @@ import UIKit
 
 class FarmerOrdersTableViewController: UITableViewController {
     
-    var user: User?
+    var farmer: Farmer?
+    var consumer: Consumer?
 
     override func viewDidLoad() {
         super.viewDidLoad()

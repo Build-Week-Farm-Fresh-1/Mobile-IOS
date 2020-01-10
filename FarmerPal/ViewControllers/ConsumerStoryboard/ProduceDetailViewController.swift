@@ -10,7 +10,8 @@ import UIKit
 
 class ProduceDetailViewController: UIViewController {
     
-    var user: User?
+    var farmer: Farmer?
+    var consumer: Consumer?
     var produce: Produce?
     
     @IBOutlet weak var produceNameLabel: UILabel!
@@ -38,18 +39,18 @@ class ProduceDetailViewController: UIViewController {
         addToCartButton.layer.cornerRadius = 15
         produceNameLabel.layer.cornerRadius = 10
         
-        guard let produce = produce,
-            let name = produce.name,
-            let farmerName = produce.farmerName,
-            let image = produce.image,
-            let description = produce.produceDescription else { return }
+//        guard let produce = produce,
+//            let name = produce.name,
+//            let farmerName = produce.farmerName,
+//            let image = produce.image,
+//            let description = produce.produceDescription else { return }
       
 //        let imageURL = URL(string: image)
 //        let imageData = Data(imageURL)
         
-        produceNameLabel.text = name
-        farmerNameLabel.text = farmerName
-        produceDescriptionLabel.text = description
+//        produceNameLabel.text = name
+//        farmerNameLabel.text = farmerName
+//        produceDescriptionLabel.text = description
         
         // TODO: Setup producte image display
         

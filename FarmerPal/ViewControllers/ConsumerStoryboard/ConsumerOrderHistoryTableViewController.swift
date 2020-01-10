@@ -10,8 +10,9 @@ import UIKit
 
 class ConsumerOrderHistoryTableViewController: UITableViewController {
     
-    var user: User?
-    var controller: UserController?
+    var farmer: Farmer?
+    var consumer: Consumer?
+//    var controller: UserController?
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -10,7 +10,8 @@ import UIKit
 
 class FarmerProfileViewController: UIViewController {
 
-    var user: User?
+    var farmer: Farmer?
+    var consumer: Consumer?
     
     @IBOutlet weak var fullNameLabel: UILabel!
     @IBOutlet weak var phoneNumberLabel: UILabel!
@@ -30,13 +31,14 @@ class FarmerProfileViewController: UIViewController {
         navigationController?.setNavigationBarHidden(false, animated: true)
         blueView.layer.cornerRadius = 10
         
-        guard let user = user,
-            let firstName = user.firstName,
-            let lastName = user.lastName,
-            let email = user.email else { return }
-        
-        fullNameLabel.text = firstName + " " + lastName
-        phoneNumberLabel.text = String(user.phoneNum)
-        emailLabel.text = email
+//        guard let user = user,
+//            let firstName = user.firstName,
+//            let lastName = user.lastName,
+//            let phoneNum = user.phoneNum,
+//            let email = user.email else { return }
+//        
+//        fullNameLabel.text = firstName + " " + lastName
+//        phoneNumberLabel.text = phoneNum
+//        emailLabel.text = email
     }
 }

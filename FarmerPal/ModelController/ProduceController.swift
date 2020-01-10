@@ -10,51 +10,55 @@ import Foundation
 import CoreData
 
 class ProduceController {
+    
+    var farmer: Farmer?
+    var consumer: Consumer?
+    
+    var produce: Produce?
+//    let baseURL = URL(string: "https://farmpalbw.firebaseio.com")!
 //    
-//    let controller: Controller?
-////    let baseURL = controller?.baseURL
-//    
-////    //MARK: Fetch Users from Firebase
-////
-////    func fetchUsersFromServer(completion: @escaping () -> Void = { }) {
-////
-////        // Set up the URL
-////        let requestURL = baseURL.appendingPathExtension("json")
-////
-////        // Create the URLRequest
-////        let request = URLRequest(url: requestURL)
-////
-////        // Perform the data task
-////        URLSession.shared.dataTask(with: request) { (data, _, error) in
-////
-////            if let error = error {
-////                NSLog("Error fetching all Users: \(error)")
-////                completion()
-////                return
-////            }
-////
-////            guard let data = data else {
-////                NSLog("No data returned from fetch data task")
-////                completion()
-////                return
-////            }
-////
-////            let decoder = JSONDecoder()
-////
-////            do {
-////
-////                let users = try decoder.decode([String: UserRepresentation].self, from: data).map({ $0.value })
-////
-////                // What users need to be created, and what users need to be updated
-////                self.updateUsers(with: users)
-////
-////            } catch {
-////                NSLog("Error decoding UserRepresentations: \(error)")
-////            }
-////
-////            completion()
-////        }.resume()
-////    }
+//    //MARK: Fetch Produce from Firebase
+//
+//    func fetchProduceFromServer(completion: @escaping () -> Void = { }) {
+//
+//        // Set up the URL
+//        let requestURL = baseURL
+//        .appendingPathExtension("json")
+//        .appendingPathExtension("produce")
+//
+//        // Create the URLRequest
+//        let request = URLRequest(url: requestURL)
+//
+//        // Perform the data task
+//        URLSession.shared.dataTask(with: request) { (data, _, error) in
+//
+//            if let error = error {
+//                NSLog("Error fetching all Users: \(error)")
+//                completion()
+//                return
+//            }
+//
+//            guard let data = data else {
+//                NSLog("No data returned from fetch data task")
+//                completion()
+//                return
+//            }
+//
+//            let decoder = JSONDecoder()
+//
+//            do {
+//
+//                let produceList = try decoder.decode([String: ProduceRepresentation].self, from: data).map({ $0.value })
+//
+////                // What produce need to be created, and what produce need to be updated
+////                self.updateProduceList(with: produceList)
+//
+//            } catch {
+//                NSLog("Error decoding produceRepresentations: \(error)")
+//            }
+//            completion()
+//        }.resume()
+//    }
 //    
 //    //MARK: UpdateUsers
 //    func updateProduces(with representations: [UserRepresentation]) {
@@ -65,10 +69,10 @@ class ProduceController {
 //        // [UUID: UserRepresentation]
 //        let representationsByID = Dictionary(uniqueKeysWithValues: zip(identifiersToFetch, representations))
 //        
-//        // Mutable copy of the dictionary above
+//        // Mutable copy of the dictionary above :
 //        
 //        // Users that could need to be created OR updated
-//        var UsersToCreate = representationsByID
+//        var produceToCreate = representationsByID
 //        
 //        let context = CoreDataStack.shared.container.newBackgroundContext()
 //        
@@ -76,29 +80,30 @@ class ProduceController {
 //            
 //            do {
 //                
-//                let fetchRequest: NSFetchRequest<User> = User.fetchRequest()
+//                let fetchRequest: NSFetchRequest<Produce> = Produce.fetchRequest()
 //                
-//                // Only fetch the users with the id's that are in this identifiersToFetch array
+//                // Only fetch the produceList with the id's that are in this identifiersToFetch array
 //                fetchRequest.predicate = NSPredicate(format: "id IN %@", identifiersToFetch)
 //                // We need to run the context.fetch on the main queue, because the context is the main context
 //                
-//                let existingUsers = try context.fetch(fetchRequest)
+//                let existingProduceList = try context.fetch(fetchRequest)
 //                
 //                // Update the ones we do have :
 //                
-//                // User
-//                for user in existingUsers {
+//                // Produce
+//                for produce in existingProduceList {
 //                    
-//                    // Grab the UserRepresentations that corresponds to this User
-//                    guard let id = user.id,
+//                    // Grab the ProduceRepresentations that corresponds to this Produce
+//                    guard let id = produce.id,
 //                        let representation = representationsByID[id] else { continue }
 //                    
-//                    user.username = representation.username
-//                    user.password = representation.password
-//                    user.isLoggedIn = representation.isLoggedIn
-//                    user.firstName = representation.firstName
-//                    user.lastName = representation.lastName
-//                    user.phoneNum = representation.phoneNum
+//                    produce.name = representation.name
+////                    pro.username = representation.username
+////                    user.password = representation.password
+////                    user.isLoggedIn = representation.isLoggedIn
+////                    user.firstName = representation.firstName
+////                    user.lastName = representation.lastName
+////                    user.phoneNum = representation.phoneNum
 ////TODO:                    user.userType = representation.userType
 //                    
 //                    // We just updated a user, we don't need to create a new User for this id

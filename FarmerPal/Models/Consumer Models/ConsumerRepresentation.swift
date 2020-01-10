@@ -11,17 +11,10 @@ import Foundation
 struct ConsumerRepresentation: Codable {
     let username: String
     let password: String
-    let id: UUID
+    let id: String
     
     let city: String
     let state: String
-    let zipcode: String
+    let zipCode: String
     let profileImgURL: String
-    let farmImgURL: String
-    
-    let firstName: String
-    let lastName: String
-    let phoneNum: Int16
-    let email: String
-    let userType: UserType
 }

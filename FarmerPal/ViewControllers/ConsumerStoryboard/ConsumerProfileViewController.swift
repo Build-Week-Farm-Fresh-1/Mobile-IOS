@@ -10,7 +10,8 @@ import UIKit
 
 class ConsumerProfileViewController: UIViewController {
     
-    var user: User?
+    var farmer: Farmer?
+    var consumer: Consumer?
     
     @IBOutlet weak var fullNameLabel: UILabel!
     @IBOutlet weak var phoneNumberLabel: UILabel!
@@ -26,13 +27,15 @@ class ConsumerProfileViewController: UIViewController {
         
         navigationController?.setNavigationBarHidden(false, animated: true)
         
-        guard let user = user,
-            let firstName = user.firstName,
-            let lastName = user.lastName,
-            let email = user.email else { return }
-        
-        fullNameLabel.text = firstName + " " + lastName
-        phoneNumberLabel.text = String(user.phoneNum)
-        emailLabel.text = email
+//        // TODO: You have more info you can display now
+//        guard let user = user,
+//            let firstName = user.firstName,
+//            let lastName = user.lastName,
+//            let phoneNum = user.phoneNum,
+//            let email = user.email else { return }
+//        
+//        fullNameLabel.text = firstName + " " + lastName
+//        phoneNumberLabel.text = user.phoneNum
+//        emailLabel.text = email
     }
 }
