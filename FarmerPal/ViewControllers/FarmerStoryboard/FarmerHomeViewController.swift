@@ -12,6 +12,7 @@ class FarmerHomeViewController: UIViewController {
     
     var farmer: Farmer?
     var consumer: Consumer?
+    var apiController: APIController?
     
     @IBOutlet weak var welcomeUserLabel: UILabel!
     @IBOutlet weak var pendingOrdersLabel: UILabel!
@@ -53,12 +54,13 @@ class FarmerHomeViewController: UIViewController {
         produceOnSale.layer.cornerRadius = 20
         pendingOrders.layer.cornerRadius = 20
         
-        guard let farmer = farmer else { return }
+        guard let farmer = farmer,
+            let username = farmer.username else { return }
         
-        welcomeUserLabel.text = "Welcome \(farmer.firstName)"
+        welcomeUserLabel.text = "Welcome \(username)"
                 
-        pendingOrdersLabel.text = "\(10) Pending Orders"
-        itemsInInventoryLabel.text = "\(10) Items in Inventory"
+        pendingOrdersLabel.text = "\(2) Pending Orders"
+        itemsInInventoryLabel.text = "\(17) Items in Inventory"
         itemsOnSaleLabel.text = "\(10) Items on Sale"
     }
     
@@ -69,24 +71,22 @@ class FarmerHomeViewController: UIViewController {
         
         if segue.identifier == "FarmerProfileSegue" {
             
-            let farmerProfileVC = segue.destination as? FarmerProfileViewController
-            farmerProfileVC?.farmer = farmer
-        }
-        else if segue.identifier == "AddNewProduceSegue" {
+            if let farmerProfileVC = segue.destination as? FarmerProfileViewController {
+                farmerProfileVC.farmer = farmer
+            }
+        } else if segue.identifier == "AddNewProduceSegue" {
             
             if let addProduceVC = segue.destination as? AddProduceViewController {
                 
                 addProduceVC.farmer = farmer
             }
-        }
-        else if segue.identifier == "FarmerProduceOnSaleSegue" {
+        } else if segue.identifier == "FarmerProduceOnSaleSegue" {
             
             if let farmerProducesTableVC = segue.destination as? FarmerProducesTableViewController {
                 
                 farmerProducesTableVC.farmer = farmer
             }
-        }
-        else if segue.identifier == "DisplayOrdersSegue" {
+        } else if segue.identifier == "DisplayOrdersSegue" {
             
             if let farmerOrdersTableVC = segue.destination as? FarmerOrdersTableViewController {
                 

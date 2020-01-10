@@ -43,7 +43,7 @@ class FarmerPalUITests: XCTestCase {
 
         app.staticTexts["Welcome User"].tap()
         XCTAssertEqual(accessibilityIden, <#T##expression2: Equatable##Equatable#>)
-    }
+}
 
     func testLaunchPerformance() {
         if #available(macOS 10.15, iOS 13.0, tvOS 13.0, *) {

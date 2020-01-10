@@ -10,10 +10,10 @@ import UIKit
 
 //Intern == Follows orders -> You have to conform to a delegate(to recieve info)
 class ConsumerHomeViewController: UIViewController {
-        
-        var farmer: Farmer?
-        var consumer: Consumer?
-    //    let controller = Controller()
+    
+    var farmer: Farmer?
+    var consumer: Consumer?
+    var apiController: APIController?
     
     @IBOutlet weak var welcomeUserLabel: UILabel!
     @IBOutlet weak var zipcodeTextField: UITextField!
@@ -39,25 +39,29 @@ class ConsumerHomeViewController: UIViewController {
         myProfileButton.layer.cornerRadius = 20
         numOfItemsInCartButton.layer.cornerRadius = 20
         orderHistoryButton.layer.cornerRadius = 20
+        
+        guard let consumer = consumer else { return }
+        
+        
     }
     
     // MARK: - Navigation
     //TODO: Use the controller to pass around the array of orders and Produces accordinly
-
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "ShowFarmersByZipcodeSegue" {
             
             let consumerFarmerOptionsVC = segue.destination as? ConsumerFarmersOptionsTableViewController
             consumerFarmerOptionsVC?.consumer = consumer
-//            consumerFarmerOptionsVC?.user = user
+            //            consumerFarmerOptionsVC?.user = user
         }
         else if segue.identifier == "ConsumerProfileSegue" {
             
             if let consumerProfileVC = segue.destination as? ConsumerProfileViewController {
                 
                 consumerProfileVC.consumer = consumer
-//                consumerProfileVC.user = user
+                //                consumerProfileVC.user = user
             }
         }
         else if segue.identifier == "ConsumerCartSegue" {
@@ -65,7 +69,7 @@ class ConsumerHomeViewController: UIViewController {
             if let consumerCartVC = segue.destination as? ConsumerCartViewController {
                 
                 consumerCartVC.consumer = consumer
-//                consumerCartVC.user = user
+                //                consumerCartVC.user = user
             }
         }
         else if segue.identifier == "ConsumerOrderHistorySegue" {
@@ -73,7 +77,7 @@ class ConsumerHomeViewController: UIViewController {
             if let consumerOrderHistoryTVC = segue.destination as? ConsumerOrderHistoryTableViewController {
                 
                 consumerOrderHistoryTVC.consumer = consumer
-//                consumerOrderHistoryTVC.user = user
+                //                consumerOrderHistoryTVC.user = user
             }
         }
     }

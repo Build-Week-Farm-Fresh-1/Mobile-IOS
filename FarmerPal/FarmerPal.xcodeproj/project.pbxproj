@@ -17,9 +17,6 @@
 		FA65FE1023C3E282001E7C93 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA65FE0F23C3E282001E7C93 /* Main.storyboard */; };
 		FA65FE1223C3E3B2001E7C93 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA65FE1123C3E3B1001E7C93 /* LoginViewController.swift */; };
 		FA65FE1423C3E3BA001E7C93 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA65FE1323C3E3BA001E7C93 /* SignUpViewController.swift */; };
-		FA65FE1A23C3E418001E7C93 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA65FE1923C3E418001E7C93 /* UserController.swift */; };
-		FA65FE1C23C3E41F001E7C93 /* OrderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA65FE1B23C3E41F001E7C93 /* OrderController.swift */; };
-		FA65FE1E23C3E425001E7C93 /* ProduceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA65FE1D23C3E425001E7C93 /* ProduceController.swift */; };
 		FA65FE2323C3E44E001E7C93 /* Order+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA65FE2223C3E44D001E7C93 /* Order+Convenience.swift */; };
 		FA65FE2523C3E455001E7C93 /* OrderRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA65FE2423C3E455001E7C93 /* OrderRepresentation.swift */; };
 		FA65FE2A23C3E468001E7C93 /* Produce+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA65FE2923C3E468001E7C93 /* Produce+Convenience.swift */; };
@@ -90,9 +87,6 @@
 		FA65FE0F23C3E282001E7C93 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		FA65FE1123C3E3B1001E7C93 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		FA65FE1323C3E3BA001E7C93 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
-		FA65FE1923C3E418001E7C93 /* UserController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserController.swift; path = ModelController/UserController.swift; sourceTree = SOURCE_ROOT; };
-		FA65FE1B23C3E41F001E7C93 /* OrderController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OrderController.swift; path = ModelController/OrderController.swift; sourceTree = SOURCE_ROOT; };
-		FA65FE1D23C3E425001E7C93 /* ProduceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProduceController.swift; path = ModelController/ProduceController.swift; sourceTree = SOURCE_ROOT; };
 		FA65FE2223C3E44D001E7C93 /* Order+Convenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Order+Convenience.swift"; sourceTree = "<group>"; };
 		FA65FE2423C3E455001E7C93 /* OrderRepresentation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderRepresentation.swift; sourceTree = "<group>"; };
 		FA65FE2923C3E468001E7C93 /* Produce+Convenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Produce+Convenience.swift"; sourceTree = "<group>"; };
@@ -246,9 +240,6 @@
 		FA65FE0023C3B7F5001E7C93 /* ModelControllers */ = {
 			isa = PBXGroup;
 			children = (
-				FA65FE1D23C3E425001E7C93 /* ProduceController.swift */,
-				FA65FE1B23C3E41F001E7C93 /* OrderController.swift */,
-				FA65FE1923C3E418001E7C93 /* UserController.swift */,
 			);
 			path = ModelControllers;
 			sourceTree = "<group>";
@@ -560,8 +551,6 @@
 				FAD5EB9F23C66D2B00E308A5 /* NetworkingError.swift in Sources */,
 				FA65FE5323C3EAFA001E7C93 /* FarmerProducesTableViewController.swift in Sources */,
 				FA65FE2323C3E44E001E7C93 /* Order+Convenience.swift in Sources */,
-				FA65FE1C23C3E41F001E7C93 /* OrderController.swift in Sources */,
-				FA65FE1A23C3E418001E7C93 /* UserController.swift in Sources */,
 				FA65FE4823C3EA58001E7C93 /* ProduceDetailViewController.swift in Sources */,
 				FA65FE1223C3E3B2001E7C93 /* LoginViewController.swift in Sources */,
 				FAD5EBB423C68D1C00E308A5 /* Consumer+Convenience.swift in Sources */,
@@ -589,7 +578,6 @@
 				FA65FE3723C3E4AE001E7C93 /* HTTPMethod.swift in Sources */,
 				FAD5EBB623C68D2B00E308A5 /* ConsumerRepresentation.swift in Sources */,
 				FA65FE5523C3EAFA001E7C93 /* FarmerProfileViewController.swift in Sources */,
-				FA65FE1E23C3E425001E7C93 /* ProduceController.swift in Sources */,
 				FAD5EBA123C66DB000E308A5 /* Bearer.swift in Sources */,
 				FA65FE2C23C3E47D001E7C93 /* ProduceRepresentation.swift in Sources */,
 				FA65FE4323C3EA58001E7C93 /* ConsumerProduceOptionsTableViewController.swift in Sources */,

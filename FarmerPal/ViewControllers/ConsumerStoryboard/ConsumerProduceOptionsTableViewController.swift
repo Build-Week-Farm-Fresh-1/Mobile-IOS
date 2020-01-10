@@ -12,8 +12,6 @@ class ConsumerProduceOptionsTableViewController: UITableViewController {
     
     var farmer: Farmer?
     var consumer: Consumer?
-    
-    var controller: UserController?
 
     override func viewDidLoad() {
         super.viewDidLoad()

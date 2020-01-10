@@ -11,7 +11,7 @@ import UIKit
 class AddProduceViewController: UIViewController {
     
     var farmer: Farmer?
-    var consumer: Consumer?
+    var apiController: APIController?
 
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var priceTextField: UITextField!
@@ -26,8 +26,13 @@ class AddProduceViewController: UIViewController {
     }
     
     @IBAction func saveBarButtonTapped(_ sender: UIBarButtonItem) {
+        
+        guard let name = nameTextField.text,
+            let price = priceTextField.text,
+            let description = descriptionTextView.text else { return }
+        
+        
     }
-    
     
     func changeProduceSaleStatus() {
         

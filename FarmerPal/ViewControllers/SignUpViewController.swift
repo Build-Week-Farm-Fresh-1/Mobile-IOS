@@ -225,11 +225,13 @@ class SignUpViewController: UIViewController {
             
             if let farmerHomeVC = segue.destination as? FarmerHomeViewController {
                 farmerHomeVC.farmer = apiController.farmer
+                farmerHomeVC.apiController = apiController
             }
         } else if segue.identifier == "SingInToConsumerHomeSegue" {
             
             if let consumerHomeVC = segue.destination as? ConsumerHomeViewController {
                 consumerHomeVC.consumer = apiController.consumer
+                consumerHomeVC.apiController = apiController
             }
         }
     }

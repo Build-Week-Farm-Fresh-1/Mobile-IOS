@@ -11,6 +11,8 @@ import UIKit
 class LoginViewController: UIViewController {
     
     let apiController = APIController()
+    var farmer: Farmer?
+    var consumer: Consumer?
     
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
@@ -48,12 +50,36 @@ class LoginViewController: UIViewController {
             
             if self.userTypeSegmentedControl.selectedSegmentIndex == 0 {
                 
+//                logIn(username: username, password: password)
+                
                 // MARK: Log In Farmer
                 apiController.loginFarmer(username: username, password: password) { (error) in
+
+                    if let error = error {
+                        self.showErrorAlert(errorMessage: "Login Unsuccessful. Please try again")
+                    } else {
+                        self.farmer = self.apiController.fetchFarmerFromCD(with: username)
+
+                        DispatchQueue.main.async {
+
+                            // MARK: Transition to HomePage
+                            // TODO: Create Alert for if the LogIn was unsuccessfull
+
+                            self.navigationController?.setNavigationBarHidden(true, animated: true)
+                            self.performSegue(withIdentifier: .loginToFarmerHomeSegue, sender: self)
+                        }
+                    }
+                }
+            } else if self.userTypeSegmentedControl.selectedSegmentIndex == 1 {
+                
+                // MARK: Log In Consumer
+                
+                apiController.loginConsumer(username: username, password: password) { (error) in
                     
                     if let error = error {
                         self.showErrorAlert(errorMessage: "Login Unsuccessful. Please try again")
                     } else {
+                        self.consumer = self.apiController.fetchConsumerFromCD(with: username)
                         
                         DispatchQueue.main.async {
                             
@@ -61,33 +87,11 @@ class LoginViewController: UIViewController {
                             // TODO: Create Alert for if the LogIn was unsuccessfull
                             
                             self.navigationController?.setNavigationBarHidden(true, animated: true)
-                            self.performSegue(withIdentifier: .loginToFarmerHomeSegue, sender: self)
-                            //                        self.transitionToHomePage()
+                            self.performSegue(withIdentifier: .loginToConsumerHomeSegue, sender: self)
+
                         }
                     }
                 }
-            } else if self.userTypeSegmentedControl.selectedSegmentIndex == 1 {
-                
-//                // MARK: Log In Consumer
-//                apiController.loginConsumer(username: username, password: password) { (error) in
-//
-//                    if let error = error {
-//                        self.showErrorAlert(errorMessage: "Login Unsuccessful. Please try again")
-//                    } else {
-//
-//                        DispatchQueue.main.async {
-//
-//                            // MARK: Transition to HomePage
-//                            // TODO: Create Alert for if the LogIn was unsuccessfull
-//
-//
-//                            self.navigationController?.setNavigationBarHidden(true, animated: true)
-//                            self.performSegue(withIdentifier: .loginToConsumerHomeSegue, sender: self)
-//
-//                            //                        self.transitionToHomePage()
-//                        }
-//                    }
-//                }
                 
             }
         }
@@ -146,12 +150,14 @@ class LoginViewController: UIViewController {
         if segue.identifier == "LoginToFarmerHomeSegue" {
             
             if let farmerHomeVC = segue.destination as? FarmerHomeViewController {
-                farmerHomeVC.farmer = apiController.farmer
+                farmerHomeVC.farmer = farmer
+                farmerHomeVC.apiController = apiController
             }
         } else if segue.identifier == "LoginToConsumerHomeSegue" {
             
             if let consumerHomeVC = segue.destination as? ConsumerHomeViewController {
-                consumerHomeVC.consumer = apiController.consumer
+                consumerHomeVC.consumer = consumer
+                consumerHomeVC.apiController = apiController
             }
         }
     }
