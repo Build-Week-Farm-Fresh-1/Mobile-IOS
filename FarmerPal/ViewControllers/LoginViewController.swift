@@ -10,8 +10,8 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
-    let userController = UserController()
-        
+    let apiController = APIController()
+    
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -46,26 +46,50 @@ class LoginViewController: UIViewController {
             let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             
-//            // MARK: Log In the User
-//            Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
-//                
-//                if error != nil {
-//                    self.showErrorAlert(errorMessage: "User cedentials not found. Please check entry and try again.")
-//                } else {
-//    
-//                    // MARK: Transition to HomePage
-//                    // TODO: Create Alert for if the LogIn was unsuccessfull
-//                    
-//                    if self.userTypeSegmentedControl.selectedSegmentIndex == 0 {
-//                        self.navigationController?.setNavigationBarHidden(true, animated: true)
-//                        self.performSegue(withIdentifier: .loginToFarmerHomeSegue, sender: self)
-//                        
-//                    } else if self.userTypeSegmentedControl.selectedSegmentIndex == 1 {
-//                        self.navigationController?.setNavigationBarHidden(true, animated: true)
-//                        self.performSegue(withIdentifier: .loginToConsumerHomeSegue, sender: self)
+            if self.userTypeSegmentedControl.selectedSegmentIndex == 0 {
+                
+                // MARK: Log In Farmer
+                apiController.loginFarmer(username: username, password: password) { (error) in
+                    
+                    if let error = error {
+                        self.showErrorAlert(errorMessage: "Login Unsuccessful. Please try again")
+                    } else {
+                        
+                        DispatchQueue.main.async {
+                            
+                            // MARK: Transition to HomePage
+                            // TODO: Create Alert for if the LogIn was unsuccessfull
+                            
+                            self.navigationController?.setNavigationBarHidden(true, animated: true)
+                            self.performSegue(withIdentifier: .loginToFarmerHomeSegue, sender: self)
+                            //                        self.transitionToHomePage()
+                        }
+                    }
+                }
+            } else if self.userTypeSegmentedControl.selectedSegmentIndex == 1 {
+                
+//                // MARK: Log In Consumer
+//                apiController.loginConsumer(username: username, password: password) { (error) in
+//
+//                    if let error = error {
+//                        self.showErrorAlert(errorMessage: "Login Unsuccessful. Please try again")
+//                    } else {
+//
+//                        DispatchQueue.main.async {
+//
+//                            // MARK: Transition to HomePage
+//                            // TODO: Create Alert for if the LogIn was unsuccessfull
+//
+//
+//                            self.navigationController?.setNavigationBarHidden(true, animated: true)
+//                            self.performSegue(withIdentifier: .loginToConsumerHomeSegue, sender: self)
+//
+//                            //                        self.transitionToHomePage()
+//                        }
 //                    }
 //                }
-//            }
+                
+            }
         }
     }
     
@@ -76,8 +100,8 @@ class LoginViewController: UIViewController {
         
         // Check that all fields are filled in
         if usernameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
-        emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
-        passwordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
+            emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
+            passwordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
             
             return "Please fill in all fields."
         }
@@ -116,18 +140,18 @@ class LoginViewController: UIViewController {
     }
     
     // MARK: - Navigation
-
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "LoginToFarmerHomeSegue" {
             
             if let farmerHomeVC = segue.destination as? FarmerHomeViewController {
-                farmerHomeVC.farmer = userController.farmer
+                farmerHomeVC.farmer = apiController.farmer
             }
         } else if segue.identifier == "LoginToConsumerHomeSegue" {
             
             if let consumerHomeVC = segue.destination as? ConsumerHomeViewController {
-                consumerHomeVC.consumer = userController.consumer
+                consumerHomeVC.consumer = apiController.consumer
             }
         }
     }

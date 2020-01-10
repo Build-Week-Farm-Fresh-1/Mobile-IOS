@@ -12,7 +12,6 @@ class FarmerHomeViewController: UIViewController {
     
     var farmer: Farmer?
     var consumer: Consumer?
-//    let controller: Controller?
     
     @IBOutlet weak var welcomeUserLabel: UILabel!
     @IBOutlet weak var pendingOrdersLabel: UILabel!

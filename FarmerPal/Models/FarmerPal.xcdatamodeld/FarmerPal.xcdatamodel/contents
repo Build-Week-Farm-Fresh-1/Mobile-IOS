@@ -6,7 +6,7 @@
         <attribute name="password" optional="YES" attributeType="String"/>
         <attribute name="profileImgURL" optional="YES" attributeType="String"/>
         <attribute name="state" optional="YES" attributeType="String"/>
-        <attribute name="usename" optional="YES" attributeType="String"/>
+        <attribute name="username" optional="YES" attributeType="String"/>
         <attribute name="zipCode" optional="YES" attributeType="String"/>
     </entity>
     <entity name="Farmer" representedClassName="Farmer" syncable="YES" codeGenerationType="class">
@@ -17,6 +17,7 @@
         <attribute name="id" optional="YES" attributeType="String"/>
         <attribute name="lastName" optional="YES" attributeType="String"/>
         <attribute name="password" optional="YES" attributeType="String"/>
+        <attribute name="phoneNum" optional="YES" attributeType="String"/>
         <attribute name="profileImgURL" optional="YES" attributeType="String"/>
         <attribute name="state" optional="YES" attributeType="String"/>
         <attribute name="username" optional="YES" attributeType="String"/>
@@ -35,9 +36,9 @@
         <attribute name="produceImgURL" optional="YES" attributeType="String"/>
     </entity>
     <elements>
-        <element name="Farmer" positionX="-63" positionY="-18" width="128" height="208"/>
-        <element name="Produce" positionX="-54" positionY="-9" width="128" height="133"/>
-        <element name="Order" positionX="-36" positionY="81" width="128" height="73"/>
         <element name="Consumer" positionX="-18" positionY="90" width="128" height="148"/>
+        <element name="Farmer" positionX="-63" positionY="-18" width="128" height="223"/>
+        <element name="Order" positionX="-36" positionY="81" width="128" height="73"/>
+        <element name="Produce" positionX="-54" positionY="-9" width="128" height="133"/>
     </elements>
 </model>

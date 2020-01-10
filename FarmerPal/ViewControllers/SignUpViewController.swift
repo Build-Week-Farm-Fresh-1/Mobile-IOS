@@ -10,9 +10,8 @@ import UIKit
 
 class SignUpViewController: UIViewController {
     
-    let userController = UserController()
     let apiController = APIController()
-
+    
     @IBOutlet weak var firstNameTextField: UITextField!
     @IBOutlet weak var lastNameTextField: UITextField!
     @IBOutlet weak var phoneNumTextField: UITextField!
@@ -56,6 +55,10 @@ class SignUpViewController: UIViewController {
     }
     
     @IBAction func signUpButtonTapped(_ sender: UIButton) {
+        registerNewUser()
+    }
+    
+    func registerNewUser() {
         
         // Validate the fields
         let error = validateFields()
@@ -78,21 +81,36 @@ class SignUpViewController: UIViewController {
                 let state = stateTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines),
                 let zipCode = zipCodeTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) else { return }
             
-            // MARK: Create New User
+            // MARK: SignUp/Create New Farmer/Consumer
             
             if farmerButton.alpha == 0 {
                 
+                // Registering Consumer
+                apiController.registerConsumer(username: username, password: password, city: city, state: state, zipCode: zipCode, email: email, firstName: firstName, lastName: lastName, phoneNum: phoneNum) { (error) in
+                    
+                    if let error = error {
+                        self.showErrorAlert(errorMessage: "Sign up Unsuccessful. Please try again")
+                        NSLog("Error registering Consumer: \(error)")
+                    } else {
+                        
+                        self.apiController.createConsumer(username: username, password: password, id: "", city: city, state: state, zipCode: zipCode, profileImgURL: nil, context: CoreDataStack.shared.mainContext)
+                        
+                        DispatchQueue.main.async {
+                            
+                            self.transitionToHomePage()
+                        }
+                    }
+                }
             } else if clientButton.alpha == 0 {
                 
                 // Registering Farmer
                 apiController.registerFarmer(username: username, password: password, city: city, state: state, zipCode: zipCode, email: email, firstName: firstName, lastName: lastName, phoneNum: phoneNum) { (error) in
                     
                     if let error = error {
-                        self.showErrorAlert(errorMessage: "Sign in Unsuccessful. Please try again")
+                        self.showErrorAlert(errorMessage: "Sign up Unsuccessful. Please try again")
                         NSLog("Error registering Farmer: \(error)")
                     } else {
                         
-                        // TODO: Comment back in when ready to use CD
                         self.apiController.createFarmer(username: username, password: password, id: "", city: city, state: state, zipCode: zipCode, profileImgURL: nil, farmImgURL: nil, context: CoreDataStack.shared.mainContext)
                         
                         DispatchQueue.main.async {
@@ -131,7 +149,7 @@ class SignUpViewController: UIViewController {
         return nil
     }
     
-    func isPasswordValid(_ password : String) -> Bool{
+    func isPasswordValid(_ password: String) -> Bool {
         // 1 - Password length is 8.
         // 2 - One Alphabet in Password.
         // 3 - One Special Character in Password.
@@ -200,20 +218,18 @@ class SignUpViewController: UIViewController {
     }
     
     // MARK: - Navigation
-
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "SingInToFarmerHomeSegue" {
             
             if let farmerHomeVC = segue.destination as? FarmerHomeViewController {
-//                farmerHomeVC.user = userController.user
                 farmerHomeVC.farmer = apiController.farmer
             }
         } else if segue.identifier == "SingInToConsumerHomeSegue" {
             
             if let consumerHomeVC = segue.destination as? ConsumerHomeViewController {
-//                consumerHomeVC.user = userController.user
-//                consumerHomeVC.user = userController.user
+                consumerHomeVC.consumer = apiController.consumer
             }
         }
     }

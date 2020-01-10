@@ -52,9 +52,6 @@ extension Farmer {
     // MARK: Init from Representation
     @discardableResult convenience init?(farmerRepresentation: FarmerRepresentation, context: NSManagedObjectContext) {
         
-//        guard let profileImgURL = profileImgURL,
-//            let farmImgURL = farmImgURL else { continue }
-        
         self.init(username: farmerRepresentation.username,
                   password: farmerRepresentation.password,
                   id: farmerRepresentation.id,

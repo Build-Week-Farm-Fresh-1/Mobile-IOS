@@ -23,4 +23,15 @@ struct FarmerRepresentation: Codable {
     var phoneNum: String?
     var firstName: String?
     var lastName: String?
+    
+    enum CodingKeys: String, CodingKey {
+        case username
+        case password
+        case id
+        case city
+        case state
+        case zipCode
+        case profileImgURL
+        case farmImgURL
+    }
 }
