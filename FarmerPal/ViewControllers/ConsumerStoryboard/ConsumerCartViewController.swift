@@ -12,6 +12,8 @@ class ConsumerCartViewController: UIViewController {
     
     var farmer: Farmer?
     var consumer: Consumer?
+    var apiController: APIController?
+    
     @IBOutlet weak var orderSummaryLabel: UILabel!
     @IBOutlet weak var blueView: UIView!
     

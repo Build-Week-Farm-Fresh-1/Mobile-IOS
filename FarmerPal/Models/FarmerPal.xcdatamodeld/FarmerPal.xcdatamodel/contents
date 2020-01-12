@@ -28,17 +28,20 @@
         <attribute name="pickUpDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
     </entity>
     <entity name="Produce" representedClassName="Produce" syncable="YES" codeGenerationType="class">
-        <attribute name="consumerName" optional="YES" attributeType="String"/>
-        <attribute name="descriptionOfProd" optional="YES" attributeType="String"/>
-        <attribute name="farmerName" optional="YES" attributeType="String"/>
+        <attribute name="farmerID" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="increment" optional="YES" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String"/>
-        <attribute name="plu" optional="YES" attributeType="String"/>
+        <attribute name="plu" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="price" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="produceDescription" optional="YES" attributeType="String"/>
         <attribute name="produceImgURL" optional="YES" attributeType="String"/>
+        <attribute name="quantity" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="sku" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
     </entity>
     <elements>
         <element name="Consumer" positionX="-18" positionY="90" width="128" height="148"/>
         <element name="Farmer" positionX="-63" positionY="-18" width="128" height="223"/>
         <element name="Order" positionX="-36" positionY="81" width="128" height="73"/>
-        <element name="Produce" positionX="-54" positionY="-9" width="128" height="133"/>
+        <element name="Produce" positionX="-54" positionY="-9" width="128" height="178"/>
     </elements>
 </model>

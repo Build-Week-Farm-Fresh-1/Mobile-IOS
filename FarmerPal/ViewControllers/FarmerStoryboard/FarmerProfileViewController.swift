@@ -11,6 +11,7 @@ import UIKit
 class FarmerProfileViewController: UIViewController {
 
     var farmer: Farmer?
+    var apiController: APIController?
     
     @IBOutlet weak var fullNameLabel: UILabel!
     @IBOutlet weak var phoneNumberLabel: UILabel!

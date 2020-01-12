@@ -12,6 +12,7 @@ class ConsumerProfileViewController: UIViewController {
     
     var farmer: Farmer?
     var consumer: Consumer?
+    var apiController: APIController?
     
     @IBOutlet weak var fullNameLabel: UILabel!
     @IBOutlet weak var phoneNumberLabel: UILabel!

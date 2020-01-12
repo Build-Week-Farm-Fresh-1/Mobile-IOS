@@ -226,12 +226,14 @@ class SignUpViewController: UIViewController {
             if let farmerHomeVC = segue.destination as? FarmerHomeViewController {
                 farmerHomeVC.farmer = apiController.farmer
                 farmerHomeVC.apiController = apiController
+                farmerHomeVC.bearer = apiController.bearer
             }
         } else if segue.identifier == "SingInToConsumerHomeSegue" {
             
             if let consumerHomeVC = segue.destination as? ConsumerHomeViewController {
                 consumerHomeVC.consumer = apiController.consumer
                 consumerHomeVC.apiController = apiController
+                consumerHomeVC.bearer = apiController.bearer
             }
         }
     }

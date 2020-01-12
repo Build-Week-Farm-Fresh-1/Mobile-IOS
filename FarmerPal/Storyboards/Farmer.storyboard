@@ -99,7 +99,7 @@
                                         <state key="normal" title="Add New Produce"/>
                                         <connections>
                                             <action selector="addNewProduceButtonTapped:" destination="eZh-aM-dis" eventType="touchUpInside" id="bgQ-Nz-jRq"/>
-                                            <segue destination="BiJ-mw-2Kf" kind="show" identifier="AddNewProduceSegue" id="eZ1-JB-PDJ"/>
+                                            <segue destination="Pyl-Gd-shW" kind="show" identifier="FarmerChooseNewProduceSegue" id="OIj-z7-861"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N7X-gd-Mmn">
@@ -107,7 +107,7 @@
                                         <color key="backgroundColor" red="0.49019607840000001" green="0.68235294120000001" blue="0.80392156859999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="25"/>
                                         <color key="tintColor" red="0.1193658933" green="0.1612198651" blue="0.3023059964" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" title="Produce on Sale"/>
+                                        <state key="normal" title="My Produce on Sale"/>
                                         <connections>
                                             <action selector="produceOnSaleButtonTapped:" destination="eZh-aM-dis" eventType="touchUpInside" id="eeh-U1-wDm"/>
                                             <segue destination="9Xa-gL-qhZ" kind="show" identifier="FarmerProduceOnSaleSegue" id="MfF-UF-o8Y"/>
@@ -507,7 +507,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="364" height="0.0"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="D2L-rd-fdg" id="Scz-ON-z6h">
-                                                        <rect key="frame" x="0.0" y="0.0" width="364" height="0.0"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="364" height="1.1920928955078125e-07"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <subviews>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="t1h-Eg-wiy">
@@ -573,11 +573,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="cfd-g0-AZy">
-                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="rCt-jN-1rl">
-                            <connections>
-                                <segue destination="BiJ-mw-2Kf" kind="show" identifier="AddProduceFromListSegue" id="eqP-Qe-jZ3"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="rCt-jN-1rl"/>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZfK-4R-5OH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -589,7 +585,7 @@
             <objects>
                 <viewController id="BiJ-mw-2Kf" customClass="AddProduceViewController" customModule="FarmerPal" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZF0-oW-Vt7">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KVH-qQ-v75" userLabel="Top Bar View 2">
@@ -611,12 +607,12 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9IL-BT-wY0" userLabel="BlueView">
-                                <rect key="frame" x="20" y="170" width="374" height="498"/>
+                                <rect key="frame" x="20" y="170" width="374" height="552"/>
                                 <color key="backgroundColor" red="0.84524440769999998" green="0.90572053190000001" blue="0.93089330199999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <accessibility key="accessibilityConfiguration" identifier="LoginBlueLayer" label="LoginBlueLayer"/>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="90" translatesAutoresizingMaskIntoConstraints="NO" id="ScC-ec-SSO">
-                                <rect key="frame" x="30" y="100" width="354" height="626"/>
+                                <rect key="frame" x="30" y="144" width="354" height="626"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="tlm-ny-Vld">
                                         <rect key="frame" x="0.0" y="0.0" width="354" height="146"/>
@@ -719,7 +715,85 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ueJ-6Y-asV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="744.92753623188412" y="761.38392857142856"/>
+            <point key="canvasLocation" x="-561" y="788"/>
+        </scene>
+        <!--Farmer Choose New Produce Table View Controller-->
+        <scene sceneID="QXx-dr-ppG">
+            <objects>
+                <tableViewController id="Pyl-Gd-shW" customClass="FarmerChooseNewProduceTableViewController" customModule="FarmerPal" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="ROg-zh-kNy">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="Fah-6s-9BB">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="140"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZdZ-ld-e8e" userLabel="Top Bar View 2">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="70"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="FarmerPalLogo" translatesAutoresizingMaskIntoConstraints="NO" id="1Cb-1W-scj">
+                                            <rect key="frame" x="8" y="15" width="73" height="50"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="50" id="EaS-0s-ZY5"/>
+                                                <constraint firstAttribute="width" constant="73" id="t9S-Nu-0ug"/>
+                                            </constraints>
+                                        </imageView>
+                                    </subviews>
+                                    <color key="backgroundColor" red="0.1176470588" green="0.1612198651" blue="0.3023059964" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="70" id="FaI-80-A5h"/>
+                                        <constraint firstAttribute="bottom" secondItem="1Cb-1W-scj" secondAttribute="bottom" constant="3" id="o7h-f5-vdQ"/>
+                                        <constraint firstItem="1Cb-1W-scj" firstAttribute="leading" secondItem="ZdZ-ld-e8e" secondAttribute="leading" constant="20" id="ugK-bl-edb"/>
+                                    </constraints>
+                                </view>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose Produce to add to your Inventory" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YZp-dL-Ice">
+                                    <rect key="frame" x="20" y="96" width="374" height="24"/>
+                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            <constraints>
+                                <constraint firstItem="YZp-dL-Ice" firstAttribute="leading" secondItem="Fah-6s-9BB" secondAttribute="leading" constant="20" id="CJh-hd-HbF"/>
+                                <constraint firstAttribute="trailing" secondItem="YZp-dL-Ice" secondAttribute="trailing" constant="20" id="FFK-4M-zX8"/>
+                                <constraint firstAttribute="trailing" secondItem="ZdZ-ld-e8e" secondAttribute="trailing" id="I2Y-s1-P5R"/>
+                                <constraint firstAttribute="bottom" secondItem="YZp-dL-Ice" secondAttribute="bottom" constant="20" id="Nzj-Hs-7Ad"/>
+                                <constraint firstItem="ZdZ-ld-e8e" firstAttribute="top" secondItem="Fah-6s-9BB" secondAttribute="top" id="YPG-wO-fq8"/>
+                                <constraint firstItem="ZdZ-ld-e8e" firstAttribute="leading" secondItem="Fah-6s-9BB" secondAttribute="leading" id="vtm-EC-c74"/>
+                            </constraints>
+                        </view>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FarmerProduceOptionCell" textLabel="Q3f-U6-8Ra" style="IBUITableViewCellStyleDefault" id="6x4-CC-nOV">
+                                <rect key="frame" x="0.0" y="168" width="414" height="47.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6x4-CC-nOV" id="geF-JB-ap0">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="47.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Q3f-U6-8Ra">
+                                            <rect key="frame" x="20" y="0.0" width="374" height="47.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                            <color key="textColor" red="0.1176470588" green="0.1612198651" blue="0.3023059964" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" red="0.84524440769999998" green="0.90572053190000001" blue="0.93089330199999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Pyl-Gd-shW" id="8eI-Ue-Bhc"/>
+                            <outlet property="delegate" destination="Pyl-Gd-shW" id="oww-ZC-Qoe"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="Fg3-fJ-Oog"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lG9-nx-buU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="555" y="775"/>
         </scene>
         <!--Farmer Profile View Controller-->
         <scene sceneID="fpX-ok-fNI">
@@ -832,7 +906,4 @@
         <image name="farmer" width="2448" height="1620"/>
         <image name="field" width="6000" height="4000"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="eZ1-JB-PDJ"/>
-    </inferredMetricsTieBreakers>
 </document>

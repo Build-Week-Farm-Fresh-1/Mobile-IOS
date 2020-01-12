@@ -41,6 +41,7 @@
 		FA65FE6023C53270001E7C93 /* FarmerPalUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA65FE5F23C53270001E7C93 /* FarmerPalUITests.swift */; };
 		FA65FE6E23C5327B001E7C93 /* FarmerPalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA65FE6D23C5327B001E7C93 /* FarmerPalTests.swift */; };
 		FA6E198C23C76E8400670040 /* ViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6E198B23C76E8400670040 /* ViewControllerExtension.swift */; };
+		FA7207F723C948FA00A653E6 /* FarmerChooseNewProduceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7207F623C948FA00A653E6 /* FarmerChooseNewProduceTableViewController.swift */; };
 		FA77BA6623C811D500E0DEDD /* FarmerPal.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FA77BA6423C811D500E0DEDD /* FarmerPal.xcdatamodeld */; };
 		FAD17E5623C588AF002E103C /* FarmerProduceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD17E5523C588AF002E103C /* FarmerProduceTableViewCell.swift */; };
 		FAD5EB9B23C64BAC00E308A5 /* ConsumerFarmerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD5EB9A23C64BAC00E308A5 /* ConsumerFarmerTableViewCell.swift */; };
@@ -115,6 +116,7 @@
 		FA65FE6D23C5327B001E7C93 /* FarmerPalTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FarmerPalTests.swift; sourceTree = "<group>"; };
 		FA65FE6F23C5327B001E7C93 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FA6E198B23C76E8400670040 /* ViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerExtension.swift; sourceTree = "<group>"; };
+		FA7207F623C948FA00A653E6 /* FarmerChooseNewProduceTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FarmerChooseNewProduceTableViewController.swift; sourceTree = "<group>"; };
 		FA77BA6523C811D500E0DEDD /* FarmerPal.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FarmerPal.xcdatamodel; sourceTree = "<group>"; };
 		FAD17E5523C588AF002E103C /* FarmerProduceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FarmerProduceTableViewCell.swift; sourceTree = "<group>"; };
 		FAD5EB9A23C64BAC00E308A5 /* ConsumerFarmerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumerFarmerTableViewCell.swift; sourceTree = "<group>"; };
@@ -287,6 +289,7 @@
 				FA65FE4C23C3EAFA001E7C93 /* FarmerOrdersTableViewController.swift */,
 				FA65FE4D23C3EAFA001E7C93 /* FarmerProducesTableViewController.swift */,
 				FA65FE4F23C3EAFA001E7C93 /* FarmerProfileViewController.swift */,
+				FA7207F623C948FA00A653E6 /* FarmerChooseNewProduceTableViewController.swift */,
 			);
 			path = FarmerStoryboard;
 			sourceTree = "<group>";
@@ -574,6 +577,7 @@
 				FA65FE4523C3EA58001E7C93 /* ConsumerCartViewController.swift in Sources */,
 				FAD5EBA423C6729500E308A5 /* APIController.swift in Sources */,
 				FA65FE4623C3EA58001E7C93 /* ConsumerOrderHistoryTableViewController.swift in Sources */,
+				FA7207F723C948FA00A653E6 /* FarmerChooseNewProduceTableViewController.swift in Sources */,
 				FA65FE4723C3EA58001E7C93 /* ConsumerProfileViewController.swift in Sources */,
 				FA65FE3723C3E4AE001E7C93 /* HTTPMethod.swift in Sources */,
 				FAD5EBB623C68D2B00E308A5 /* ConsumerRepresentation.swift in Sources */,

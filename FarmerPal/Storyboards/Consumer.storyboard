@@ -59,6 +59,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
+                                            <action selector="shopByZipcodeButtonTapped:" destination="bw7-tN-D3C" eventType="touchUpInside" id="feo-NM-dwW"/>
                                             <segue destination="rh0-ZT-5Jt" kind="show" identifier="ShowFarmersByZipcodeSegue" id="jnA-xI-Oyc"/>
                                         </connections>
                                     </button>

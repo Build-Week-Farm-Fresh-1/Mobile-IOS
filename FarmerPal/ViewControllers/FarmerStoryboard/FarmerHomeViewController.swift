@@ -13,6 +13,7 @@ class FarmerHomeViewController: UIViewController {
     var farmer: Farmer?
     var consumer: Consumer?
     var apiController: APIController?
+    var bearer: Bearer?
     
     @IBOutlet weak var welcomeUserLabel: UILabel!
     @IBOutlet weak var pendingOrdersLabel: UILabel!
@@ -73,24 +74,28 @@ class FarmerHomeViewController: UIViewController {
             
             if let farmerProfileVC = segue.destination as? FarmerProfileViewController {
                 farmerProfileVC.farmer = farmer
+                farmerProfileVC.apiController = apiController
             }
-        } else if segue.identifier == "AddNewProduceSegue" {
+        } else if segue.identifier == "FarmerChooseNewProduceSegue" {
             
-            if let addProduceVC = segue.destination as? AddProduceViewController {
+            if let chooseNewProduceVC = segue.destination as? FarmerChooseNewProduceTableViewController {
                 
-                addProduceVC.farmer = farmer
+                chooseNewProduceVC.farmer = farmer
+                chooseNewProduceVC.apiController = apiController
             }
         } else if segue.identifier == "FarmerProduceOnSaleSegue" {
             
             if let farmerProducesTableVC = segue.destination as? FarmerProducesTableViewController {
                 
                 farmerProducesTableVC.farmer = farmer
+                farmerProducesTableVC.apiController = apiController
             }
         } else if segue.identifier == "DisplayOrdersSegue" {
             
             if let farmerOrdersTableVC = segue.destination as? FarmerOrdersTableViewController {
                 
                 farmerOrdersTableVC.farmer = farmer
+                farmerOrdersTableVC.apiController = apiController
             }
         }
     }

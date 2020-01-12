@@ -17,6 +17,7 @@ class APIController {
     var farmer: Farmer?
     var consumer: Consumer?
     var username: String?
+    var produceOptionsForFarmer: [ProduceRepresentation]?
     
     // MARK: Register Functions
     
@@ -185,13 +186,6 @@ class APIController {
         request.httpBody = unwrapped
         print(request)
         
-//        do {
-//            request.httpBody = try JSONEncoder().encode(farmer.farmerRepresentation)
-//        } catch {
-//            NSLog("Error encoding farmer for login: \(error)")
-//            completion(error)
-//        }
-        
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             
             if let error = error {
@@ -353,6 +347,196 @@ class APIController {
             return consumer
         }
     
+    // MARK: Fetching Farmer's Produce Options
+    
+    // The Result enum has -> [String] for its success, and a NetworkingError for its failure.
+    func fetchProduceOptionsForFarmer(completion: @escaping (Result<[ProduceRepresentation], NetworkingError>) -> Void) {
+        
+        guard let bearer = bearer else {
+            completion(Result.failure(NetworkingError.noBearer))
+            return
+        }
+        
+        let requestURL = baseUrl
+            .appendingPathComponent("produce")
+        
+        var request = URLRequest(url: requestURL)
+        request.httpMethod = HTTPMethod.get.rawValue
+
+        request.setValue("\(bearer.token)", forHTTPHeaderField: HeaderNames.authorization.rawValue)
+//        request.setValue("Bearer \(bearer.token)", forHTTPHeaderField: HeaderNames.authorization.rawValue)
+
+        
+        //MARK: DataTask
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+            
+            if let error = error {
+                NSLog("Error fetching produce options for farmer: \(error)")
+                completion(.failure(.serverError(error)))
+                return
+            }
+            
+            if let response = response as? HTTPURLResponse,
+                response.statusCode != 200 {
+                completion(.failure(.unexpectedStatusCode))
+            }
+            
+            guard let data = data else {
+                completion(.failure(.noData))
+                return
+            }
+            
+            do {
+                let produceOptions = try JSONDecoder().decode([ProduceRepresentation].self, from: data)
+                self.produceOptionsForFarmer = produceOptions
+                
+//                let produceOptions = try JSONDecoder().decode([String: ProduceRepresentation].self, from: data).map({ $0.value })
+//
+//                // Figure out the options that need to be created, and the ones that need to be updated
+//                self.updateProduceOptions(with: produceOptions)
+                // TODO: Not sure if I need to update produceOptions here or not, cause I can't create new options
+                completion(.success(produceOptions))
+            } catch {
+                NSLog("Error decoding produce options for farmer: \(error)")
+                completion(.failure(.badDecode))
+            }
+        }.resume()
+    }
+    
+    //MARK: UpdateProduceList
+    func updateProduceOptions(with representations: [ProduceRepresentation]) {
+        
+//        // Which representations do we already have in Core Data?
+//        
+//        let identifiersToFetch = representations.map({ String($0.plu) })
+//        
+//        // [UUID: ProduceRepresentation]
+//        let representationsByID = Dictionary(uniqueKeysWithValues: zip(identifiersToFetch, representations))
+//        
+//        // Make a mutable copy of the dictionary above
+//        
+//        // produce that could need to be created OR updated
+//        var produceToCreate = representationsByID
+//        
+//        let context = CoreDataStack.shared.container.newBackgroundContext()
+//        
+//        context.performAndWait {
+//            
+//            do {
+//                
+//                let fetchRequest: NSFetchRequest<Produce> = Produce.fetchRequest()
+//                
+//                // Only fetch the produce with the plu's that are in this identifiersToFetch array
+//                fetchRequest.predicate = NSPredicate(format: "plu IN %@", identifiersToFetch)
+//                // We need to run the context.fetch on the main queue, because the context is the main context
+//                
+//                let existingProduceOptions = try context.fetch(fetchRequest)
+//                
+//                // Update the ones we do have
+//                
+//                // Produce
+//                for produce in existingProduceOptions {
+//                    
+//                    // Grab the ProduceRepresentation that corresponds to this Produce
+//                    guard let plu = produce.plu,
+//                        let representation = representationsByID[plu] else { continue }
+//                    
+////                    produce.name = representation.name
+////                    produce.quantity = representation.quantity
+////                    produce.produceImgURL = representation.produceImgURL
+////                    produce.produceDescription = representation.produceDescription
+////                    produce.sku = representation.sku
+////                    produce.increment = representation.increment
+//                    
+//                    // We just updated a produce, we don't need to create a new Produce for this plu
+//                    produceToCreate.removeValue(forKey: plu)
+//                }
+//                
+//                // Figure out which ones we don't have
+//                
+//                // produce that don't exist in Core Data already
+//                for representation in produceToCreate.values {
+//                    Produce(produceRepresentation: representation, context: context)
+//                }
+//                
+//                // Persist all the changes (updating and creating of produce) to Core Data
+//                CoreDataStack.shared.save(context: context)
+//            } catch {
+//                NSLog("Error fetching produceOptions from persistent store: \(error)")
+//            }
+//        }
+    }
+    
+    
+    
+    // Add New Produce
+    func addNewProduce(name: String, productDescription: String, completion: @escaping (Result<ProduceRepresentation, NetworkingError>) -> Void) {
+        
+        guard let bearer = bearer else {
+            completion(Result.failure(NetworkingError.noBearer))
+            return
+        }
+        
+        let randomNum = Int.random(in:0...10000)
+        
+        let requestURL = baseUrl
+            .appendingPathComponent("produce")
+        
+        let json = """
+        {
+        "PLU": "\(randomNum)",
+        "name": "\(name)",
+        "description": "\(productDescription)"
+        }
+        """
+        
+        let jsonData = json.data(using: .utf8)
+        
+        guard let unwrapped = jsonData else {
+            print("No data!")
+            return
+        }
+        
+        var request = URLRequest(url: requestURL)
+        request.httpMethod = HTTPMethod.post.rawValue
+        
+        request.setValue("application/json", forHTTPHeaderField: HeaderNames.contentType.rawValue)
+        request.httpBody = unwrapped
+        request.setValue("Bearer \(bearer.token)", forHTTPHeaderField: HeaderNames.authorization.rawValue)
+        print(request)
+        
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+            
+            if let error = error {
+                NSLog("Error adding new produce to server: \(error)")
+                completion(.failure(.serverError(error)))
+                return
+            }
+            
+            if let response = response as? HTTPURLResponse,
+                response.statusCode != 200 {
+                print("Status code: \(response.statusCode)")
+                print("\(response.self)")
+                completion(.failure(.unexpectedStatusCode))
+            }
+            
+            guard let data = data else {
+                completion(.failure(.noData))
+                return
+            }
+            
+            do {
+                let produceRepresentation = try JSONDecoder().decode(ProduceRepresentation.self, from: data)
+                self.createNewProduce(produceRepresentation: produceRepresentation, context: CoreDataStack.shared.mainContext)
+                
+                completion(.success(produceRepresentation))
+            } catch {
+                NSLog("Error decoding produceRep: \(error)")
+                completion(.failure(.badDecode))
+            }
+        }.resume()
+    }
+    
     
     
     //MARK:  CoreData CRUD
@@ -375,6 +559,12 @@ class APIController {
         //        put(user: user)
     }
     
+    // Produce
+    func createNewProduce(produceRepresentation: ProduceRepresentation, context: NSManagedObjectContext) {
+        
+        let produce = Produce(produceRepresentation: produceRepresentation, context: context)
+        CoreDataStack.shared.save(context: context)
+    }
     // Update:
     
     // Farmer
@@ -394,136 +584,3 @@ class APIController {
 //        farmer.email = representation.email
     }
 }
-
-
-//    // MARK: Function for fetching all
-//
-//    // An [String] for its success, and a NetworkingError for its failure.
-//    func fetchAllAnimalNames(completion: @escaping (Result<[String], NetworkingError>) -> Void) {
-//
-//        guard let bearer = bearer else {
-//            completion(Result.failure(NetworkingError.noBearer))
-//            return
-//        }
-//
-//        let requestURL = baseUrl
-//            .appendingPathComponent("animals")  // endpoint
-//            .appendingPathComponent("all")      //endpoint  (to get array of all animals)
-//
-//        var request = URLRequest(url: requestURL)
-//        request.httpMethod = HTTPMethod.get.rawValue
-//
-//        // "Bearer fsMd9aHpoJ62vo4OvLC79MDqd38oE2ihkx6A1KeFwek"
-//        request.setValue("Bearer \(bearer.token)", forHTTPHeaderField: HeaderNames.authorization.rawValue)
-//
-//        //MARK: DataTask
-//        URLSession.shared.dataTask(with: request) { (data, response, error) in
-//
-//            if let error = error {
-//                NSLog("Error fetching animal names: \(error)")
-//                completion(.failure(.serverError(error)))
-//                return
-//            }
-//
-//            if let response = response as? HTTPURLResponse,
-//                response.statusCode != 200 {
-//                completion(.failure(.unexpectedStatusCode))
-//            }
-//
-//            guard let data = data else {
-//                completion(.failure(.noData))
-//                return
-//            }
-//
-//            do {
-//                let animalNames = try JSONDecoder().decode([String].self, from: data)
-//
-//                completion(.success(animalNames))
-//            } catch {
-//                NSLog("Error decoding animal names: \(error)")
-//                completion(.failure(.badDecode))
-//            }
-//        }.resume()
-//    }
-//
-//    // MARK: Function to fetch specific animal
-//
-//    func fetchDetails(for animalName: String, completion: @escaping (Result<Animal, NetworkingError>) -> Void) {
-//
-//        guard let bearer = bearer else {
-//            completion(.failure(.noBearer))
-//            return
-//        }
-//
-//        let requestURL = baseUrl
-//            .appendingPathComponent("animals")
-//            .appendingPathComponent(animalName)
-//
-//        var request = URLRequest(url: requestURL)
-//        request.httpMethod = HTTPMethod.get.rawValue
-//        request.setValue("Bearer \(bearer.token)", forHTTPHeaderField: HeaderNames.authorization.rawValue)
-//
-//        // MARK: DataTask
-//        URLSession.shared.dataTask(with: request) { (data, response, error) in
-//
-//            if let error = error {
-//                NSLog("Error fetching animal details: \(error)")
-//                completion(.failure(.serverError(error)))
-//            }
-//
-//            if let response = response as? HTTPURLResponse,
-//                response.statusCode != 200 {
-//                completion(.failure(.unexpectedStatusCode))
-//                return
-//            }
-//
-//            guard let data = data else {
-//                completion(.failure(.noData))
-//                return
-//            }
-//
-//            do {
-//                let decoder = JSONDecoder()
-//                decoder.dateDecodingStrategy = .secondsSince1970
-//
-//                let animal = try decoder.decode(Animal.self, from: data)
-//
-//                completion(.success(animal))
-//
-//            } catch {
-//                NSLog("Error decoding Animal: \(error)")
-//                completion(.failure(.badDecode))
-//            }
-//        }.resume()
-//    }
-//
-//    // MARK: Fetch image Function
-//
-//    func fetchImage(at urlString: String, completion: @escaping (UIImage?) -> Void) {
-//
-//        guard let url = URL(string: urlString) else {
-//            completion(nil)
-//            return
-//        }
-//
-//        //MARK DataTask
-//        URLSession.shared.dataTask(with: url) { (data, _, error) in
-//
-//            if let error = error {
-//                NSLog("Error fetching image: \(error)")
-//                completion(nil)
-//                return
-//            }
-//
-//            guard let data = data else {
-//                NSLog("No data returned from image fetch data task")
-//                completion(nil)
-//                return
-//            }
-//
-//            let image = UIImage(data: data)
-//
-//            completion(image)
-//
-//        }.resume()
-//    }

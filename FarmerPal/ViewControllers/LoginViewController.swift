@@ -152,12 +152,14 @@ class LoginViewController: UIViewController {
             if let farmerHomeVC = segue.destination as? FarmerHomeViewController {
                 farmerHomeVC.farmer = farmer
                 farmerHomeVC.apiController = apiController
+                farmerHomeVC.bearer = apiController.bearer
             }
         } else if segue.identifier == "LoginToConsumerHomeSegue" {
             
             if let consumerHomeVC = segue.destination as? ConsumerHomeViewController {
                 consumerHomeVC.consumer = consumer
                 consumerHomeVC.apiController = apiController
+                consumerHomeVC.bearer = apiController.bearer
             }
         }
     }

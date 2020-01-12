@@ -10,9 +10,24 @@ import Foundation
 
 struct ProduceRepresentation: Codable {
     let name: String
-    let id: String
-    let image: String // Might need to change to Data, URL, String or UIImage
-    let farmerName: String
-    let consumerName: String
+    let plu: Int16
+    let increment: String?
+    let sku: Int16?
+    let quantity: Int16?
+    let produceImgURL: String?
     let produceDescription: String
+    let price: Int16?
+    let farmerID: Int16?
+    
+    enum CodingKeys: String, CodingKey {
+        case name
+        case plu = "PLU"
+        case increment
+        case sku = "SKU"
+        case quantity
+        case produceImgURL
+        case produceDescription = "description"
+        case price
+        case farmerID = "farmer_id"
+    }
 }

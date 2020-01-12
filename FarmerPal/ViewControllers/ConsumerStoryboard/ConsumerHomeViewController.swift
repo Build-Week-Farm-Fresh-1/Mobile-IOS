@@ -8,12 +8,11 @@
 
 import UIKit
 
-//Intern == Follows orders -> You have to conform to a delegate(to recieve info)
 class ConsumerHomeViewController: UIViewController {
     
-    var farmer: Farmer?
     var consumer: Consumer?
     var apiController: APIController?
+    var bearer: Bearer?
     
     @IBOutlet weak var welcomeUserLabel: UILabel!
     @IBOutlet weak var zipcodeTextField: UITextField!
@@ -33,6 +32,13 @@ class ConsumerHomeViewController: UIViewController {
         navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
+    @IBAction func shopByZipcodeButtonTapped(_ sender: UIButton) {
+        
+        if zipcodeTextField.text != "" {
+//            performSegue(withIdentifier: "ShowFarmersByZipcodeSegue", sender: self)
+        } else { return }
+    }
+
     func updateViews() {
         navigationController?.setNavigationBarHidden(true, animated: true)
         shopByZipcodeButton.layer.cornerRadius = 10
@@ -42,7 +48,8 @@ class ConsumerHomeViewController: UIViewController {
         
         guard let consumer = consumer else { return }
         
-        
+        welcomeUserLabel.text = "Welcome \(consumer.username)"
+        numOfItemsInCartButton.titleLabel?.text = "8 Items in Cart"
     }
     
     // MARK: - Navigation
@@ -52,16 +59,18 @@ class ConsumerHomeViewController: UIViewController {
         
         if segue.identifier == "ShowFarmersByZipcodeSegue" {
             
-            let consumerFarmerOptionsVC = segue.destination as? ConsumerFarmersOptionsTableViewController
-            consumerFarmerOptionsVC?.consumer = consumer
-            //            consumerFarmerOptionsVC?.user = user
+            if let consumerFarmerOptionsVC = segue.destination as? ConsumerFarmersOptionsTableViewController{
+                
+                consumerFarmerOptionsVC.consumer = consumer
+                consumerFarmerOptionsVC.apiController = apiController
+            }
         }
         else if segue.identifier == "ConsumerProfileSegue" {
             
             if let consumerProfileVC = segue.destination as? ConsumerProfileViewController {
                 
                 consumerProfileVC.consumer = consumer
-                //                consumerProfileVC.user = user
+                consumerProfileVC.apiController = apiController
             }
         }
         else if segue.identifier == "ConsumerCartSegue" {
@@ -69,7 +78,7 @@ class ConsumerHomeViewController: UIViewController {
             if let consumerCartVC = segue.destination as? ConsumerCartViewController {
                 
                 consumerCartVC.consumer = consumer
-                //                consumerCartVC.user = user
+                consumerCartVC.apiController = apiController
             }
         }
         else if segue.identifier == "ConsumerOrderHistorySegue" {
@@ -77,7 +86,7 @@ class ConsumerHomeViewController: UIViewController {
             if let consumerOrderHistoryTVC = segue.destination as? ConsumerOrderHistoryTableViewController {
                 
                 consumerOrderHistoryTVC.consumer = consumer
-                //                consumerOrderHistoryTVC.user = user
+                consumerOrderHistoryTVC.apiController = apiController
             }
         }
     }

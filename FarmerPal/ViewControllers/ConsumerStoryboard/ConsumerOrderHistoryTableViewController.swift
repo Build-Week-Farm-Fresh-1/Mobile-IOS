@@ -12,7 +12,7 @@ class ConsumerOrderHistoryTableViewController: UITableViewController {
     
     var farmer: Farmer?
     var consumer: Consumer?
-//    var controller: UserController?
+    var apiController: APIController?
 
     override func viewDidLoad() {
         super.viewDidLoad()

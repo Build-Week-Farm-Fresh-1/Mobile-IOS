@@ -12,6 +12,7 @@ class FarmerOrdersTableViewController: UITableViewController {
     
     var farmer: Farmer?
     var consumer: Consumer?
+    var apiController: APIController?
 
     override func viewDidLoad() {
         super.viewDidLoad()
