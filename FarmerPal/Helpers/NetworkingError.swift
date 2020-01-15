@@ -12,6 +12,8 @@ enum NetworkingError: Error {
     case noData
     case noBearer
     case serverError(Error)
-    case unexpectedStatusCode
+    case unexpectedStatusCode(Int)
     case badDecode
+    case noFarmerID
+    case unexpectedError
 }

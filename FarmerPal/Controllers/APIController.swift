@@ -18,11 +18,13 @@ class APIController {
     var consumer: Consumer?
     var username: String?
     var produceOptionsForFarmer: [ProduceRepresentation]?
+    var produce: Produce?
+    var produceRep: ProduceRepresentation?
     
     // MARK: Register Functions
     
     // Register Farmer
-    func registerFarmer(username: String, password: String, city: String, state: String, zipCode: String, email: String, firstName: String, lastName: String, phoneNum: String, completion: @escaping (Error?) -> ()) {
+    func registerFarmer(username: String, password: String, city: String, state: String, zipCode: String, email: String, firstName: String, lastName: String, phoneNum: String, completion: @escaping (Result<FarmerRepresentation, NetworkingError>) -> Void) {
         
         let requestURL = baseUrl
             .appendingPathComponent("farmers")
@@ -55,41 +57,42 @@ class APIController {
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             
             if let error = error {
-                completion(error)
+                completion(.failure(.serverError(error)))
                 return
             }
             
             if let response = response as? HTTPURLResponse,
                 response.statusCode != 200 {
+                
                 DispatchQueue.main.async {
-                    let statusCodeError = NSError(domain: "com.FarmPal", code: response.statusCode, userInfo: nil)
-                    completion(statusCodeError)
-                    
+                    completion(.failure(.unexpectedStatusCode(response.statusCode)))
                 }
             }
             
             guard let data = data else {
-                NSLog("No data returned from data task")
-                completion(NSError())
+                completion(.failure(.noData))
                 return
             }
             
             do {
+                let farmerRep = try JSONDecoder().decode(FarmerRepresentation.self, from: data)
                 
+                //create New Farmer, save it as self.farmer, and save it in CD
+                self.createFarmer(farmerRepresentation: farmerRep, context: CoreDataStack.shared.mainContext)
+
                 let bearer = try JSONDecoder().decode(Bearer.self, from: data)
                 self.bearer = bearer
+                completion(.success(farmerRep))
             } catch {
-                NSLog("Error decoding farmer bearer: \(error)")
-
-                completion(error)
+                completion(Result.failure(NetworkingError.badDecode))
                 return
             }
-            completion(nil)
+//            completion(Result.failure(NetworkingError.unexpectedError))
         }.resume()
     }
     
     // Register Consumer
-    func registerConsumer(username: String, password: String, city: String, state: String, zipCode: String, email: String, firstName: String, lastName: String, phoneNum: String, completion: @escaping (Error?) -> ()) {
+    func registerConsumer(username: String, password: String, city: String, state: String, zipCode: String, email: String, firstName: String, lastName: String, phoneNum: String, completion: @escaping (Result<ConsumerRepresentation, NetworkingError>) -> Void) {
         
         let requestURL = baseUrl
             .appendingPathComponent("users")
@@ -122,36 +125,36 @@ class APIController {
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             
             if let error = error {
-                completion(error)
+                completion(Result.failure(NetworkingError.serverError(error)))
                 return
             }
             
             if let response = response as? HTTPURLResponse,
                 response.statusCode != 200 {
                 DispatchQueue.main.async {
-                    let statusCodeError = NSError(domain: "com.FarmPal", code: response.statusCode, userInfo: nil)
-                    completion(statusCodeError)
-                    
+                    completion(.failure(.unexpectedStatusCode(response.statusCode)))
                 }
             }
             
             guard let data = data else {
-                NSLog("No data returned from data task")
-                completion(NSError())
+                completion(Result.failure(NetworkingError.noData))
                 return
             }
             
             do {
-                
+                let consumerRep = try JSONDecoder().decode(ConsumerRepresentation.self, from: data)
+                self.createConsumer(consumerRepresentation: consumerRep, context: CoreDataStack.shared.mainContext)
+//                self.consumer = consumer
+
                 let bearer = try JSONDecoder().decode(Bearer.self, from: data)
                 self.bearer = bearer
+                completion(.success(consumerRep))
             } catch {
-                NSLog("Error decoding farmer bearer: \(error)")
-
-                completion(error)
+                NSLog("Error decoding consumer, or bearer: \(error)")
+                completion(.failure(.badDecode))
                 return
             }
-            completion(nil)
+            completion(.failure(.unexpectedError))
         }.resume()
     }
     
@@ -347,6 +350,32 @@ class APIController {
             return consumer
         }
     
+//
+//      func fetchProduceFromCD(with username: String) -> Consumer? {
+//
+//            let moc = CoreDataStack.shared.mainContext
+//            let fetchRequest: NSFetchRequest<Consumer> = Consumer.fetchRequest()
+//
+//            let possibleConsumers = try? moc.fetch(fetchRequest)
+//
+//            guard let consumers = possibleConsumers else { return nil }
+//            for consumer in consumers {
+//
+//                if consumer.username == self.username {
+//                    self.consumer = consumer
+//                    return consumer
+//                } else {
+//                    print("Couldn't fetch consumer from CoreData")
+//                    return nil
+//                }
+//
+//    //            moc.delete(user)
+//    //            try? CoreDataStack.shared.save(context: moc)
+//            }
+//            return consumer
+//        }
+    
+    
     // MARK: Fetching Farmer's Produce Options
     
     // The Result enum has -> [String] for its success, and a NetworkingError for its failure.
@@ -378,7 +407,7 @@ class APIController {
             
             if let response = response as? HTTPURLResponse,
                 response.statusCode != 200 {
-                completion(.failure(.unexpectedStatusCode))
+                completion(.failure(.unexpectedStatusCode(response.statusCode)))
             }
             
             guard let data = data else {
@@ -400,6 +429,88 @@ class APIController {
                 NSLog("Error decoding produce options for farmer: \(error)")
                 completion(.failure(.badDecode))
             }
+        }.resume()
+    }
+    
+    // Add Produce to Farmer's Inventory
+    func addProduceToFarmerInventory(produce: ProduceRepresentation, farmer: Farmer, completion: @escaping (Result<ProduceRepresentation, NetworkingError>) -> Void) {
+        
+//        guard let farmerID = farmer.id else {
+//            completion(Result.failure(NetworkingError.noFarmerID))
+//            return
+//        }
+        
+        guard let bearer = bearer else {
+            completion(Result.failure(NetworkingError.noBearer))
+            return
+        }
+        
+        let requestURL = baseUrl
+            .appendingPathComponent("farmers")
+            .appendingPathComponent("\(farmer.id)")
+            .appendingPathComponent("inventory")
+        
+        let randomNum = Int.random(in: 100..<2000)
+        
+        let json = """
+        {
+        "SKU": "\(randomNum)",
+        "PLU": "\(produce.plu)",
+        "quantity": "\(produce.quantity)",
+        "increment": "\(produce.increment)",
+        "price": "\(produce.price)"
+        }
+        """
+        
+        let jsonData = json.data(using: .utf8)
+        
+        guard let unwrapped = jsonData else {
+            completion(Result.failure(NetworkingError.noData))
+            return
+        }
+        
+        var request = URLRequest(url: requestURL)
+        request.httpMethod = HTTPMethod.post.rawValue
+        
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpBody = unwrapped
+        request.setValue("\(bearer.token)", forHTTPHeaderField: HeaderNames.authorization.rawValue)
+        print(request)
+        
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+            
+            if let error = error {
+                completion(Result.failure(NetworkingError.serverError(error)))
+                return
+            }
+            
+            if let response = response as? HTTPURLResponse,
+                response.statusCode != 200 {
+                DispatchQueue.main.async {
+                    completion(Result.failure(NetworkingError.unexpectedStatusCode(response.statusCode)))
+                }
+            }
+            
+            guard let data = data else {
+                completion(Result.failure(NetworkingError.noData))
+                return
+            }
+            
+            do {
+                
+                let produceRep = try JSONDecoder().decode(ProduceRepresentation.self, from: data)
+                self.produceRep = produceRep
+                self.createNewProduce(produceRepresentation: produceRep, context: CoreDataStack.shared.mainContext)
+                
+                let bearer = try JSONDecoder().decode(Bearer.self, from: data)
+                self.bearer = bearer
+                
+                completion(Result.success(produceRep))
+            } catch {
+                completion(Result.failure(NetworkingError.badDecode))
+                return
+            }
+            completion(Result.failure(NetworkingError.unexpectedError))
         }.resume()
     }
     
@@ -468,96 +579,59 @@ class APIController {
     }
     
     
-    
-    // Add New Produce
-    func addNewProduce(name: String, productDescription: String, completion: @escaping (Result<ProduceRepresentation, NetworkingError>) -> Void) {
-        
-        guard let bearer = bearer else {
-            completion(Result.failure(NetworkingError.noBearer))
-            return
-        }
-        
-        let randomNum = Int.random(in:0...10000)
-        
-        let requestURL = baseUrl
-            .appendingPathComponent("produce")
-        
-        let json = """
-        {
-        "PLU": "\(randomNum)",
-        "name": "\(name)",
-        "description": "\(productDescription)"
-        }
-        """
-        
-        let jsonData = json.data(using: .utf8)
-        
-        guard let unwrapped = jsonData else {
-            print("No data!")
-            return
-        }
-        
-        var request = URLRequest(url: requestURL)
-        request.httpMethod = HTTPMethod.post.rawValue
-        
-        request.setValue("application/json", forHTTPHeaderField: HeaderNames.contentType.rawValue)
-        request.httpBody = unwrapped
-        request.setValue("Bearer \(bearer.token)", forHTTPHeaderField: HeaderNames.authorization.rawValue)
-        print(request)
-        
-        URLSession.shared.dataTask(with: request) { (data, response, error) in
-            
-            if let error = error {
-                NSLog("Error adding new produce to server: \(error)")
-                completion(.failure(.serverError(error)))
-                return
-            }
-            
-            if let response = response as? HTTPURLResponse,
-                response.statusCode != 200 {
-                print("Status code: \(response.statusCode)")
-                print("\(response.self)")
-                completion(.failure(.unexpectedStatusCode))
-            }
-            
-            guard let data = data else {
-                completion(.failure(.noData))
-                return
-            }
-            
-            do {
-                let produceRepresentation = try JSONDecoder().decode(ProduceRepresentation.self, from: data)
-                self.createNewProduce(produceRepresentation: produceRepresentation, context: CoreDataStack.shared.mainContext)
-                
-                completion(.success(produceRepresentation))
-            } catch {
-                NSLog("Error decoding produceRep: \(error)")
-                completion(.failure(.badDecode))
-            }
-        }.resume()
-    }
-    
-    
-    
     //MARK:  CoreData CRUD
     
     // Create:
     
     // Farmer
-    func createFarmer(username: String, password: String, id: String, city: String, state: String, zipCode: String, profileImgURL: String?, farmImgURL: String?, context: NSManagedObjectContext) {
+    
+    func createFarmer(farmerRepresentation: FarmerRepresentation, context: NSManagedObjectContext) {
         
-        self.farmer = Farmer(username: username, password: password, id: id, city: city, state: state, zipCode: zipCode, profileImgURL: profileImgURL, farmImgURL: farmImgURL, context: context)
+        self.farmer = Farmer(username: farmerRepresentation.username,
+                             password: farmerRepresentation.password,
+                             id: farmerRepresentation.id,
+                             city: farmerRepresentation.city,
+                             state: farmerRepresentation.state,
+                             zipCode: farmerRepresentation.zipCode,
+                             profileImgURL: farmerRepresentation.profileImgURL,
+                             farmImgURL: farmerRepresentation.farmImgURL,
+                             email: farmerRepresentation.email,
+                             phoneNum: farmerRepresentation.phoneNum,
+                             firstName: farmerRepresentation.firstName,
+                             lastName: farmerRepresentation.lastName,
+                             context: context)
         CoreDataStack.shared.save(context: context)
         //        put(user: user)
     }
     
+//    func createFarmer(username: String, password: String, id: Int16?, city: String, state: String, zipCode: String, profileImgURL: String?, farmImgURL: String?, context: NSManagedObjectContext) {
+//
+//        self.farmer = Farmer(username: username, password: password, id: id, city: city, state: state, zipCode: zipCode, profileImgURL: profileImgURL, farmImgURL: farmImgURL, context: context)
+//        CoreDataStack.shared.save(context: context)
+//        //        put(user: user)
+//    }
+    
     // Consumer
-    func createConsumer(username: String, password: String, id: String, city: String, state: String, zipCode: String, profileImgURL: String?, context: NSManagedObjectContext) {
+    func createConsumer(consumerRepresentation: ConsumerRepresentation, context: NSManagedObjectContext) {
         
-        self.consumer = Consumer(username: username, password: password, id: id, city: city, state: state, zipCode: zipCode, profileImgURL: profileImgURL, context: context)
+        self.consumer = Consumer(username: consumerRepresentation.username,
+                                 password: consumerRepresentation.password,
+                                 id: consumerRepresentation.id,
+                                 city: consumerRepresentation.city,
+                                 state: consumerRepresentation.state,
+                                 zipCode: consumerRepresentation.zipCode,
+                                 profileImgURL: consumerRepresentation.profileImgURL, context: context)
         CoreDataStack.shared.save(context: context)
         //        put(user: user)
     }
+    
+    
+//    func createConsumer(username: String, password: String, id: String, city: String, state: String, zipCode: String, profileImgURL: String?, context: NSManagedObjectContext) {
+//
+//        self.consumer = Consumer(username: username, password: password, id: id, city: city, state: state, zipCode: zipCode, profileImgURL: profileImgURL, context: context)
+//        CoreDataStack.shared.save(context: context)
+//        //        put(user: user)
+//    }
     
     // Produce
     func createNewProduce(produceRepresentation: ProduceRepresentation, context: NSManagedObjectContext) {
@@ -565,7 +639,17 @@ class APIController {
         let produce = Produce(produceRepresentation: produceRepresentation, context: context)
         CoreDataStack.shared.save(context: context)
     }
+    
+    
+    
+    
     // Update:
+    
+    // Produce
+    private func updateProduceWithProcuRep(produce: Produce, produceRep: ProduceRepresentation) {
+        
+        
+    }
     
     // Farmer
     private func updateFarmer(with representation: FarmerRepresentation) {

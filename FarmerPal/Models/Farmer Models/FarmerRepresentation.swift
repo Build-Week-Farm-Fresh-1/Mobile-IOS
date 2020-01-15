@@ -11,11 +11,11 @@ import Foundation
 struct FarmerRepresentation: Codable {
     var username: String
     var password: String
-    var id: String
+    var id: Int16?
     
     var city: String
     var state: String
-    var zipCode: String
+    var zipCode: Int16
     var profileImgURL: String?
     var farmImgURL: String?
     
@@ -33,5 +33,9 @@ struct FarmerRepresentation: Codable {
         case zipCode
         case profileImgURL
         case farmImgURL
+        case email
+        case phoneNum
+        case firstName
+        case lastName
     }
 }

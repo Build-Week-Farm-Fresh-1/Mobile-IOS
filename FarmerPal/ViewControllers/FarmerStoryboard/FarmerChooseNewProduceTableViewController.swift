@@ -93,6 +93,7 @@ class FarmerChooseNewProduceTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        guard let farmer = farmer else { return }
         
         // Unselect the row, and instead, show the state with a checkmark.
         tableView.deselectRow(at: indexPath, animated: false)
@@ -100,29 +101,29 @@ class FarmerChooseNewProduceTableViewController: UITableViewController {
         guard let cell = tableView.cellForRow(at: indexPath) else { return }
         
         // Update the selected item to indicate whether the user packed it or not.
-        let produce = produceOptionsForFarmer?[indexPath.row]
-//        let newItem = PackingItem(name: item.name, isPacked: !item.isPacked)
-//        packingList.remove(at: indexPath.row)
-//        packingList.insert(newItem, at: indexPath.row)
         
-        // Show a check mark next to packed items.
-//        if produce.isPacked {
-            cell.accessoryType = .checkmark
-//        } else {
-//            cell.accessoryType = .none
-//        }
-        
-        
-        
-//        let selectedProduce = produceOptionsForFarmer?[indexPath.row]
-//
-//        if let
+        guard let produce = produceOptionsForFarmer?[indexPath.row] else { return }
+        apiController?.addProduceToFarmerInventory(produce: produce, farmer: farmer, completion: { (result) in
+            
+            do {
+                _ = try result.get()
+                DispatchQueue.main.async {
+                    cell.accessoryType = .checkmark
+                }
+            } catch {
+                
+                DispatchQueue.main.async {
+                    NSLog("Error adding new produce to Inventory: \(error)")
+                    cell.accessoryType = .none
+                }
+            }
+        })
     }
     
-
+    
     /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+     // Override to support conditional editing of the table view.
+     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
         return true
     }

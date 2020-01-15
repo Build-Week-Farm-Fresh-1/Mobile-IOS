@@ -31,18 +31,6 @@ class AddProduceViewController: UIViewController {
             let price = priceTextField.text,
             let description = descriptionTextView.text else { return }
         
-        apiController?.addNewProduce(name: name, productDescription: description) { (result) in
-            
-            do {
-                let produce = try result.get()
-                
-                DispatchQueue.main.async {
-                    self.dismiss(animated: true, completion: nil)
-                }
-            } catch {
-                NSLog("Error adding new produce: \(error)")
-            }
-        }
     }
     
     func changeProduceSaleStatus() {
