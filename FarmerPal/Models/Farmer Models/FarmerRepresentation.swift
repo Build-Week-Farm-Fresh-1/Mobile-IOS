@@ -10,7 +10,7 @@ import Foundation
 
 struct FarmerRepresentation: Codable {
     var username: String
-    var password: String
+    var password: String?
     var id: Int16?
     
     var city: String
@@ -24,7 +24,7 @@ struct FarmerRepresentation: Codable {
     var firstName: String?
     var lastName: String?
     
-    enum CodingKeys: String, CodingKey {
+    enum FarmerCodingKeys: String, CodingKey {
         case username
         case password
         case id
@@ -37,5 +37,41 @@ struct FarmerRepresentation: Codable {
         case phoneNum
         case firstName
         case lastName
+        case user
+    }
+    
+    init(username: String, password: String?, id: Int16?, city: String, state: String, zipCode: Int16, profileImgURL: String?, farmImgURL: String?, email: String?, phoneNum: String?, firstName: String?, lastName: String?) {
+        
+        self.username = username
+        self.password = password
+        self.id = id
+        self.city = city
+        self.state = state
+        self.zipCode = zipCode
+        self.profileImgURL = profileImgURL
+        self.farmImgURL = farmImgURL
+        self.email = email
+        self.phoneNum = phoneNum
+        self.firstName = firstName
+        self.lastName = lastName
+    }
+    
+    
+    init(from decoder: Decoder) throws {
+        
+        
+        let container = try decoder.container(keyedBy: FarmerCodingKeys.self)
+        
+        let user = try container.nestedContainer(keyedBy: FarmerCodingKeys.self, forKey: .user)
+        
+        self.id = try user.decode(Int16.self, forKey: .id)
+        self.username = try user.decode(String.self, forKey: .username)
+//        self.password = try user.decode(String.self, forKey: .password)
+        self.city = try user.decode(String.self, forKey: .city)
+        self.state = try user.decode(String.self, forKey: .state)
+        self.zipCode = try user.decode(Int16.self, forKey: .zipCode)
+        
+//        super.init()
+        
     }
 }

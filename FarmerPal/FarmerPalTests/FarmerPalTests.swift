@@ -7,26 +7,24 @@
 //
 
 import XCTest
+@testable import FarmerPal
 
 class FarmerPalTests: XCTestCase {
 
-    override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
 
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        measure {
-            // Put the code you want to measure the time of here.
+    func testFarmerRepresentationJSONParsing() {
+        let decoder = JSONDecoder()
+        
+        do {
+            let farmerRep = try decoder.decode(FarmerRepresentation.self, from: farmerRepDataAfterLogin)
+            
+            // Test (Expected, Actual)
+            XCTAssertEqual(125, farmerRep.id)
+            XCTAssertEqual("myFarmer90", farmerRep.username)
+            XCTAssertEqual(984, farmerRep.zipCode)
+            
+        } catch {
+            XCTFail("Error decoding farmerRepresentation: \(error)")
         }
     }
 

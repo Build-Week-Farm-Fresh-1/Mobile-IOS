@@ -32,7 +32,7 @@ extension Farmer {
     
     // MARK: CoreData Initializer
     @discardableResult convenience init(username: String,
-                                        password: String,
+                                        password: String?,
                                         id: Int16?,
                                         city: String,
                                         state: String,

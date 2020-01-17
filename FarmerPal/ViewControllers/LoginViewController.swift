@@ -57,14 +57,14 @@ class LoginViewController: UIViewController {
 
                     if let error = error {
                         self.showErrorAlert(errorMessage: "Login Unsuccessful. Please try again")
+                        NSLog("Error Login in Farmer: \(error)")
+                        return
                     } else {
                         self.farmer = self.apiController.fetchFarmerFromCD(with: username)
 
                         DispatchQueue.main.async {
 
                             // MARK: Transition to HomePage
-                            // TODO: Create Alert for if the LogIn was unsuccessfull
-
                             self.navigationController?.setNavigationBarHidden(true, animated: true)
                             self.performSegue(withIdentifier: .loginToFarmerHomeSegue, sender: self)
                         }

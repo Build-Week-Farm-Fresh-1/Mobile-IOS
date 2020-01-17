@@ -65,6 +65,9 @@ class APIController {
                 response.statusCode != 200 {
                 
                 DispatchQueue.main.async {
+                    print("Status code: \(response.statusCode)")
+                    print("All header fields: \(response.allHeaderFields)")
+                    print("Self: \(response.self)")
                     completion(.failure(.unexpectedStatusCode(response.statusCode)))
                 }
             }
@@ -179,6 +182,7 @@ class APIController {
         
         guard let unwrapped = jsonData else {
             print("No data!")
+//            completion(error)
             return
         }
 
@@ -213,8 +217,8 @@ class APIController {
                 
 //                guard let farmer = self.farmer else { return }
                 
-//                let farmerRepresentation = try JSONDecoder().decode(FarmerRepresentation.self, from: data)
-//                try self.updateFarmer(with: farmerRepresentation)
+                let farmerRepresentation = try JSONDecoder().decode(FarmerRepresentation.self, from: data)
+                self.updateFarmer(with: farmerRepresentation)
                 self.username = username
                 
                 let bearer = try JSONDecoder().decode(Bearer.self, from: data)
@@ -223,7 +227,7 @@ class APIController {
                 NSLog("Error decoding the bearer: \(error)")
                 completion(error)
             }
-            completion(nil)
+//            completion(nil)
         }.resume()
     }
     
@@ -639,32 +643,31 @@ class APIController {
         let produce = Produce(produceRepresentation: produceRepresentation, context: context)
         CoreDataStack.shared.save(context: context)
     }
-    
-    
-    
-    
+
     // Update:
     
     // Produce
     private func updateProduceWithProcuRep(produce: Produce, produceRep: ProduceRepresentation) {
-        
         
     }
     
     // Farmer
     private func updateFarmer(with representation: FarmerRepresentation) {
         
-//        farmer.username = representation.username
-//        farmer.password = representation.password
-//        farmer.id = representation.id
-//        farmer.city = representation.city
-//        farmer.state = representation.state
-//        farmer.zipCode = representation.zipCode
-//        farmer.firstName = representation.firstName
-//        farmer.lastName = representation.lastName
-//        farmer.phoneNum = representation.phoneNum
-//        farmer.farmImgURL = representation.farmImgURL
-//        farmer.profileImgURL = representation.profileImgURL
-//        farmer.email = representation.email
+        guard let farmer = farmer,
+            let id = representation.id  else { return }
+        
+        farmer.username = representation.username
+        farmer.password = representation.password
+        farmer.id = id
+        farmer.city = representation.city
+        farmer.state = representation.state
+        farmer.zipCode = representation.zipCode
+        farmer.firstName = representation.firstName
+        farmer.lastName = representation.lastName
+        farmer.phoneNum = representation.phoneNum
+        farmer.farmImgURL = representation.farmImgURL
+        farmer.profileImgURL = representation.profileImgURL
+        farmer.email = representation.email
     }
 }

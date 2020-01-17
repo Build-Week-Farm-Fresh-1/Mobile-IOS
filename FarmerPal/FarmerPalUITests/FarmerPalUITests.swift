@@ -21,8 +21,8 @@ class FarmerPalUITests: XCTestCase {
 
     func testConsumerLogin() {
     
-        app.buttons["Log In"].tap()
-        app.staticTexts["ConsumerGreetingLabel"].tap()
+//        app.buttons["Log In"].tap()
+//        app.staticTexts["ConsumerGreetingLabel"].tap()
         
         
         let app = XCUIApplication()
@@ -42,7 +42,7 @@ class FarmerPalUITests: XCTestCase {
         loginButton.tap()
 
         app.staticTexts["Welcome User"].tap()
-        XCTAssertEqual(accessibilityIden, <#T##expression2: Equatable##Equatable#>)
+//        XCTAssertEqual(accessibilityIden, <#T##expression2: Equatable##Equatable#>)
 }
 
     func testLaunchPerformance() {
