@@ -38,6 +38,7 @@ struct FarmerRepresentation: Codable {
         case firstName
         case lastName
         case user
+        case newUser
     }
     
     init(username: String, password: String?, id: Int16?, city: String, state: String, zipCode: Int16, profileImgURL: String?, farmImgURL: String?, email: String?, phoneNum: String?, firstName: String?, lastName: String?) {

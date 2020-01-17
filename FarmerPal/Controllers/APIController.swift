@@ -90,7 +90,6 @@ class APIController {
                 completion(Result.failure(NetworkingError.badDecode))
                 return
             }
-//            completion(Result.failure(NetworkingError.unexpectedError))
         }.resume()
     }
     
@@ -223,6 +222,7 @@ class APIController {
                 
                 let bearer = try JSONDecoder().decode(Bearer.self, from: data)
                 self.bearer = bearer
+                completion(nil)
             } catch {
                 NSLog("Error decoding the bearer: \(error)")
                 completion(error)
@@ -504,7 +504,7 @@ class APIController {
                 
                 let produceRep = try JSONDecoder().decode(ProduceRepresentation.self, from: data)
                 self.produceRep = produceRep
-                self.createNewProduce(produceRepresentation: produceRep, context: CoreDataStack.shared.mainContext)
+                self.putNewProduceInFarmerInventory(produceRepresentation: produceRep, context: CoreDataStack.shared.mainContext)
                 
                 let bearer = try JSONDecoder().decode(Bearer.self, from: data)
                 self.bearer = bearer
@@ -638,7 +638,7 @@ class APIController {
 //    }
     
     // Produce
-    func createNewProduce(produceRepresentation: ProduceRepresentation, context: NSManagedObjectContext) {
+    private func putNewProduceInFarmerInventory(produceRepresentation: ProduceRepresentation, context: NSManagedObjectContext) {
         
         let produce = Produce(produceRepresentation: produceRepresentation, context: context)
         CoreDataStack.shared.save(context: context)
