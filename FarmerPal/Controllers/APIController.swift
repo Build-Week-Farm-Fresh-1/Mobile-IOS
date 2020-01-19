@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreData
+import UIKit
 
 class APIController {
     
@@ -20,6 +21,9 @@ class APIController {
     var produceOptionsForFarmer: [ProduceRepresentation]?
     var produce: Produce?
     var produceRep: ProduceRepresentation?
+    
+    var produceQuantity: Int16?
+    var producePrice: Double?
     
     // MARK: Register Functions
     
@@ -430,19 +434,14 @@ class APIController {
         }.resume()
     }
     
-    // Add Produce to Farmer's Inventory
-    func addProduceToFarmerInventory(produce: ProduceRepresentation, farmer: Farmer, completion: @escaping (Result<ProduceRepresentation, NetworkingError>) -> Void) {
-        
-        //        guard let farmerID = farmer.id else {
-        //            completion(Result.failure(NetworkingError.noFarmerID))
-        //            return
-        //        }
+    // Add a Produce to Farmer's Inventory
+    func addProduceToFarmerInventory(produce: ProduceRepresentation, farmer: Farmer, quantity: Int16, increment: String = "lb", price: Double, completion: @escaping (Result<ProduceRepresentation, NetworkingError>) -> Void) {
         
         guard let bearer = bearer else {
             completion(Result.failure(NetworkingError.noBearer))
             return
         }
-        
+
         let requestURL = baseUrl
             .appendingPathComponent("farmers")
             .appendingPathComponent("\(farmer.id)")
@@ -454,9 +453,9 @@ class APIController {
         {
         "SKU": "\(randomNum)",
         "PLU": "\(produce.plu)",
-        "quantity": "\(produce.quantity)",
-        "increment": "\(produce.increment)",
-        "price": "\(produce.price)"
+        "quantity": "\(quantity)",
+        "increment": "\(increment)",
+        "price": "\(price)"
         }
         """
         
@@ -474,6 +473,7 @@ class APIController {
         request.httpBody = unwrapped
         request.setValue("\(bearer.token)", forHTTPHeaderField: HeaderNames.authorization.rawValue)
         print(request)
+        print("URL Session is about to run")
         
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             
@@ -500,15 +500,11 @@ class APIController {
                 self.produceRep = produceRep
                 self.putNewProduceInFarmerInventory(produceRepresentation: produceRep, context: CoreDataStack.shared.mainContext)
                 
-                let bearer = try JSONDecoder().decode(Bearer.self, from: data)
-                self.bearer = bearer
-                
                 completion(Result.success(produceRep))
             } catch {
                 completion(Result.failure(NetworkingError.badDecode))
                 return
             }
-            completion(Result.failure(NetworkingError.unexpectedError))
         }.resume()
     }
     
@@ -576,8 +572,7 @@ class APIController {
         //        }
     }
     
-    
-    //MARK:  CoreData CRUD
+    // MARK:  CoreData CRUD
     
     // Create:
     
@@ -598,7 +593,6 @@ class APIController {
                              lastName: lastName,
                              context: context)
         CoreDataStack.shared.save(context: context)
-        //        put(user: user)
     }
     
     // Consumer
@@ -612,10 +606,8 @@ class APIController {
                                  zipCode: consumerRepresentation.zipCode,
                                  profileImgURL: consumerRepresentation.profileImgURL, context: context)
         CoreDataStack.shared.save(context: context)
-        //        put(user: user)
     }
-    
-    
+        
     //    func createConsumer(username: String, password: String, id: String, city: String, state: String, zipCode: String, profileImgURL: String?, context: NSManagedObjectContext) {
     //
     //        self.consumer = Consumer(username: username, password: password, id: id, city: city, state: state, zipCode: zipCode, profileImgURL: profileImgURL, context: context)
