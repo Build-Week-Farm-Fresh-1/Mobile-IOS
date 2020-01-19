@@ -45,13 +45,11 @@ class LoginViewController: UIViewController {
             
             // Clean version of the data
             let username = usernameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-            let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            _ = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             
             if self.userTypeSegmentedControl.selectedSegmentIndex == 0 {
-                
-//                logIn(username: username, password: password)
-                
+                                
                 // MARK: Log In Farmer
                 apiController.loginFarmer(username: username, password: password) { (error) in
 
@@ -76,7 +74,7 @@ class LoginViewController: UIViewController {
                 
                 apiController.loginConsumer(username: username, password: password) { (error) in
                     
-                    if let error = error {
+                    if error != nil {
                         self.showErrorAlert(errorMessage: "Login Unsuccessful. Please try again")
                     } else {
                         self.consumer = self.apiController.fetchConsumerFromCD(with: username)
@@ -84,8 +82,6 @@ class LoginViewController: UIViewController {
                         DispatchQueue.main.async {
                             
                             // MARK: Transition to HomePage
-                            // TODO: Create Alert for if the LogIn was unsuccessfull
-                            
                             self.navigationController?.setNavigationBarHidden(true, animated: true)
                             self.performSegue(withIdentifier: .loginToConsumerHomeSegue, sender: self)
 

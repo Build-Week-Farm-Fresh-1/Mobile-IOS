@@ -69,7 +69,6 @@ class SignUpViewController: UIViewController {
             showErrorAlert(errorMessage: error!)
         } else {
             
-            
             // Create clean version of data entry
             guard let username = usernameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines),
                 let password = passwordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines),
