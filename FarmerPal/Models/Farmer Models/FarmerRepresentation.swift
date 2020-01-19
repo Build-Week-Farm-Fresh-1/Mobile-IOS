@@ -25,20 +25,33 @@ struct FarmerRepresentation: Codable {
     var lastName: String?
     
     enum FarmerCodingKeys: String, CodingKey {
-        case username
-        case password
-        case id
-        case city
-        case state
-        case zipCode
-        case profileImgURL
-        case farmImgURL
-        case email
-        case phoneNum
-        case firstName
-        case lastName
+//        case email
+//        case phoneNum
+//        case firstName
+//        case lastName
         case user
-        case newUser
+        case newFarmer
+        
+        enum NewFarmerCodingKeys: String, CodingKey {
+            case username
+            case password
+            case id
+            case city
+            case state
+            case zipCode
+            case profileImgURL
+            case farmImgURL
+        }
+        enum UserCodingKeys: String, CodingKey {
+            case username
+//            case password
+            case id
+            case city
+            case state
+            case zipCode
+            case profileImgURL
+            case farmImgURL
+        }
     }
     
     init(username: String, password: String?, id: Int16?, city: String, state: String, zipCode: Int16, profileImgURL: String?, farmImgURL: String?, email: String?, phoneNum: String?, firstName: String?, lastName: String?) {
@@ -60,19 +73,17 @@ struct FarmerRepresentation: Codable {
     
     init(from decoder: Decoder) throws {
         
-        
         let container = try decoder.container(keyedBy: FarmerCodingKeys.self)
+        let newFarmer = try container.nestedContainer(keyedBy: FarmerCodingKeys.NewFarmerCodingKeys.self, forKey: .newFarmer)
+
+            self.id = try newFarmer.decode(Int16.self, forKey: .id)
+            self.username = try newFarmer.decode(String.self, forKey: .username)
+            self.city = try newFarmer.decode(String.self, forKey: .city)
+            self.state = try newFarmer.decode(String.self, forKey: .state)
+            self.zipCode = try newFarmer.decode(Int16.self, forKey: .zipCode)
         
-        let user = try container.nestedContainer(keyedBy: FarmerCodingKeys.self, forKey: .user)
-        
-        self.id = try user.decode(Int16.self, forKey: .id)
-        self.username = try user.decode(String.self, forKey: .username)
-//        self.password = try user.decode(String.self, forKey: .password)
-        self.city = try user.decode(String.self, forKey: .city)
-        self.state = try user.decode(String.self, forKey: .state)
-        self.zipCode = try user.decode(Int16.self, forKey: .zipCode)
-        
-//        super.init()
+//        if let user = try container.nestedContainer(keyedBy: FarmerCodingKeys.UserCodingKeys.self, forKey: .user)
+//        self.password = try newFarmer.decode(String.self, forKey: .password)
         
     }
 }

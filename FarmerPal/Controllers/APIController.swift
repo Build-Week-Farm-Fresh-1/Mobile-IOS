@@ -78,6 +78,7 @@ class APIController {
             }
             
             do {
+                print("\(data)")
                 let farmerRep = try JSONDecoder().decode(FarmerRepresentation.self, from: data)
                 
                 //create New Farmer, save it as self.farmer, and save it in CD
@@ -159,7 +160,6 @@ class APIController {
             completion(.failure(.unexpectedError))
         }.resume()
     }
-    
     
     // MARK: Login Functions
     
