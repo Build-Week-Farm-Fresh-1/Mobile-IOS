@@ -82,7 +82,7 @@ class APIController {
                 let farmerRep = try JSONDecoder().decode(FarmerRepresentation.self, from: data)
                 
                 //create New Farmer, save it as self.farmer, and save it in CD
-                self.createFarmer(farmerRepresentation: farmerRep, context: CoreDataStack.shared.mainContext)
+                self.createFarmer(farmerRepresentation: farmerRep, firstName: firstName, lastName: lastName, phoneNum: phoneNum, email: email, context: CoreDataStack.shared.mainContext)
                 
                 let bearer = try JSONDecoder().decode(Bearer.self, from: data)
                 self.bearer = bearer
@@ -582,8 +582,7 @@ class APIController {
     // Create:
     
     // Farmer
-    
-    func createFarmer(farmerRepresentation: FarmerRepresentation, context: NSManagedObjectContext) {
+    func createFarmer(farmerRepresentation: FarmerRepresentation, firstName: String, lastName: String, phoneNum: String, email: String, context: NSManagedObjectContext) {
         
         self.farmer = Farmer(username: farmerRepresentation.username,
                              password: farmerRepresentation.password,
@@ -593,10 +592,10 @@ class APIController {
                              zipCode: farmerRepresentation.zipCode,
                              profileImgURL: farmerRepresentation.profileImgURL,
                              farmImgURL: farmerRepresentation.farmImgURL,
-                             email: farmerRepresentation.email,
-                             phoneNum: farmerRepresentation.phoneNum,
-                             firstName: farmerRepresentation.firstName,
-                             lastName: farmerRepresentation.lastName,
+                             email: email,
+                             phoneNum: phoneNum,
+                             firstName: firstName,
+                             lastName: lastName,
                              context: context)
         CoreDataStack.shared.save(context: context)
         //        put(user: user)
