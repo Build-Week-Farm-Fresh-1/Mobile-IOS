@@ -54,7 +54,8 @@ class FarmerHomeViewController: UIViewController {
         myProfileButton.layer.cornerRadius = 20
         addNewProduceButton.layer.cornerRadius = 20
         produceOnSale.layer.cornerRadius = 20
-        pendingOrders.layer.cornerRadius = 20
+        pendingOrders.alpha = 0
+        pendingOrders.isEnabled = false
         
         guard let farmer = farmer,
             let username = farmer.username else { return }
