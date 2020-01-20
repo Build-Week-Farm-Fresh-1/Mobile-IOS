@@ -20,6 +20,16 @@ class FarmerPalUITests: XCTestCase {
         // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
     }
     
+    func testTransitionToSignUpPage() {
+        let app = XCUIApplication()
+        app.launch()
+        app.buttons["SignUpButtonIdentifier"].tap()
+        
+        XCTAssertNotNil(app.buttons["Farmer"])
+        XCTAssertNotNil(app.buttons["Client"])
+        XCTAssertNotNil(app.staticTexts["Account Selection"])
+    }
+    
     func testSignUpFarmer() {
         let app = XCUIApplication()
         app.launch()
