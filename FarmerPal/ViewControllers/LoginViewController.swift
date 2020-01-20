@@ -23,9 +23,12 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var signUpButton: UIButton!
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.hideKeyboardWhenTappedAround()
         updateViews()
     }
     
@@ -137,6 +140,17 @@ class LoginViewController: UIViewController {
         loginBlueView.layer.cornerRadius = 10
         loginButton.layer.cornerRadius = 26
         signUpButton.layer.cornerRadius = 18
+        
+        setIdentifiers()
+    }
+    
+    // Accessibility identifiers
+    func setIdentifiers() {
+        usernameTextField.accessibilityIdentifier = "usernameTextFieldIdentifier"
+        emailTextField.accessibilityIdentifier = "emialTextFieldIdentifier"
+        passwordTextField.accessibilityIdentifier = "passwordTextFieldIdentifier"
+        loginButton.accessibilityIdentifier = "loginButtonIdentifier"
+        signUpButton.accessibilityIdentifier = "SignUpButtonIdentifier"
     }
     
     // MARK: - Navigation

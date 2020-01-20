@@ -28,6 +28,7 @@ class FarmerHomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.hideKeyboardWhenTappedAround()
         updateViews()
     }
     
@@ -63,6 +64,16 @@ class FarmerHomeViewController: UIViewController {
         pendingOrdersLabel.text = "\(2) Pending Orders"
         itemsInInventoryLabel.text = "\(17) Items in Inventory"
         itemsOnSaleLabel.text = "\(10) Items on Sale"
+        
+        setIdentifiers()
+    }
+    
+    // Accessibility identifiers
+    func setIdentifiers() {
+        welcomeUserLabel.accessibilityIdentifier = "welcomeLabelIdentifier"
+        myProfileButton.accessibilityIdentifier = "profileButtonIdentifier"
+        addNewProduceButton.accessibilityIdentifier = "addNewProduceButtonIdentifier"
+        produceOnSale.accessibilityIdentifier = "produceOnSaleButtonIdentifier"
     }
     
     // MARK: - Navigation

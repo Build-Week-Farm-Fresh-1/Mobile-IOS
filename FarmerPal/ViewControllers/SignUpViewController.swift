@@ -190,6 +190,8 @@ class SignUpViewController: UIViewController {
         clientButton.layer.cornerRadius = 15
         signUpButton.layer.cornerRadius = 20
         signUpBlueView.alpha = 0
+        
+        setIdentifiers()
     }
     
     func hideTextFields() {
@@ -214,6 +216,22 @@ class SignUpViewController: UIViewController {
         emailTextField.alpha = 1
         stateTextField.alpha = 1
         zipCodeTextField.alpha = 1
+    }
+    
+    // Accessibility identifiers
+    func setIdentifiers() {
+        farmerButton.accessibilityIdentifier = "farmerButtonIdentifier"
+        signUpButton.accessibilityIdentifier = "signUpUserButtonIdentifier"
+        
+        firstNameTextField.accessibilityIdentifier = "firstNameTextFieldIdentifier"
+        lastNameTextField.accessibilityIdentifier = "lastNameTestFieldIdentifier"
+        phoneNumTextField.accessibilityIdentifier = "phoneNumTextFieldIdentifier"
+        usernameTextField.accessibilityIdentifier = "signUpUsernameTestFieldIdentifier"
+        passwordTextField.accessibilityIdentifier = "signUpPasswordTextFieldIdentifier"
+        cityTextField.accessibilityIdentifier = "cityTestFieldIdentifier"
+        stateTextField.accessibilityIdentifier = "stateTextFieldIdentifier"
+        zipCodeTextField.accessibilityIdentifier = "zipCodeTestFieldIdentifier"
+        emailTextField.accessibilityIdentifier = "emailTextFieldIdentifier"
     }
     
     // MARK: - Navigation
