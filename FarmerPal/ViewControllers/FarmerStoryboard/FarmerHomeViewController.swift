@@ -66,7 +66,6 @@ class FarmerHomeViewController: UIViewController {
     }
     
     // MARK: - Navigation
-    //TODO: Use the controller to pass around the array of orders and Produces accordinly
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         

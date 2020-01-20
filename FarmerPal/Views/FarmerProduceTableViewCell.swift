@@ -10,28 +10,30 @@ import UIKit
 
 class FarmerProduceTableViewCell: UITableViewCell {
     
-    var produce: Produce?
+    var produce: Produce? {
+        didSet {
+            updateViews()
+        }
+    }
     
     @IBOutlet weak var photoImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        
-        photoImageView.layer.cornerRadius = 15
-    }
-    
     func updateViews() {
         
-        guard let produce = produce else { return }
+        guard let produce = produce,
+            let image = produce.produceImgURL,
+            let imageURL = URL(string: image) else { return }
         
-        nameLabel.text = produce.name
-//        photoImageView.image = produce.image
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+        do {
+            nameLabel.text = produce.name
+            let imageData = try Data(contentsOf: imageURL)
+            photoImageView.image = UIImage(data: imageData)
+            photoImageView.layer.cornerRadius = 15
+            
+        } catch {
+            photoImageView.layer.cornerRadius = 15
+            nameLabel.text = produce.name
+        }
     }
 }

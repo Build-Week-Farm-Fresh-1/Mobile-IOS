@@ -56,7 +56,6 @@ class APIController {
         
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpBody = unwrapped
-        print(request)
         
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             
@@ -151,7 +150,6 @@ class APIController {
             do {
                 let consumerRep = try JSONDecoder().decode(ConsumerRepresentation.self, from: data)
                 self.createConsumer(consumerRepresentation: consumerRep, context: CoreDataStack.shared.mainContext)
-                //                self.consumer = consumer
                 
                 let bearer = try JSONDecoder().decode(Bearer.self, from: data)
                 self.bearer = bearer
@@ -193,7 +191,6 @@ class APIController {
         
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpBody = unwrapped
-        print(request)
         
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             
@@ -228,7 +225,6 @@ class APIController {
                 NSLog("Error decoding the bearer: \(error)")
                 completion(error)
             }
-            //            completion(nil)
         }.resume()
     }
     
@@ -258,14 +254,6 @@ class APIController {
         
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpBody = unwrapped
-        print(request)
-        
-        //        do {
-        //            request.httpBody = try JSONEncoder().encode(farmer.farmerRepresentation)
-        //        } catch {
-        //            NSLog("Error encoding farmer for login: \(error)")
-        //            completion(error)
-        //        }
         
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             
@@ -288,13 +276,7 @@ class APIController {
             }
             
             do {
-                
-                //                guard let consumer = self.consumer else { return }
-                
-                //                let consumerRepresentation = try JSONDecoder().decode(FarmerRepresentation.self, from: data)
-                //                try self.updateConsumer(with: farmerRepresentation)
                 self.username = username
-                
                 let bearer = try JSONDecoder().decode(Bearer.self, from: data)
                 self.bearer = bearer
             } catch {
@@ -345,38 +327,9 @@ class APIController {
                 print("Couldn't fetch consumer from CoreData")
                 return nil
             }
-            
-            //            moc.delete(user)
-            //            try? CoreDataStack.shared.save(context: moc)
         }
         return consumer
     }
-    
-    //
-    //      func fetchProduceFromCD(with username: String) -> Consumer? {
-    //
-    //            let moc = CoreDataStack.shared.mainContext
-    //            let fetchRequest: NSFetchRequest<Consumer> = Consumer.fetchRequest()
-    //
-    //            let possibleConsumers = try? moc.fetch(fetchRequest)
-    //
-    //            guard let consumers = possibleConsumers else { return nil }
-    //            for consumer in consumers {
-    //
-    //                if consumer.username == self.username {
-    //                    self.consumer = consumer
-    //                    return consumer
-    //                } else {
-    //                    print("Couldn't fetch consumer from CoreData")
-    //                    return nil
-    //                }
-    //
-    //    //            moc.delete(user)
-    //    //            try? CoreDataStack.shared.save(context: moc)
-    //            }
-    //            return consumer
-    //        }
-    
     
     // MARK: Fetching Farmer's Produce Options
     
@@ -395,9 +348,7 @@ class APIController {
         request.httpMethod = HTTPMethod.get.rawValue
         
         request.setValue("\(bearer.token)", forHTTPHeaderField: HeaderNames.authorization.rawValue)
-        //        request.setValue("Bearer \(bearer.token)", forHTTPHeaderField: HeaderNames.authorization.rawValue)
-        
-        
+       
         //MARK: DataTask
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             
@@ -420,12 +371,6 @@ class APIController {
             do {
                 let produceOptions = try JSONDecoder().decode([ProduceRepresentation].self, from: data)
                 self.produceOptionsForFarmer = produceOptions
-                
-                //                let produceOptions = try JSONDecoder().decode([String: ProduceRepresentation].self, from: data).map({ $0.value })
-                //
-                //                // Figure out the options that need to be created, and the ones that need to be updated
-                //                self.updateProduceOptions(with: produceOptions)
-                // TODO: Not sure if I need to update produceOptions here or not, cause I can't create new options
                 completion(.success(produceOptions))
             } catch {
                 NSLog("Error decoding produce options for farmer: \(error)")
@@ -510,66 +455,7 @@ class APIController {
     
     //MARK: UpdateProduceList
     func updateProduceOptions(with representations: [ProduceRepresentation]) {
-        
-        //        // Which representations do we already have in Core Data?
-        //
-        //        let identifiersToFetch = representations.map({ String($0.plu) })
-        //
-        //        // [UUID: ProduceRepresentation]
-        //        let representationsByID = Dictionary(uniqueKeysWithValues: zip(identifiersToFetch, representations))
-        //
-        //        // Make a mutable copy of the dictionary above
-        //
-        //        // produce that could need to be created OR updated
-        //        var produceToCreate = representationsByID
-        //
-        //        let context = CoreDataStack.shared.container.newBackgroundContext()
-        //
-        //        context.performAndWait {
-        //
-        //            do {
-        //
-        //                let fetchRequest: NSFetchRequest<Produce> = Produce.fetchRequest()
-        //
-        //                // Only fetch the produce with the plu's that are in this identifiersToFetch array
-        //                fetchRequest.predicate = NSPredicate(format: "plu IN %@", identifiersToFetch)
-        //                // We need to run the context.fetch on the main queue, because the context is the main context
-        //
-        //                let existingProduceOptions = try context.fetch(fetchRequest)
-        //
-        //                // Update the ones we do have
-        //
-        //                // Produce
-        //                for produce in existingProduceOptions {
-        //
-        //                    // Grab the ProduceRepresentation that corresponds to this Produce
-        //                    guard let plu = produce.plu,
-        //                        let representation = representationsByID[plu] else { continue }
-        //
-        ////                    produce.name = representation.name
-        ////                    produce.quantity = representation.quantity
-        ////                    produce.produceImgURL = representation.produceImgURL
-        ////                    produce.produceDescription = representation.produceDescription
-        ////                    produce.sku = representation.sku
-        ////                    produce.increment = representation.increment
-        //
-        //                    // We just updated a produce, we don't need to create a new Produce for this plu
-        //                    produceToCreate.removeValue(forKey: plu)
-        //                }
-        //
-        //                // Figure out which ones we don't have
-        //
-        //                // produce that don't exist in Core Data already
-        //                for representation in produceToCreate.values {
-        //                    Produce(produceRepresentation: representation, context: context)
-        //                }
-        //
-        //                // Persist all the changes (updating and creating of produce) to Core Data
-        //                CoreDataStack.shared.save(context: context)
-        //            } catch {
-        //                NSLog("Error fetching produceOptions from persistent store: \(error)")
-        //            }
-        //        }
+
     }
     
     // MARK:  CoreData CRUD
@@ -607,13 +493,6 @@ class APIController {
                                  profileImgURL: consumerRepresentation.profileImgURL, context: context)
         CoreDataStack.shared.save(context: context)
     }
-        
-    //    func createConsumer(username: String, password: String, id: String, city: String, state: String, zipCode: String, profileImgURL: String?, context: NSManagedObjectContext) {
-    //
-    //        self.consumer = Consumer(username: username, password: password, id: id, city: city, state: state, zipCode: zipCode, profileImgURL: profileImgURL, context: context)
-    //        CoreDataStack.shared.save(context: context)
-    //        //        put(user: user)
-    //    }
     
     // Produce
     private func putNewProduceInFarmerInventory(produceRepresentation: ProduceRepresentation, context: NSManagedObjectContext) {
