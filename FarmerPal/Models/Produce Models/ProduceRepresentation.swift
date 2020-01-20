@@ -16,7 +16,7 @@ struct ProduceRepresentation: Codable {
     let quantity: Int16?
     let produceImgURL: String?
     let produceDescription: String
-    let price: Int16?
+    let price: Double?
     let farmerID: Int16?
     
     enum CodingKeys: String, CodingKey {

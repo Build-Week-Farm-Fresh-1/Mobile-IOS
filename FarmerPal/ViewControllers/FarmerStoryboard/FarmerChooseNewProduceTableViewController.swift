@@ -16,6 +16,9 @@ class FarmerChooseNewProduceTableViewController: UITableViewController {
     var apiController: APIController?
     var produceOptionsForFarmer: [ProduceRepresentation]?
     
+    var produceQuantity: Int16?
+    var producePrice: Double?
+    
     lazy var fetchedResultsController: NSFetchedResultsController<Produce> = {
         
         let fetchRequest: NSFetchRequest<Produce> = Produce.fetchRequest()
@@ -41,14 +44,11 @@ class FarmerChooseNewProduceTableViewController: UITableViewController {
         return frc
     }()
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         navigationController?.setNavigationBarHidden(false, animated: true)
         fetchProduceOptions()
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
     }
     
     func fetchProduceOptions() {
@@ -69,15 +69,13 @@ class FarmerChooseNewProduceTableViewController: UITableViewController {
                 }
             }
             
-            
-            
         })
     }
     
     // MARK: - Table view data source
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-
+        
         return produceOptionsForFarmer?.count ?? 0
     }
     
@@ -93,78 +91,110 @@ class FarmerChooseNewProduceTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        guard let farmer = farmer else { return }
         
-        // Unselect the row, and instead, show the state with a checkmark.
         tableView.deselectRow(at: indexPath, animated: false)
         
         guard let cell = tableView.cellForRow(at: indexPath) else { return }
         
-        // Update the selected item to indicate whether the user packed it or not.
-        let produce = produceOptionsForFarmer?[indexPath.row]
-//        let newItem = PackingItem(name: item.name, isPacked: !item.isPacked)
-//        packingList.remove(at: indexPath.row)
-//        packingList.insert(newItem, at: indexPath.row)
+        guard let produceOptions = produceOptionsForFarmer?[indexPath.row] else { return }
         
-        // Show a check mark next to packed items.
-//        if produce.isPacked {
-            cell.accessoryType = .checkmark
-//        } else {
-//            cell.accessoryType = .none
-//        }
-        
-        
-        
-//        let selectedProduce = produceOptionsForFarmer?[indexPath.row]
-//
-//        if let
+        self.getPriceAndQuantityAlert( { (success) in
+            
+            guard success == true else {
+                self.showErrorAlert()
+                return
+            }
+            
+            guard let price = self.producePrice,
+                let quantity = self.produceQuantity else {
+                    
+                    self.showErrorAlert()
+                    return
+            }
+            
+            self.apiController?.addProduceToFarmerInventory(produce: produceOptions, farmer: farmer, quantity: quantity, price: price, completion: { (result) in
+                
+                do {
+                    _ = try result.get()
+                    DispatchQueue.main.async {
+                        cell.accessoryType = .checkmark
+                    }
+                } catch {
+                    
+                    DispatchQueue.main.async {
+                        self.showErrorAlert()
+                        NSLog("Error adding new produce to Inventory: \(error)")
+                        cell.accessoryType = .none
+                    }
+                }
+            })
+        })
     }
     
+    // Getting the price and quantity of a produce
+    func getPriceAndQuantityAlert(_ completion: @escaping (_ success: Bool) -> Void) {
+        
+        let alert = UIAlertController(title: "Details", message: nil, preferredStyle: .alert)
+        
+        let produceDetailsAction = UIAlertAction(title: "Add produce", style: .default, handler: { (action) -> Void in
 
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+            let quantityTextField = alert.textFields![0]
+            let priceTextField = alert.textFields![1]
+
+            guard let quantity = quantityTextField.text,
+                let price = priceTextField.text else { return }
+
+            self.produceQuantity = Int16(quantity)
+            self.producePrice = Double(price)
+            completion(true)
+
+        })
+
+        let cancel = UIAlertAction(title: "Cancel", style: .default, handler: { (action) -> Void in
+            completion(false)
+        })
+
+        alert.addTextField(configurationHandler: { (textFiled: UITextField) in
+
+            textFiled.placeholder = "Quantity"
+            textFiled.keyboardType = .default
+        })
+
+        alert.addTextField(configurationHandler: { (textField: UITextField) in
+
+            textField.placeholder = "Price"
+            textField.keyboardType = .default
+
+        })
+
+        alert.addAction(produceDetailsAction)
+        alert.addAction(cancel)
+
+        self.present(alert, animated: true, completion: nil)
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+    
+    func showErrorAlert() {
+        let alert = UIAlertController(title: "Error adding produce", message: "Please refresh page and try again", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in })
+        
+        let cancel = UIAlertAction(title: "Cancel", style: .default, handler: { (action) -> Void in })
+        
+        alert.addAction(okAction)
+        alert.addAction(cancel)
+        self.present(alert, animated: true, completion: nil)
     }
-    */
-
+    
     /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
 
 extension FarmerChooseNewProduceTableViewController: NSFetchedResultsControllerDelegate {
@@ -195,8 +225,8 @@ extension FarmerChooseNewProduceTableViewController: NSFetchedResultsControllerD
                 let newIndexPath = newIndexPath else { return }
             
             tableView.moveRow(at: indexPath, to: newIndexPath)
-//            tableView.deleteRows(at: [indexPath], with: .automatic)
-//            tableView.insertRows(at: [newIndexPath], with: .automatic)
+            //            tableView.deleteRows(at: [indexPath], with: .automatic)
+        //            tableView.insertRows(at: [newIndexPath], with: .automatic)
         case .update:
             guard let indexPath = indexPath else { return }
             tableView.reloadRows(at: [indexPath], with: .automatic)

@@ -28,6 +28,7 @@ class FarmerHomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.hideKeyboardWhenTappedAround()
         updateViews()
     }
     
@@ -53,7 +54,8 @@ class FarmerHomeViewController: UIViewController {
         myProfileButton.layer.cornerRadius = 20
         addNewProduceButton.layer.cornerRadius = 20
         produceOnSale.layer.cornerRadius = 20
-        pendingOrders.layer.cornerRadius = 20
+        pendingOrders.alpha = 0
+        pendingOrders.isEnabled = false
         
         guard let farmer = farmer,
             let username = farmer.username else { return }
@@ -63,10 +65,19 @@ class FarmerHomeViewController: UIViewController {
         pendingOrdersLabel.text = "\(2) Pending Orders"
         itemsInInventoryLabel.text = "\(17) Items in Inventory"
         itemsOnSaleLabel.text = "\(10) Items on Sale"
+        
+        setIdentifiers()
+    }
+    
+    // Accessibility identifiers
+    func setIdentifiers() {
+        welcomeUserLabel.accessibilityIdentifier = "welcomeLabelIdentifier"
+        myProfileButton.accessibilityIdentifier = "profileButtonIdentifier"
+        addNewProduceButton.accessibilityIdentifier = "addNewProduceButtonIdentifier"
+        produceOnSale.accessibilityIdentifier = "produceOnSaleButtonIdentifier"
     }
     
     // MARK: - Navigation
-    //TODO: Use the controller to pass around the array of orders and Produces accordinly
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         

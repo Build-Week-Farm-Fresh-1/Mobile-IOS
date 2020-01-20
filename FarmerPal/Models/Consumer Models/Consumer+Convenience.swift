@@ -17,10 +17,10 @@ extension Consumer {
         
         guard let username = username,
             let password = password,
-            let id = id,
+//            let id = id,
             let city = city,
             let state = state,
-            let zipCode = zipCode,
+//            let zipCode = zipCode,
             let profileImgURL = profileImgURL else { return nil }
         
         return ConsumerRepresentation(username: username, password: password, id: id, city: city, state: state, zipCode: zipCode, profileImgURL: profileImgURL)
@@ -29,14 +29,16 @@ extension Consumer {
     // MARK: CoreData Initializer
     @discardableResult convenience init(username: String,
                                         password: String,
-                                        id: String,
+                                        id: Int16?,
                                         city: String,
                                         state: String,
-                                        zipCode: String,
+                                        zipCode: Int16,
                                         profileImgURL: String?,
                                         context: NSManagedObjectContext) {
         
         self.init(context: context)
+        
+        guard let id = id else { return }
         
         self.username = username
         self.password = password

@@ -69,7 +69,6 @@ class SignUpViewController: UIViewController {
             showErrorAlert(errorMessage: error!)
         } else {
             
-            
             // Create clean version of data entry
             guard let username = usernameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines),
                 let password = passwordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines),
@@ -86,36 +85,36 @@ class SignUpViewController: UIViewController {
             if farmerButton.alpha == 0 {
                 
                 // Registering Consumer
-                apiController.registerConsumer(username: username, password: password, city: city, state: state, zipCode: zipCode, email: email, firstName: firstName, lastName: lastName, phoneNum: phoneNum) { (error) in
-                    
-                    if let error = error {
-                        self.showErrorAlert(errorMessage: "Sign up Unsuccessful. Please try again")
-                        NSLog("Error registering Consumer: \(error)")
-                    } else {
-                        
-                        self.apiController.createConsumer(username: username, password: password, id: "", city: city, state: state, zipCode: zipCode, profileImgURL: nil, context: CoreDataStack.shared.mainContext)
+                apiController.registerConsumer(username: username, password: password, city: city, state: state, zipCode: zipCode, email: email, firstName: firstName, lastName: lastName, phoneNum: phoneNum) { (result) in
+         
+                    do {
+                        _ = try result.get()
+                        DispatchQueue.main.async {
+                            self.transitionToHomePage()
+                        }
+                    } catch {
                         
                         DispatchQueue.main.async {
-                            
-                            self.transitionToHomePage()
+                            self.showErrorAlert(errorMessage: "Sign up Unsuccessful. Please try again")
+                            return
                         }
                     }
                 }
             } else if clientButton.alpha == 0 {
                 
                 // Registering Farmer
-                apiController.registerFarmer(username: username, password: password, city: city, state: state, zipCode: zipCode, email: email, firstName: firstName, lastName: lastName, phoneNum: phoneNum) { (error) in
-                    
-                    if let error = error {
-                        self.showErrorAlert(errorMessage: "Sign up Unsuccessful. Please try again")
-                        NSLog("Error registering Farmer: \(error)")
-                    } else {
-                        
-                        self.apiController.createFarmer(username: username, password: password, id: "", city: city, state: state, zipCode: zipCode, profileImgURL: nil, farmImgURL: nil, context: CoreDataStack.shared.mainContext)
+                apiController.registerFarmer(username: username, password: password, city: city, state: state, zipCode: zipCode, email: email, firstName: firstName, lastName: lastName, phoneNum: phoneNum) { (result) in
+                   
+                    do {
+                        _ = try result.get()
+                        DispatchQueue.main.async {
+                            self.transitionToHomePage()
+                        }
+                    } catch {
                         
                         DispatchQueue.main.async {
-                            
-                            self.transitionToHomePage()
+                            self.showErrorAlert(errorMessage: "Sign up Unsuccessful. Please try again")
+                            return
                         }
                     }
                 }
@@ -191,6 +190,8 @@ class SignUpViewController: UIViewController {
         clientButton.layer.cornerRadius = 15
         signUpButton.layer.cornerRadius = 20
         signUpBlueView.alpha = 0
+        
+        setIdentifiers()
     }
     
     func hideTextFields() {
@@ -215,6 +216,22 @@ class SignUpViewController: UIViewController {
         emailTextField.alpha = 1
         stateTextField.alpha = 1
         zipCodeTextField.alpha = 1
+    }
+    
+    // Accessibility identifiers
+    func setIdentifiers() {
+        farmerButton.accessibilityIdentifier = "farmerButtonIdentifier"
+        signUpButton.accessibilityIdentifier = "signUpUserButtonIdentifier"
+        
+        firstNameTextField.accessibilityIdentifier = "firstNameTextFieldIdentifier"
+        lastNameTextField.accessibilityIdentifier = "lastNameTestFieldIdentifier"
+        phoneNumTextField.accessibilityIdentifier = "phoneNumTextFieldIdentifier"
+        usernameTextField.accessibilityIdentifier = "signUpUsernameTestFieldIdentifier"
+        passwordTextField.accessibilityIdentifier = "signUpPasswordTextFieldIdentifier"
+        cityTextField.accessibilityIdentifier = "cityTestFieldIdentifier"
+        stateTextField.accessibilityIdentifier = "stateTextFieldIdentifier"
+        zipCodeTextField.accessibilityIdentifier = "zipCodeTestFieldIdentifier"
+        emailTextField.accessibilityIdentifier = "emailTextFieldIdentifier"
     }
     
     // MARK: - Navigation

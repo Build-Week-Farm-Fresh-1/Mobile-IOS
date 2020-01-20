@@ -10,7 +10,6 @@ import UIKit
 
 class FarmerOrderDetailViewController: UIViewController {
     
-    
     @IBOutlet weak var clientNameLabel: UILabel!
     @IBOutlet weak var pickupDateLabel: UILabel!
     @IBOutlet weak var clientPhoneNumLabel: UILabel!
@@ -32,7 +31,6 @@ class FarmerOrderDetailViewController: UIViewController {
         navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
-
     /*
     // MARK: - Navigation
 

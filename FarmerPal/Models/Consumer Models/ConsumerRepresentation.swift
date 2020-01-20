@@ -11,11 +11,11 @@ import Foundation
 struct ConsumerRepresentation: Codable {
     var username: String
     var password: String
-    var id: String
+    var id: Int16?
     
     var city: String
     var state: String
-    var zipCode: String
+    var zipCode: Int16
     var profileImgURL: String?
     
     var email: String?

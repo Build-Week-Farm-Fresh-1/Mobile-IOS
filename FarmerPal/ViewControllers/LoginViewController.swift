@@ -23,9 +23,12 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var signUpButton: UIButton!
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.hideKeyboardWhenTappedAround()
         updateViews()
     }
     
@@ -45,26 +48,24 @@ class LoginViewController: UIViewController {
             
             // Clean version of the data
             let username = usernameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-            let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            _ = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             
             if self.userTypeSegmentedControl.selectedSegmentIndex == 0 {
-                
-//                logIn(username: username, password: password)
-                
+                                
                 // MARK: Log In Farmer
                 apiController.loginFarmer(username: username, password: password) { (error) in
 
                     if let error = error {
                         self.showErrorAlert(errorMessage: "Login Unsuccessful. Please try again")
+                        NSLog("Error Login in Farmer: \(error)")
+                        return
                     } else {
                         self.farmer = self.apiController.fetchFarmerFromCD(with: username)
 
                         DispatchQueue.main.async {
 
                             // MARK: Transition to HomePage
-                            // TODO: Create Alert for if the LogIn was unsuccessfull
-
                             self.navigationController?.setNavigationBarHidden(true, animated: true)
                             self.performSegue(withIdentifier: .loginToFarmerHomeSegue, sender: self)
                         }
@@ -76,7 +77,7 @@ class LoginViewController: UIViewController {
                 
                 apiController.loginConsumer(username: username, password: password) { (error) in
                     
-                    if let error = error {
+                    if error != nil {
                         self.showErrorAlert(errorMessage: "Login Unsuccessful. Please try again")
                     } else {
                         self.consumer = self.apiController.fetchConsumerFromCD(with: username)
@@ -84,8 +85,6 @@ class LoginViewController: UIViewController {
                         DispatchQueue.main.async {
                             
                             // MARK: Transition to HomePage
-                            // TODO: Create Alert for if the LogIn was unsuccessfull
-                            
                             self.navigationController?.setNavigationBarHidden(true, animated: true)
                             self.performSegue(withIdentifier: .loginToConsumerHomeSegue, sender: self)
 
@@ -141,6 +140,17 @@ class LoginViewController: UIViewController {
         loginBlueView.layer.cornerRadius = 10
         loginButton.layer.cornerRadius = 26
         signUpButton.layer.cornerRadius = 18
+        
+        setIdentifiers()
+    }
+    
+    // Accessibility identifiers
+    func setIdentifiers() {
+        usernameTextField.accessibilityIdentifier = "usernameTextFieldIdentifier"
+        emailTextField.accessibilityIdentifier = "emialTextFieldIdentifier"
+        passwordTextField.accessibilityIdentifier = "passwordTextFieldIdentifier"
+        loginButton.accessibilityIdentifier = "loginButtonIdentifier"
+        signUpButton.accessibilityIdentifier = "SignUpButtonIdentifier"
     }
     
     // MARK: - Navigation

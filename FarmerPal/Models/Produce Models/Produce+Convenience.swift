@@ -35,7 +35,7 @@ extension Produce {
                                         quantity: Int16?,
                                         produceImgURL: String?,
                                         produceDescription: String,
-                                        price: Int16?,
+                                        price: Double?,
                                         context: NSManagedObjectContext) {
         
         self.init(context: context)
@@ -63,7 +63,7 @@ extension Produce {
 //                                        quantity: Int16?,
                                         produceImgURL: String?,
                                         produceDescription: String,
-//                                        price: Int16?,
+                                        price: Double?,
                                         context: NSManagedObjectContext) {
         
         self.init(context: context)
